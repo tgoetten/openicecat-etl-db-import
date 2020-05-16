@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation-steps>
+<steps>
+  <step>
+    <name>Data Grid</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>userAgent</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line> <item>Mozilla&#x2f;5.0 &#x28;Windows NT 6.1&#x3b; WOW64&#x3b; rv&#x3a;52.0&#x29; Gecko&#x2f;20100101 Firefox&#x2f;52.0</item> </line>
+    </data>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Modified Java Script Value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;&#x2f;&#x2f; var parsingResult &#x3d; UAParser&#x28;&#x22;Mozilla&#x2f;5.0 &#x28;Windows NT 6.1&#x3b; WOW64&#x3b; rv&#x3a;52.0&#x29; Gecko&#x2f;20100101 Firefox&#x2f;52.0&#x22;, &#x22;&#x22;&#x29;&#xd;&#xa;var parsingResult &#x3d; UAParser&#x28;userAgent, &#x22;&#x22;&#x29;&#xd;&#xa;var stepResult &#x3d; JSON.stringify&#x28;parsingResult&#x29;</jsScript_script>
+      </jsScript>      <jsScript>        <jsScript_type>1</jsScript_type>
+        <jsScript_name>Item_0</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var transformationPath &#x3d; getVariable&#x28;&#x22;Internal.Transformation.Filename.Directory&#x22;, &#x22;&#x22;&#x29;&#x3b;&#xd;&#xa;var jsScriptPath &#x3d; transformationPath &#x2b; &#x22;&#x2f;&#x22; &#x2b; &#x22;ua-parser.js&#x22;&#xd;&#xa;LoadScriptFile&#x28;jsScriptPath&#x29;&#x3b;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>stepResult</name>
+        <rename>stepResult</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+</steps>
+<order>
+    <hop>
+      <from>Data Grid</from>
+      <to>Modified Java Script Value</to>
+      <enabled>Y</enabled>
+    </hop>
+
+</order>
+<notepads>
+</notepads>
+<step_error_handling>
+</step_error_handling>
+</transformation-steps>

@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>InsertSuppliers</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2015/03/06 18:28:30.771</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2015/03/06 18:28:30.771</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>postgres-database</name>
+    <server>${postgres_database_host}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${postgres_database_database}</database>
+    <port>${postgres_database_port}</port>
+    <username>${postgres_database_user}</username>
+    <password>${postgres_database_password}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${postgres_database_port}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop>
+      <from>XML Input Stream (StAX)</from>
+      <to>Modified Java Script Value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Insert them in postgres database</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified Java Script Value</from>
+      <to>/ICECAT-interface/Response/SuppliersList/Supplier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>/ICECAT-interface/Response/SuppliersList/Supplier</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>/ICECAT-interface/Response/SuppliersList/Supplier</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>/ICECAT-interface/Response/SuppliersList/Supplier</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Group by</send_true_to>
+    <send_false_to>Dummy (do nothing) 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>xml_path</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>/ICECAT-interface/Response/SuppliersList/Supplier</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 2</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>xml_element_id</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>supplier_id</aggregate>
+        <subject>supplier_id</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_name</aggregate>
+        <subject>supplier_name</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logopic</aggregate>
+        <subject>supplier_logopic</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logopicheight</aggregate>
+        <subject>supplier_logopicheight</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logopicwidth</aggregate>
+        <subject>supplier_logopicwidth</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logopicsize</aggregate>
+        <subject>supplier_logopicsize</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logolowpic</aggregate>
+        <subject>supplier_logolowpic</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logolowpicheight</aggregate>
+        <subject>supplier_logolowpicheight</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logolowpicwidth</aggregate>
+        <subject>supplier_logolowpicwidth</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logolowpicsize</aggregate>
+        <subject>supplier_logolowpicsize</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logomediumpic</aggregate>
+        <subject>supplier_logomediumpic</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logomediumpicheight</aggregate>
+        <subject>supplier_logomediumpicheight</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logomediumpicwidth</aggregate>
+        <subject>supplier_logomediumpicwidth</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logomediumpicsize</aggregate>
+        <subject>supplier_logomediumpicsize</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logogighpic</aggregate>
+        <subject>supplier_logogighpic</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logohighpicheight</aggregate>
+        <subject>supplier_logohighpicheight</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logohighpicwidth</aggregate>
+        <subject>supplier_logohighpicwidth</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logohighpicsize</aggregate>
+        <subject>supplier_logohighpicsize</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logooriginal</aggregate>
+        <subject>supplier_logooriginal</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_logooriginalsize</aggregate>
+        <subject>supplier_logooriginalsize</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>supplier_sponsor</aggregate>
+        <subject>supplier_sponsor</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert them in postgres database</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>supplier</table>
+    <commit>${commit_size}</commit>
+    <truncate>N</truncate>
+    <ignore_errors>Y</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>id</column_name>
+        <stream_name>supplier_id</stream_name>
+      </field>
+      <field>
+        <column_name>name</column_name>
+        <stream_name>supplier_name</stream_name>
+      </field>
+      <field>
+        <column_name>logopic</column_name>
+        <stream_name>supplier_logopic</stream_name>
+      </field>
+      <field>
+        <column_name>logopicheight</column_name>
+        <stream_name>supplier_logopicheight</stream_name>
+      </field>
+      <field>
+        <column_name>logopicwidth</column_name>
+        <stream_name>supplier_logopicwidth</stream_name>
+      </field>
+      <field>
+        <column_name>logopicsize</column_name>
+        <stream_name>supplier_logopicsize</stream_name>
+      </field>
+      <field>
+        <column_name>logolowpic</column_name>
+        <stream_name>supplier_logolowpic</stream_name>
+      </field>
+      <field>
+        <column_name>logolowpicheight</column_name>
+        <stream_name>supplier_logolowpicheight</stream_name>
+      </field>
+      <field>
+        <column_name>logolowpicwidth</column_name>
+        <stream_name>supplier_logolowpicwidth</stream_name>
+      </field>
+      <field>
+        <column_name>logolowpicsize</column_name>
+        <stream_name>supplier_logolowpicsize</stream_name>
+      </field>
+      <field>
+        <column_name>logomediumpic</column_name>
+        <stream_name>supplier_logomediumpic</stream_name>
+      </field>
+      <field>
+        <column_name>logomediumpicheight</column_name>
+        <stream_name>supplier_logomediumpicheight</stream_name>
+      </field>
+      <field>
+        <column_name>logomediumpicwidth</column_name>
+        <stream_name>supplier_logomediumpicwidth</stream_name>
+      </field>
+      <field>
+        <column_name>logomediumpicsize</column_name>
+        <stream_name>supplier_logomediumpicsize</stream_name>
+      </field>
+      <field>
+        <column_name>logogighpic</column_name>
+        <stream_name>supplier_logogighpic</stream_name>
+      </field>
+      <field>
+        <column_name>logohighpicheight</column_name>
+        <stream_name>supplier_logohighpicheight</stream_name>
+      </field>
+      <field>
+        <column_name>logohighpicwidth</column_name>
+        <stream_name>supplier_logohighpicwidth</stream_name>
+      </field>
+      <field>
+        <column_name>logohighpicsize</column_name>
+        <stream_name>supplier_logohighpicsize</stream_name>
+      </field>
+      <field>
+        <column_name>logooriginal</column_name>
+        <stream_name>supplier_logooriginal</stream_name>
+      </field>
+      <field>
+        <column_name>logooriginalsize</column_name>
+        <stream_name>supplier_logooriginalsize</stream_name>
+      </field>
+      <field>
+        <column_name>sponsor</column_name>
+        <stream_name>supplier_sponsor</stream_name>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified Java Script Value</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var supplier_id;
+var supplier_name;
+var supplier_logopic = null;
+var supplier_logopicheight;
+var supplier_logopicwidth;
+var supplier_logopicsize;
+var supplier_logolowpic = null;
+var supplier_logolowpicheight;
+var supplier_logolowpicwidth;
+var supplier_logolowpicsize;
+var supplier_logomediumpic = null;
+var supplier_logomediumpicheight;
+var supplier_logomediumpicwidth;
+var supplier_logomediumpicsize;
+var supplier_logogighpic = null;
+var supplier_logohighpicheight;
+var supplier_logohighpicwidth;
+var supplier_logohighpicsize;
+var supplier_logooriginal = null;
+var supplier_logooriginalsize;
+var supplier_sponsor;
+// &lt;xs:complexType name="Supplier">
+//     &lt;xs:choice maxOccurs="unbounded">
+//         &lt;xs:element name="CustomerService" type="CustomerService" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="Names" type="Names" maxOccurs="1" minOccurs="0"/>
+//     &lt;/xs:choice>
+//     &lt;xs:attribute name="ID" type="xs:integer" use="required"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("ID") ) {
+    supplier_id = xml_data_value;
+}
+// &lt;xs:attribute name="Name" type="xs:string"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("Name") ) {
+    supplier_name = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoPic" type="xs:anyURI"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoPic") ) {
+    supplier_logopic = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoPicHeight" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoPicHeight") ) {
+    supplier_logopicheight = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoPicWidth" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoPicWidth") ) {
+    supplier_logopicwidth = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoPicSize" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoPicSize") ) {
+    supplier_logopicsize = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoLowPic" type="xs:anyURI"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoLowPic") ) {
+    supplier_logolowpic = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoLowPicHeight" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoLowPicHeight") ) {
+    supplier_logolowpicheight = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoLowPicWidth" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoLowPicWidth") ) {
+    supplier_logolowpicwidth = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoLowPicSize" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoLowSize") ) {
+    supplier_logolowpicsize = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoMediumPic" type="xs:anyURI"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoMediumPic") ) {
+    supplier_logomediumpic = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoMediumPicHeight" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoMediumPicHeight") ) {
+    supplier_logomediumpicheight = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoMediumPicWidth" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoMediumPicWidth") ) {
+    supplier_logomediumpicwidth = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoMediumPicSize" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoMediumPicSize") ) {
+    supplier_logomediumpicsize = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoHighPic" type="xs:anyURI"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoHighPic") ) {
+    supplier_logogighpic = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoHighPicHeight" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoHighPicHeight") ) {
+    supplier_logohighpicheight = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoHighPicWidth" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoHighPicWidth") ) {
+    supplier_logohighpicwidth = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoHighPicSize" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoHighPicSize") ) {
+    supplier_logohighpicsize = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoOriginal" type="xs:anyURI"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoOriginal") ) {
+    supplier_logooriginal = xml_data_value;
+}
+{/* &lt;xs:attribute name="LogoOriginalSize" type="xs:integer"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("LogoOriginalSize") ) {
+    supplier_logooriginalsize = xml_data_value;
+}
+{/* &lt;xs:attribute name="Sponsor" type="xs:string"/> */}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/SuppliersList/Supplier") &amp;&amp;
+xml_data_name.equals("Sponsor") ) {
+    supplier_sponsor = xml_data_value;
+}
+// &lt;/xs:complexType></jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>supplier_id</name>
+        <rename>supplier_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_name</name>
+        <rename>supplier_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logopic</name>
+        <rename>supplier_logopic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logopicheight</name>
+        <rename>supplier_logopicheight</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logopicwidth</name>
+        <rename>supplier_logopicwidth</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logopicsize</name>
+        <rename>supplier_logopicsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logolowpic</name>
+        <rename>supplier_logolowpic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logolowpicheight</name>
+        <rename>supplier_logolowpicheight</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logolowpicwidth</name>
+        <rename>supplier_logolowpicwidth</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logolowpicsize</name>
+        <rename>supplier_logolowpicsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logomediumpic</name>
+        <rename>supplier_logomediumpic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logomediumpicheight</name>
+        <rename>supplier_logomediumpicheight</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logomediumpicwidth</name>
+        <rename>supplier_logomediumpicwidth</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logomediumpicsize</name>
+        <rename>supplier_logomediumpicsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logogighpic</name>
+        <rename>supplier_logogighpic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logohighpicheight</name>
+        <rename>supplier_logohighpicheight</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logohighpicwidth</name>
+        <rename>supplier_logohighpicwidth</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logohighpicsize</name>
+        <rename>supplier_logohighpicsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logooriginal</name>
+        <rename>supplier_logooriginal</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_logooriginalsize</name>
+        <rename>supplier_logooriginalsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>supplier_sponsor</name>
+        <rename>supplier_sponsor</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>supplier_id</name>
+      </field>
+      <field>
+        <name>supplier_name</name>
+      </field>
+      <field>
+        <name>supplier_logopic</name>
+      </field>
+      <field>
+        <name>supplier_logopicheight</name>
+      </field>
+      <field>
+        <name>supplier_logopicwidth</name>
+      </field>
+      <field>
+        <name>supplier_logopicsize</name>
+      </field>
+      <field>
+        <name>supplier_logolowpic</name>
+      </field>
+      <field>
+        <name>supplier_logolowpicheight</name>
+      </field>
+      <field>
+        <name>supplier_logolowpicwidth</name>
+      </field>
+      <field>
+        <name>supplier_logolowpicsize</name>
+      </field>
+      <field>
+        <name>supplier_logomediumpic</name>
+      </field>
+      <field>
+        <name>supplier_logomediumpicheight</name>
+      </field>
+      <field>
+        <name>supplier_logomediumpicwidth</name>
+      </field>
+      <field>
+        <name>supplier_logomediumpicsize</name>
+      </field>
+      <field>
+        <name>supplier_logogighpic</name>
+      </field>
+      <field>
+        <name>supplier_logohighpicheight</name>
+      </field>
+      <field>
+        <name>supplier_logohighpicwidth</name>
+      </field>
+      <field>
+        <name>supplier_logohighpicsize</name>
+      </field>
+      <field>
+        <name>supplier_logooriginal</name>
+      </field>
+      <field>
+        <name>supplier_logooriginalsize</name>
+      </field>
+      <field>
+        <name>supplier_sponsor</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>XML Input Stream (StAX)</name>
+    <type>XMLInputStream</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <sourceFromInput>N</sourceFromInput>
+    <sourceFieldName />
+    <filename>${openicecat_download_path}/SuppliersList.xml</filename>
+    <addResultFile>N</addResultFile>
+    <nrRowsToSkip>0</nrRowsToSkip>
+    <rowLimit>0</rowLimit>
+    <defaultStringLen>1024</defaultStringLen>
+    <encoding>UTF-8</encoding>
+    <enableNamespaces>N</enableNamespaces>
+    <enableTrim>Y</enableTrim>
+    <includeFilenameField>N</includeFilenameField>
+    <filenameField>xml_filename</filenameField>
+    <includeRowNumberField>N</includeRowNumberField>
+    <rowNumberField>xml_row_number</rowNumberField>
+    <includeDataTypeNumericField>N</includeDataTypeNumericField>
+    <dataTypeNumericField>xml_data_type_numeric</dataTypeNumericField>
+    <includeDataTypeDescriptionField>Y</includeDataTypeDescriptionField>
+    <dataTypeDescriptionField>xml_data_type_description</dataTypeDescriptionField>
+    <includeXmlLocationLineField>N</includeXmlLocationLineField>
+    <xmlLocationLineField>xml_location_line</xmlLocationLineField>
+    <includeXmlLocationColumnField>N</includeXmlLocationColumnField>
+    <xmlLocationColumnField>xml_location_column</xmlLocationColumnField>
+    <includeXmlElementIDField>Y</includeXmlElementIDField>
+    <xmlElementIDField>xml_element_id</xmlElementIDField>
+    <includeXmlParentElementIDField>Y</includeXmlParentElementIDField>
+    <xmlParentElementIDField>xml_parent_element_id</xmlParentElementIDField>
+    <includeXmlElementLevelField>Y</includeXmlElementLevelField>
+    <xmlElementLevelField>xml_element_level</xmlElementLevelField>
+    <includeXmlPathField>Y</includeXmlPathField>
+    <xmlPathField>xml_path</xmlPathField>
+    <includeXmlParentPathField>Y</includeXmlParentPathField>
+    <xmlParentPathField>xml_parent_path</xmlParentPathField>
+    <includeXmlDataNameField>Y</includeXmlDataNameField>
+    <xmlDataNameField>xml_data_name</xmlDataNameField>
+    <includeXmlDataValueField>Y</includeXmlDataValueField>
+    <xmlDataValueField>xml_data_value</xmlDataValueField>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+  <attributes />
+</transformation>

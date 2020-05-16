@@ -1,0 +1,30 @@
+# docker-compose.yml
+# https://medium.com/analytics-vidhya/getting-started-with-postgresql-using-docker-compose-34d6b808c47c
+version: '3.8'
+
+volumes:
+  psql-data:
+
+networks:
+  default:
+    external:
+      name: cloudbuild
+  openicecat-etl-db-import-net:
+
+
+services:
+
+  db:
+    image: postgres # use latest official postgres version
+    container_name: openicecat-etl-db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    env_file:
+      - database.env # configure postgres
+    volumes:
+      - psql-data:/var/lib/postgresql/data/pgdata
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      openicecat-etl-db-import-net:
