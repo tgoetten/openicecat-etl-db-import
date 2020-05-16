@@ -478,8 +478,8 @@ true;</script>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>208</yloc>
+      <xloc>720</xloc>
+      <yloc>128</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -544,7 +544,7 @@ true;</script>
       <to>Parse XML file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
@@ -562,13 +562,22 @@ true;</script>
       <to>initialise database</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
       <from>Create cube-data folder</from>
       <to>Download XML file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Download XML file</from>
+      <to>Parse XML file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

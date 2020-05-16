@@ -547,7 +547,8 @@ CREATE TABLE product__summarydescription (
 DROP 
   TABLE IF EXISTS product__productfeature CASCADE;
 CREATE TABLE product__productfeature (
-  ID SERIAL PRIMARY KEY, 
+  ID SERIAL PRIMARY KEY,
+  productfeature_id integer, 
   local_id integer,
   value text,
   localized text,
@@ -562,7 +563,7 @@ CREATE TABLE product__productfeature (
   localvalue__measure__sign_id integer,
   localvalue__measure__sign_langid integer,
   localvalue__measure__sign_sign text,
-  feature_value text,
+  feature_id integer,
   feature__measure_id integer,
   feature__measure_sign text,
   feature__measure__sign_id integer,

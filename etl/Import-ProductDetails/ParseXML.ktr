@@ -438,8 +438,8 @@
       <note>- filename as parameter / for now it's hardcoded!!
 ${openicecat_download_path}/${langid}/${filename}
 - insert "Product"</note>
-      <xloc>985</xloc>
-      <yloc>202</yloc>
+      <xloc>1024</xloc>
+      <yloc>112</yloc>
       <width>302</width>
       <heigth>61</heigth>
       <fontname>Noto Sans</fontname>
@@ -531,16 +531,6 @@ ${openicecat_download_path}/${langid}/${filename}
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>sign_sign</from>
-      <to>Filter END_ELEMENT</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Switch / case</from>
-      <to>Select ProductFeature</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Switch / case</from>
       <to>Select SummaryDescription</to>
       <enabled>Y</enabled>
@@ -558,11 +548,6 @@ ${openicecat_download_path}/${langid}/${filename}
     <hop>
       <from>Select SummaryDescription</from>
       <to>Insert / update SummaryDescription</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select ProductFeature</from>
-      <to>Insert / update ProductFeature</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -605,6 +590,21 @@ ${openicecat_download_path}/${langid}/${filename}
       <to>sign_sign</to>
       <enabled>N</enabled>
     </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>Select ProductFeature</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select ProductFeature</from>
+      <to>Insert / update ProductFeature</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sign_sign</from>
+      <to>Filter END_ELEMENT</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Data Grid 2</name>
@@ -644,8 +644,8 @@ ${openicecat_download_path}/${langid}/${filename}
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>128</yloc>
+      <xloc>1088</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -687,8 +687,8 @@ ${openicecat_download_path}/${langid}/${filename}
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>272</yloc>
+      <xloc>1088</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -887,8 +887,8 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>272</yloc>
+      <xloc>1264</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1247,8 +1247,8 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
         <update>Y</update>
       </value>
       <value>
-        <name>feature_value</name>
-        <rename>productfeature__feature_value</rename>
+        <name>feature_id</name>
+        <rename>productfeature__feature_id</rename>
         <update>Y</update>
       </value>
       <value>
@@ -1605,112 +1605,6 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Select ProductFeature</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>product_id</name>
-      </field>
-      <field>
-        <name>productfeature_localized</name>
-      </field>
-      <field>
-        <name>productfeature_id</name>
-      </field>
-      <field>
-        <name>productfeature_local_id</name>
-      </field>
-      <field>
-        <name>productfeature_value</name>
-      </field>
-      <field>
-        <name>productfeature_categoryfeaturegroup_id</name>
-      </field>
-      <field>
-        <name>productfeature_no</name>
-      </field>
-      <field>
-        <name>productfeature_presentation_value</name>
-      </field>
-      <field>
-        <name>productfeature_translated</name>
-      </field>
-      <field>
-        <name>productfeature_mandatory</name>
-      </field>
-      <field>
-        <name>productfeature_searchable</name>
-      </field>
-      <field>
-        <name>productfeature_langid</name>
-      </field>
-      <field>
-        <name>productfeature__localvalue_value</name>
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure_id</name>
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure__sign_id</name>
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure__sign_langid</name>
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure__sign_sign</name>
-      </field>
-      <field>
-        <name>productfeature__feature_value</name>
-      </field>
-      <field>
-        <name>productfeature__feature__measure_id</name>
-      </field>
-      <field>
-        <name>productfeature__feature__measure_sign</name>
-      </field>
-      <field>
-        <name>productfeature__feature__measure__sign_id</name>
-      </field>
-      <field>
-        <name>productfeature__feature__measure__sign_langid</name>
-      </field>
-      <field>
-        <name>productfeature__feature__measure__sign_sign</name>
-      </field>
-      <field>
-        <name>productfeature__feature__name_id</name>
-      </field>
-      <field>
-        <name>productfeature__feature__name_langid</name>
-      </field>
-      <field>
-        <name>productfeature__feature__name_value</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select ProductRelated</name>
     <type>SelectValues</type>
     <description />
@@ -1866,6 +1760,67 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
     </GUI>
   </step>
   <step>
+    <name>XML Input Stream (StAX) DE</name>
+    <type>XMLInputStream</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <sourceFromInput>N</sourceFromInput>
+    <sourceFieldName />
+    <filename>${openicecat_download_path}/4/75841717.xml</filename>
+    <addResultFile>N</addResultFile>
+    <nrRowsToSkip>0</nrRowsToSkip>
+    <rowLimit>0</rowLimit>
+    <defaultStringLen>0</defaultStringLen>
+    <encoding>UTF-8</encoding>
+    <enableNamespaces>N</enableNamespaces>
+    <enableTrim>Y</enableTrim>
+    <includeFilenameField>N</includeFilenameField>
+    <filenameField>xml_filename</filenameField>
+    <includeRowNumberField>N</includeRowNumberField>
+    <rowNumberField>xml_row_number</rowNumberField>
+    <includeDataTypeNumericField>N</includeDataTypeNumericField>
+    <dataTypeNumericField>xml_data_type_numeric</dataTypeNumericField>
+    <includeDataTypeDescriptionField>Y</includeDataTypeDescriptionField>
+    <dataTypeDescriptionField>xml_data_type_description</dataTypeDescriptionField>
+    <includeXmlLocationLineField>N</includeXmlLocationLineField>
+    <xmlLocationLineField>xml_location_line</xmlLocationLineField>
+    <includeXmlLocationColumnField>N</includeXmlLocationColumnField>
+    <xmlLocationColumnField>xml_location_column</xmlLocationColumnField>
+    <includeXmlElementIDField>Y</includeXmlElementIDField>
+    <xmlElementIDField>xml_element_id</xmlElementIDField>
+    <includeXmlParentElementIDField>Y</includeXmlParentElementIDField>
+    <xmlParentElementIDField>xml_parent_element_id</xmlParentElementIDField>
+    <includeXmlElementLevelField>Y</includeXmlElementLevelField>
+    <xmlElementLevelField>xml_element_level</xmlElementLevelField>
+    <includeXmlPathField>Y</includeXmlPathField>
+    <xmlPathField>xml_path</xmlPathField>
+    <includeXmlParentPathField>Y</includeXmlParentPathField>
+    <xmlParentPathField>xml_parent_path</xmlParentPathField>
+    <includeXmlDataNameField>Y</includeXmlDataNameField>
+    <xmlDataNameField>xml_data_name</xmlDataNameField>
+    <includeXmlDataValueField>Y</includeXmlDataValueField>
+    <xmlDataValueField>xml_data_value</xmlDataValueField>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>XML Input Stream (StAX) EN</name>
     <type>XMLInputStream</type>
     <description />
@@ -1980,8 +1935,8 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>128</yloc>
+      <xloc>1264</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2071,6 +2026,8 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
+
+
 
 var product_id;
 var product_code;
@@ -2212,7 +2169,7 @@ var productfeature__localvalue__measure__sign_id;
 var productfeature__localvalue__measure__sign_langid;
 var productfeature__localvalue__measure__sign_sign;
 
-var productfeature__feature_value;
+var productfeature__feature_id;
 var productfeature__feature__measure_id;
 var productfeature__feature__measure_sign;
 var productfeature__feature__measure__sign_id;
@@ -2221,6 +2178,13 @@ var productfeature__feature__measure__sign_sign;
 var productfeature__feature__name_id;
 var productfeature__feature__name_langid;
 var productfeature__feature__name_value;
+
+// If there's no sign (&lt;/sign>) the value from the previous step will be used. Therefore we need to reset those columns with null with every START_ELEMENT
+if (xml_data_type_description.equals("START_ELEMENT") &amp;&amp; xml_element_level == 3 )
+{
+productfeature__localvalue__measure__sign_sign = null;
+productfeature__feature__measure__sign_sign = null;
+}
 
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/LocalValue") &amp;&amp;
 xml_data_name.equals("Value") ) {
@@ -2238,18 +2202,22 @@ if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/
 xml_data_name.equals("langid") ) {
 productfeature__localvalue__measure__sign_langid = xml_data_value;
 }
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/LocalValue/Measure/Signs/Sign") &amp;&amp;
-xml_data_name.equals("ID") ) {
+if ( xml_data_type_description.equals("CDATA") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/LocalValue/Measure/Signs/Sign") &amp;&amp;
+xml_data_name.equals("Sign") ) {
 productfeature__localvalue__measure__sign_sign = xml_data_value;
 }
 
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature") &amp;&amp;
-xml_data_name.equals("Value") ) {
-productfeature__feature_value = xml_data_value;
+xml_data_name.equals("ID") ) {
+productfeature__feature_id = xml_data_value;
 }
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature/Measure") &amp;&amp;
 xml_data_name.equals("ID") ) {
 productfeature__feature__measure_id = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature/Measure") &amp;&amp;
+xml_data_name.equals("Sign") ) {
+productfeature__feature__measure_sign = xml_data_value;
 }
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature/Measure/Signs/Sign") &amp;&amp;
 xml_data_name.equals("ID") ) {
@@ -2259,8 +2227,8 @@ if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/
 xml_data_name.equals("langid") ) {
 productfeature__feature__measure__sign_langid = xml_data_value;
 }
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature/Measure/Signs/Sign") &amp;&amp;
-xml_data_name.equals("ID") ) {
+if ( xml_data_type_description.equals("CDATA") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature/Measure/Signs/Sign") &amp;&amp;
+xml_data_name.equals("Sign") ) {
 productfeature__feature__measure__sign_sign = xml_data_value;
 }
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductFeature/Feature/Name") &amp;&amp;
@@ -2414,19 +2382,6 @@ if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/
 xml_data_name.equals("Name") ) {
 supplier_name = xml_data_value;
 }
-
-if (productfeature__localvalue__measure__sign_id = "undefined")
-{ productfeature__localvalue__measure__sign_id = null; }
-if (productfeature__localvalue__measure__sign_langid = "undefined")
-{ productfeature__localvalue__measure__sign_langid = null; }
-if (productfeature__localvalue__measure__sign_sign = "undefined")
-{ productfeature__localvalue__measure__sign_sign = null; }
-if (productfeature__feature_value = "undefined")
-{ productfeature__feature_value = null; }
-if (productfeature__feature__measure_sign = "undefined")
-{ productfeature__feature__measure_sign = null; }
-if (productfeature__feature__measure__sign_sign = "undefined")
-{ productfeature__feature__measure__sign_sign = null; }
 
 productfeature_langid = category_langid;
 product_langid = category_langid;
@@ -2684,9 +2639,9 @@ product_langid = category_langid;
         <replace>N</replace>
       </field>
       <field>
-        <name>productfeature__feature_value</name>
-        <rename>productfeature__feature_value</rename>
-        <type>String</type>
+        <name>productfeature__feature_id</name>
+        <rename>productfeature__feature_id</rename>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
@@ -2971,52 +2926,123 @@ product_langid = category_langid;
     </GUI>
   </step>
   <step>
-    <name>XML Input Stream (StAX) DE</name>
-    <type>XMLInputStream</type>
+    <name>Select ProductFeature</name>
+    <type>SelectValues</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <sourceFromInput>N</sourceFromInput>
-    <sourceFieldName />
-    <filename>${openicecat_download_path}/4/75841717.xml</filename>
-    <addResultFile>N</addResultFile>
-    <nrRowsToSkip>0</nrRowsToSkip>
-    <rowLimit>0</rowLimit>
-    <defaultStringLen>0</defaultStringLen>
-    <encoding>UTF-8</encoding>
-    <enableNamespaces>N</enableNamespaces>
-    <enableTrim>Y</enableTrim>
-    <includeFilenameField>N</includeFilenameField>
-    <filenameField>xml_filename</filenameField>
-    <includeRowNumberField>N</includeRowNumberField>
-    <rowNumberField>xml_row_number</rowNumberField>
-    <includeDataTypeNumericField>N</includeDataTypeNumericField>
-    <dataTypeNumericField>xml_data_type_numeric</dataTypeNumericField>
-    <includeDataTypeDescriptionField>Y</includeDataTypeDescriptionField>
-    <dataTypeDescriptionField>xml_data_type_description</dataTypeDescriptionField>
-    <includeXmlLocationLineField>N</includeXmlLocationLineField>
-    <xmlLocationLineField>xml_location_line</xmlLocationLineField>
-    <includeXmlLocationColumnField>N</includeXmlLocationColumnField>
-    <xmlLocationColumnField>xml_location_column</xmlLocationColumnField>
-    <includeXmlElementIDField>Y</includeXmlElementIDField>
-    <xmlElementIDField>xml_element_id</xmlElementIDField>
-    <includeXmlParentElementIDField>Y</includeXmlParentElementIDField>
-    <xmlParentElementIDField>xml_parent_element_id</xmlParentElementIDField>
-    <includeXmlElementLevelField>Y</includeXmlElementLevelField>
-    <xmlElementLevelField>xml_element_level</xmlElementLevelField>
-    <includeXmlPathField>Y</includeXmlPathField>
-    <xmlPathField>xml_path</xmlPathField>
-    <includeXmlParentPathField>Y</includeXmlParentPathField>
-    <xmlParentPathField>xml_parent_path</xmlParentPathField>
-    <includeXmlDataNameField>Y</includeXmlDataNameField>
-    <xmlDataNameField>xml_data_name</xmlDataNameField>
-    <includeXmlDataValueField>Y</includeXmlDataValueField>
-    <xmlDataValueField>xml_data_value</xmlDataValueField>
+    <fields>
+      <field>
+        <name>product_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_localized</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_local_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_categoryfeaturegroup_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_no</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_presentation_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_translated</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_mandatory</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_searchable</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature_langid</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__localvalue_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure__sign_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure__sign_langid</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure__sign_sign</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__measure_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__measure_sign</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__measure__sign_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__measure__sign_langid</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__measure__sign_sign</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__name_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__name_langid</name>
+        <rename />
+      </field>
+      <field>
+        <name>productfeature__feature__name_value</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -3026,8 +3052,8 @@ product_langid = category_langid;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>144</yloc>
+      <xloc>432</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
