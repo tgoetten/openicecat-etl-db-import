@@ -456,6 +456,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>JS: langid is hardcoded to 1</note>
+      <xloc>778</xloc>
+      <yloc>179</yloc>
+      <width>159</width>
+      <heigth>27</heigth>
+      <fontname>Noto Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
     <hop>
@@ -765,26 +786,42 @@ var m_prod_id;
 var m_prod_id_supplier_id;
 var m_prod_id_supplier_name;
 
-
-
 //	&lt;xs:complexType name="file">
 //      &lt;xs:choice maxOccurs="unbounded">
 //		&lt;xs:element name="Country_Markets" type="Country_Markets" minOccurs="0" maxOccurs="1" />
 //		&lt;xs:element name="Distributors" type="Distributors" minOccurs="0" maxOccurs="1" />
 //		&lt;xs:element name="EAN_UPCS" type="EAN_UPCS" minOccurs="0" maxOccurs="1" />
 //		&lt;xs:element name="M_Prod_ID" minOccurs="0" maxOccurs="unbounded" >
+
+// If there's no sign (&lt;/sign>) the value from the previous step will be used. Therefore we need to reset those columns with null with every START_ELEMENT
+if (xml_data_type_description.equals("START_ELEMENT") &amp;&amp; xml_element_level == 4 &amp;&amp; xml_path.equals("/ICECAT-interface/files.index/file/M_Prod_ID"))
+{
+m_prod_id = -1;
+m_prod_id_supplier_id = file_supplier_id;
+m_prod_id_supplier_name = null;
+}
+
         if ( xml_data_type_description.equals("CHARACTERS") &amp;&amp; xml_path.equals("/ICECAT-interface/files.index/file/M_Prod_ID") &amp;&amp;
         xml_data_name.equals("M_Prod_ID")){
         m_prod_id = [xml_data_value];
         }
+
+
 //		  &lt;xs:complexType>
 //			 &lt;xs:simpleContent>
 //			    &lt;xs:extension base="xs:string">
 //					&lt;xs:attribute name="Supplier_id" type="xs:string" use="optional" />
+try {
                     if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/files.index/file/M_Prod_ID") &amp;&amp;
                     xml_data_name.equals("Supplier_id") ) {
                         m_prod_id_supplier_id = xml_data_value;
                     }
+}
+catch (e) {
+   // Anweisungen für jeden Fehler
+   writeToLog(e); // Fehler-Objekt an die Error-Funktion geben
+}
+
 //					&lt;xs:attribute name="Supplier_name" type="xs:string" use="optional" />
                     if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/files.index/file/M_Prod_ID") &amp;&amp;
                     xml_data_name.equals("Supplier_name") ) {
@@ -964,7 +1001,9 @@ var m_prod_id_supplier_name;
         }
 // 	&lt;/xs:complexType>
 
-langid = getVariable("openicecat_language", "");
+langid = getVariable("langid", "");
+
+// langid = 1;
 
 //switch(getVariable("openicecat_language", "")) {
 //  case 'DE':
@@ -972,7 +1011,7 @@ langid = getVariable("openicecat_language", "");
 //    break;
 //  default:
 //	langid=1;
-}</jsScript_script>
+//}</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
