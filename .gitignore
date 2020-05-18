@@ -1,0 +1,5 @@
+*.tar.gz
+*.sql.gz
+*.cube
+*.xml
+etl/config/config.env
