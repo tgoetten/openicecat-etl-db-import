@@ -513,7 +513,7 @@ ${openicecat_download_path}/${langid}/${filename}
     <hop>
       <from>XML Input Stream (StAX) EN</from>
       <to>sign_sign</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Data Grid 2</from>
@@ -1601,6 +1601,112 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
     <GUI>
       <xloc>816</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select ProductFeature</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>product_id</name>
+      </field>
+      <field>
+        <name>productfeature_localized</name>
+      </field>
+      <field>
+        <name>productfeature_id</name>
+      </field>
+      <field>
+        <name>productfeature_local_id</name>
+      </field>
+      <field>
+        <name>productfeature_value</name>
+      </field>
+      <field>
+        <name>productfeature_categoryfeaturegroup_id</name>
+      </field>
+      <field>
+        <name>productfeature_no</name>
+      </field>
+      <field>
+        <name>productfeature_presentation_value</name>
+      </field>
+      <field>
+        <name>productfeature_translated</name>
+      </field>
+      <field>
+        <name>productfeature_mandatory</name>
+      </field>
+      <field>
+        <name>productfeature_searchable</name>
+      </field>
+      <field>
+        <name>productfeature_langid</name>
+      </field>
+      <field>
+        <name>productfeature__localvalue_value</name>
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure_id</name>
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure__sign_id</name>
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure__sign_langid</name>
+      </field>
+      <field>
+        <name>productfeature__localvalue__measure__sign_sign</name>
+      </field>
+      <field>
+        <name>productfeature__feature_id</name>
+      </field>
+      <field>
+        <name>productfeature__feature__measure_id</name>
+      </field>
+      <field>
+        <name>productfeature__feature__measure_sign</name>
+      </field>
+      <field>
+        <name>productfeature__feature__measure__sign_id</name>
+      </field>
+      <field>
+        <name>productfeature__feature__measure__sign_langid</name>
+      </field>
+      <field>
+        <name>productfeature__feature__measure__sign_sign</name>
+      </field>
+      <field>
+        <name>productfeature__feature__name_id</name>
+      </field>
+      <field>
+        <name>productfeature__feature__name_langid</name>
+      </field>
+      <field>
+        <name>productfeature__feature__name_value</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2922,138 +3028,6 @@ product_langid = category_langid;
     <GUI>
       <xloc>288</xloc>
       <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select ProductFeature</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>product_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_localized</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_local_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_value</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_categoryfeaturegroup_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_no</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_presentation_value</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_translated</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_mandatory</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_searchable</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature_langid</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__localvalue_value</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure__sign_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure__sign_langid</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__localvalue__measure__sign_sign</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__measure_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__measure_sign</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__measure__sign_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__measure__sign_langid</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__measure__sign_sign</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__name_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__name_langid</name>
-        <rename />
-      </field>
-      <field>
-        <name>productfeature__feature__name_value</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
