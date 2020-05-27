@@ -2,9 +2,9 @@
 <transformation>
   <info>
     <name>InsertCategoryFeatureAdditional</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
     <directory>/</directory>
@@ -12,12 +12,12 @@
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -42,37 +42,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -126,11 +126,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -208,10 +208,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -274,10 +274,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -350,10 +350,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -402,9 +402,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -415,7 +415,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -445,9 +445,9 @@
     <port>${postgres_database_port}</port>
     <username>${postgres_database_user}</username>
     <password>${postgres_database_password}</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -489,11 +489,6 @@
   </connection>
   <order>
     <hop>
-      <from>De-serialize product_feature from file</from>
-      <to>Insert / update product__feature</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>De-serialize product__feature_description from file</from>
       <to>Wait for product__feature</to>
       <enabled>Y</enabled>
@@ -509,69 +504,44 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter for invalid langids</from>
-      <to>Insert / update product__feature_description</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Wait for product__feature_description</from>
       <to>Filter for invalid langids 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>De-serialize product_feature from file</from>
+      <to>bulk load product__feature</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter for invalid langids</from>
+      <to>bulk load product__feature_description</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Filter for invalid langids 2</from>
-      <to>Insert / update featuregroup_name</to>
+      <to>bulk load product__feature_name</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>De-serialize product_feature from file</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${cube_data_folder}/data-product__feature.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>De-serialize product__feature_description from file</name>
     <type>CubeInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-product__feature_description.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -587,21 +557,21 @@
   <step>
     <name>De-serialize product__feature_name from file</name>
     <type>CubeInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-product__feature_name.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -615,20 +585,23 @@
     </GUI>
   </step>
   <step>
-    <name>Get session variables</name>
-    <type>GetSessionVariableStep</type>
-    <description/>
+    <name>De-serialize product_feature from file</name>
+    <type>CubeInput</type>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <fields>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
+    <file>
+      <name>${cube_data_folder}/data-product__feature.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -636,277 +609,30 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update product__feature</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__feature</table>
-      <key>
-        <name>product__feature_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>class</name>
-        <rename>product__feature_class</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>defaultdisplayunit</name>
-        <rename>product__feature_defaultdisplayunit</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>product__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>type</name>
-        <rename>product__feature_type</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>measure_sign</name>
-        <rename>product__feature_measure_sign</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update product__feature_description</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__feature_description</table>
-      <key>
-        <name>product__feature_description_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>product__feature_id</name>
-        <rename>product__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>product__feature_description_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>langid</name>
-        <rename>product__feature_description_langid</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>description</name>
-        <rename>product__feature_description_description</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update featuregroup_name</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__feature_name</table>
-      <key>
-        <name>product__feature_name_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>product__feature_name_langid</name>
-        <field>langid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>product__feature_id</name>
-        <rename>product__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>product__feature_name_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>langid</name>
-        <rename>product__feature_name_langid</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>name</name>
-        <rename>product__feature_name_name</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Wait for product__feature</name>
-    <type>BlockUntilStepsFinish</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <steps>
-      <step>
-        <name>Insert / update product__feature</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Wait for product__feature_description</name>
-    <type>BlockUntilStepsFinish</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <steps>
-      <step>
-        <name>Insert / update product__feature_description</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>288</yloc>
+      <xloc>176</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Filter for invalid langids</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <send_true_to>Insert / update product__feature_description</send_true_to>
-    <send_false_to/>
+    <send_true_to>bulk load product__feature_description</send_true_to>
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>product__feature_description_langid</leftvalue>
         <function>&gt;</function>
-        <rightvalue/>
+        <rightvalue />
         <value>
           <name>constant</name>
           <type>Integer</type>
@@ -918,8 +644,8 @@
         </value>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -935,22 +661,22 @@
   <step>
     <name>Filter for invalid langids 2</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <send_true_to>Insert / update featuregroup_name</send_true_to>
-    <send_false_to/>
+    <send_true_to>bulk load product__feature_name</send_true_to>
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>product__feature_name_langid</leftvalue>
         <function>&gt;</function>
-        <rightvalue/>
+        <rightvalue />
         <value>
           <name>constant</name>
           <type>Integer</type>
@@ -962,8 +688,8 @@
         </value>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -976,10 +702,263 @@
       <draw>Y</draw>
     </GUI>
   </step>
+  <step>
+    <name>Get session variables</name>
+    <type>GetSessionVariableStep</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Wait for product__feature</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>bulk load product__feature</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Wait for product__feature_description</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>bulk load product__feature_description</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load product__feature</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>product__feature</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>class</stream_name>
+      <field_name>product__feature_class</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>defaultdisplayunit</stream_name>
+      <field_name>product__feature_defaultdisplayunit</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>product__feature_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>type</stream_name>
+      <field_name>product__feature_type</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>measure_sign</stream_name>
+      <field_name>product__feature_measure_sign</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load product__feature_description</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>product__feature_description</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>product__feature_id</stream_name>
+      <field_name>product__feature_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>product__feature_description_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>langid</stream_name>
+      <field_name>product__feature_description_langid</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>description</stream_name>
+      <field_name>product__feature_description_description</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load product__feature_name</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>product__feature_name</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>product__feature_id</stream_name>
+      <field_name>product__feature_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>product__feature_name_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>langid</stream_name>
+      <field_name>product__feature_name_langid</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>name</stream_name>
+      <field_name>product__feature_name_name</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes/>
+  <attributes />
 </transformation>

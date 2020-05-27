@@ -489,28 +489,8 @@
   </connection>
   <order>
     <hop>
-      <from>De-serialize Category__Feature__Name.cube</from>
-      <to>Wait for Category__Feature.cube</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Wait for Category__Feature.cube</from>
-      <to>Insert / update Category__Feature__Name.cube</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>De-serialize Category__CategoryFeatureGroup.cube</from>
-      <to>Insert / update Category__CategoryFeatureGroup.cube</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>De-serialize Category__CategoryFeatureGroup__FeatureGroup.cube</from>
       <to>Wait for Category__CategoryFeatureGroup.cube</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Wait for Category__CategoryFeatureGroup.cube</from>
-      <to>Insert / update Category__CategoryFeatureGroup__FeatureGroup.cube</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -519,18 +499,38 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Wait for Category__CategoryFeatureGroup__FeatureGroup.cube</from>
-      <to>Insert / update Category__CategoryFeatureGroup__FeatureGroup_Name.cube</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>De-serialize Category__Feature.cube</from>
       <to>Wait for Category__CategoryFeatureGroup__FeatureGroup_Name.cube</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Wait for Category__Feature.cube</from>
+      <to>bulk load Category__Feature__Name.cube</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>De-serialize Category__Feature__Name.cube</from>
+      <to>Wait for Category__Feature.cube</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Wait for Category__CategoryFeatureGroup__FeatureGroup_Name.cube</from>
-      <to>Insert / update Category__Feature.cube</to>
+      <to>bulk load Category__Feature.cube</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Wait for Category__CategoryFeatureGroup__FeatureGroup.cube</from>
+      <to>bulk load Category__CategoryFeatureGroup__FeatureGroup_Name.cube</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Wait for Category__CategoryFeatureGroup.cube</from>
+      <to>bulk load Category__CategoryFeatureGroup__FeatureGroup.cube</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>De-serialize Category__CategoryFeatureGroup.cube</from>
+      <to>bulk load Category__CategoryFeatureGroup.cube</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -559,8 +559,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>80</yloc>
+      <xloc>240</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -589,8 +589,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>192</yloc>
+      <xloc>240</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -619,8 +619,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>288</yloc>
+      <xloc>240</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -649,8 +649,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>384</yloc>
+      <xloc>240</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -658,7 +658,7 @@
     <name>De-serialize Category__Feature__Name.cube</name>
     <type>CubeInput</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -679,8 +679,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>480</yloc>
+      <xloc>240</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -706,387 +706,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>1344</xloc>
       <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update Category__CategoryFeatureGroup.cube</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema />
-      <table>category__categoryfeaturegroup</table>
-      <key>
-        <name>category_id</name>
-        <field>category_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__categoryfeaturegroup_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>category_id</name>
-        <rename>category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>category__categoryfeaturegroup_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>no</name>
-        <rename>category__categoryfeaturegroup_no</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update Category__CategoryFeatureGroup__FeatureGroup.cube</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema />
-      <table>category__categoryfeaturegroup__featuregroup</table>
-      <key>
-        <name>category_id</name>
-        <field>category_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__categoryfeaturegroup_id</name>
-        <field>category__categoryfeaturegroup_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__categoryfeaturegroup__featuregroup_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>category_id</name>
-        <rename>category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category__categoryfeaturegroup_id</name>
-        <rename>category__categoryfeaturegroup_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>category__categoryfeaturegroup__featuregroup_id</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema />
-      <table>category__categoryfeaturegroup__featuregroup__name</table>
-      <key>
-        <name>category__categoryfeaturegroup__featuregroup_id</name>
-        <field>category__categoryfeaturegroup__featuregroup_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__categoryfeaturegroup__featuregroup__name_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>category__categoryfeaturegroup__featuregroup_id</name>
-        <rename>category__categoryfeaturegroup__featuregroup_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>category__categoryfeaturegroup__featuregroup__name_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>value</name>
-        <rename>category__categoryfeaturegroup__featuregroup__name_value</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>langid</name>
-        <rename>category__categoryfeaturegroup__featuregroup__name_langid</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update Category__Feature.cube</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>category__feature</table>
-      <key>
-        <name>category_id</name>
-        <field>category_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__feature_categoryfeaturegroup_id</name>
-        <field>category__feature_categoryfeaturegroup_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__feature_categoryfeature_id</name>
-        <field>category__feature_categoryfeature_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__feature_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>category_id</name>
-        <rename>category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category__feature_categoryfeaturegroup_id</name>
-        <rename>category__feature_categoryfeaturegroup_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category__feature_categoryfeature_id</name>
-        <rename>category__feature_categoryfeature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>class</name>
-        <rename>category__feature_class</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>category__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>limitdirection</name>
-        <rename>category__feature_limitdirection</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>mandatory</name>
-        <rename>category__feature_mandatory</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>no</name>
-        <rename>category__feature_no</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>searchable</name>
-        <rename>category__feature_searchable</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>type</name>
-        <rename>category__feature_type</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>use_dropdown_input</name>
-        <rename>category__feature_use_dropdown_input</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valuesorting</name>
-        <rename>category__feature_valuesorting</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>measure_sign</name>
-        <rename>category__feature__measure_sign</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update Category__Feature__Name.cube</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema />
-      <table>category__feature__name</table>
-      <key>
-        <name>category__feature_id</name>
-        <field>category__feature_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__feature__name_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>category__feature__name_langid</name>
-        <field>langid</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>category__feature_id</name>
-        <rename>category__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>category__feature__name_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>value</name>
-        <rename>category__feature__name_value</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>langid</name>
-        <rename>category__feature__name_langid</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1103,7 +724,7 @@
     </partitioning>
     <steps>
       <step>
-        <name>De-serialize Category__CategoryFeatureGroup.cube</name>
+        <name>bulk load Category__CategoryFeatureGroup.cube</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -1116,8 +737,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>192</yloc>
+      <xloc>656</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1134,7 +755,7 @@
     </partitioning>
     <steps>
       <step>
-        <name>De-serialize Category__CategoryFeatureGroup__FeatureGroup.cube</name>
+        <name>bulk load Category__CategoryFeatureGroup__FeatureGroup.cube</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -1147,8 +768,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>288</yloc>
+      <xloc>656</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1165,7 +786,7 @@
     </partitioning>
     <steps>
       <step>
-        <name>Insert / update Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
+        <name>bulk load Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -1178,8 +799,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>384</yloc>
+      <xloc>656</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1196,7 +817,7 @@
     </partitioning>
     <steps>
       <step>
-        <name>Insert / update Category__Feature.cube</name>
+        <name>bulk load Category__Feature.cube</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -1209,8 +830,308 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>480</yloc>
+      <xloc>656</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load Category__Feature__Name.cube</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>category__feature__name</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>category__feature_id</stream_name>
+      <field_name>category__feature_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>category__feature__name_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>value</stream_name>
+      <field_name>category__feature__name_value</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>langid</stream_name>
+      <field_name>category__feature__name_langid</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load Category__Feature.cube</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>category__feature</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>category_id</stream_name>
+      <field_name>category_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>category__feature_categoryfeaturegroup_id</stream_name>
+      <field_name>category__feature_categoryfeaturegroup_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>category__feature_categoryfeature_id</stream_name>
+      <field_name>category__feature_categoryfeature_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>class</stream_name>
+      <field_name>category__feature_class</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>category__feature_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>limitdirection</stream_name>
+      <field_name>category__feature_limitdirection</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>mandatory</stream_name>
+      <field_name>category__feature_mandatory</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>no</stream_name>
+      <field_name>category__feature_no</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>searchable</stream_name>
+      <field_name>category__feature_searchable</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>type</stream_name>
+      <field_name>category__feature_type</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>use_dropdown_input</stream_name>
+      <field_name>category__feature_use_dropdown_input</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>valuesorting</stream_name>
+      <field_name>category__feature_valuesorting</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>measure_sign</stream_name>
+      <field_name>category__feature__measure_sign</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load Category__CategoryFeatureGroup__FeatureGroup.cube</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>category__categoryfeaturegroup__featuregroup</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>category_id</stream_name>
+      <field_name>category_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>category__categoryfeaturegroup_id</stream_name>
+      <field_name>category__categoryfeaturegroup_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>category__categoryfeaturegroup__featuregroup_id</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>category__categoryfeaturegroup__featuregroup__name</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>category__categoryfeaturegroup__featuregroup_id</stream_name>
+      <field_name>category__categoryfeaturegroup__featuregroup_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>category__categoryfeaturegroup__featuregroup__name_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>value</stream_name>
+      <field_name>category__categoryfeaturegroup__featuregroup__name_value</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>langid</stream_name>
+      <field_name>category__categoryfeaturegroup__featuregroup__name_langid</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load Category__CategoryFeatureGroup.cube</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>category__categoryfeaturegroup</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>category_id</stream_name>
+      <field_name>category_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>id</stream_name>
+      <field_name>category__categoryfeaturegroup_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>no</stream_name>
+      <field_name>category__categoryfeaturegroup_no</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

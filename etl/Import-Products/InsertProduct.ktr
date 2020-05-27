@@ -527,6 +527,11 @@
     <hop>
       <from>Filter for products with irrelevant categories</from>
       <to>Insert / update product</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Filter for products with irrelevant categories</from>
+      <to>bulk load product</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -571,7 +576,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Insert / update product</send_true_to>
+    <send_true_to>bulk load product</send_true_to>
     <send_false_to>products to ignore</send_false_to>
     <compare>
       <condition>
@@ -745,7 +750,7 @@
     </remotesteps>
     <GUI>
       <xloc>1008</xloc>
-      <yloc>256</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -828,6 +833,134 @@ relevant_category = isInArray(catid.getInteger(), list_of_categories_to_ignore);
     <GUI>
       <xloc>656</xloc>
       <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load product</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>product</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>langid</stream_name>
+      <field_name>langid</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>path</stream_name>
+      <field_name>path</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>product_id</stream_name>
+      <field_name>product_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>updated</stream_name>
+      <field_name>updated</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>date_added</stream_name>
+      <field_name>date_added</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>quality</stream_name>
+      <field_name>quality</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>supplier_id</stream_name>
+      <field_name>supplier_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>prod_id</stream_name>
+      <field_name>prod_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>catid</stream_name>
+      <field_name>catid</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>on_market</stream_name>
+      <field_name>on_market</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>stock</stream_name>
+      <field_name>stock</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>model_name</stream_name>
+      <field_name>model_name</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>product_view</stream_name>
+      <field_name>product_view</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>highpic</stream_name>
+      <field_name>highpic</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>highpicsize</stream_name>
+      <field_name>highpicsize</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>highpicwidth</stream_name>
+      <field_name>highpicwidth</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>highpicheight</stream_name>
+      <field_name>highpicheight</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>distributor_info_updated</stream_name>
+      <field_name>distributor_info_updated</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>limited</stream_name>
+      <field_name>limited</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

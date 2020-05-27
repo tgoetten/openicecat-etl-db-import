@@ -506,6 +506,11 @@
     <hop>
       <from>Filter for products with irrelevant categories</from>
       <to>Insert / update m_prod_id</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Filter for products with irrelevant categories</from>
+      <to>bulk load product_m_prod_id</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -550,7 +555,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Insert / update m_prod_id</send_true_to>
+    <send_true_to>bulk load product_m_prod_id</send_true_to>
     <send_false_to>products to ignore</send_false_to>
     <compare>
       <condition>
@@ -726,6 +731,59 @@ relevant_products = isInArray(file_product_id.getInteger(), list_of_products_to_
     <GUI>
       <xloc>752</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bulk load product_m_prod_id</name>
+    <type>PGBulkLoader</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>postgres-database</connection>
+    <schema>public</schema>
+    <table>product_m_prod_id</table>
+    <load_action>INSERT</load_action>
+    <dbname_override />
+    <enclosure>"</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>N</stop_on_error>
+    <mapping>
+      <stream_name>m_prod_id</stream_name>
+      <field_name>m_prod_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>supplier_id</stream_name>
+      <field_name>m_prod_id_supplier_id</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>supplier_name</stream_name>
+      <field_name>m_prod_id_supplier_name</field_name>
+      <date_mask />
+    </mapping>
+    <mapping>
+      <stream_name>product_id</stream_name>
+      <field_name>file_product_id</field_name>
+      <date_mask />
+    </mapping>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

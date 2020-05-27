@@ -517,9 +517,10 @@ CREATE TABLE category__categoryfeaturegroup (
 DROP 
   TABLE IF EXISTS category__categoryfeaturegroup__featuregroup CASCADE;
 CREATE TABLE category__categoryfeaturegroup__featuregroup (
-  ID SERIAL PRIMARY KEY,
+--  ID SERIAL PRIMARY KEY,
+  ID integer,
   category_id integer,
-  category__categoryfeaturegroup_id integer, 
+  category__categoryfeaturegroup_id integer,
   constraint category__categoryfeaturegroup__featuregroup_categoryfeaturegroup FOREIGN KEY (category__categoryfeaturegroup_id) references category__categoryfeaturegroup (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
   constraint category__categoryfeaturegroup__featuregroup_category FOREIGN KEY (category_id) references category (catid) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION 
 ) WITH (OIDS = FALSE);
@@ -531,14 +532,15 @@ CREATE TABLE category__categoryfeaturegroup__featuregroup__name (
   value character varying, 
   langid integer, 
   category__categoryfeaturegroup__featuregroup_id integer,
-  constraint category__categoryfeaturegroup__featuregroup__name_featuregroup FOREIGN KEY (category__categoryfeaturegroup__featuregroup_id) references category__categoryfeaturegroup__featuregroup (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
+--  constraint category__categoryfeaturegroup__featuregroup__name_featuregroup FOREIGN KEY (category__categoryfeaturegroup__featuregroup_id) references category__categoryfeaturegroup__featuregroup (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint category__categoryfeaturegroup__featuregroup__name_langid FOREIGN KEY (langid) references language (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
 
 DROP 
   TABLE IF EXISTS category__feature CASCADE;
 CREATE TABLE category__feature (
-  ID SERIAL PRIMARY KEY, 
+--  ID SERIAL PRIMARY KEY, 
+  ID integer, 
   category__feature_categoryfeaturegroup_id integer,
   category__feature_categoryfeature_id integer,
   class integer,
@@ -558,11 +560,12 @@ CREATE TABLE category__feature (
 DROP 
   TABLE IF EXISTS category__feature__name CASCADE;
 CREATE TABLE category__feature__name (
-  ID SERIAL PRIMARY KEY, 
+--  ID SERIAL PRIMARY KEY, 
+  ID integer, 
   value character varying, 
   langid integer, 
   category__feature_id integer,
-  constraint category__feature__name_feature FOREIGN KEY (category__feature_id) references category__feature (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
+--  constraint category__feature__name_feature FOREIGN KEY (category__feature_id) references category__feature (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint category__feature__name_langid FOREIGN KEY (langid) references language (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);</sql>
     <set_params>N</set_params>

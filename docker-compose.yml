@@ -24,7 +24,21 @@ services:
       - database.env # configure postgres
     volumes:
       - psql-data:/var/lib/postgresql/data/pgdata
+#    command: postgres -c max_connections=300 -c shared_buffers=1536MB -c effective_cache_size=4608MB -c maintenance_work_mem=384MB -c checkpoint_completion_target=0.9 -c wal_buffers=16MB -c default_statistics_target=100 -c random_page_cost=1.1 -c effective_io_concurrency=200 -c work_mem=2621kB -c min_wal_size=2GB -c max_wal_size=8GB -c max_worker_processes=4 -c max_parallel_workers_per_gather=2 -c max_parallel_maintenance_workers=2 -c max_parallel_workers=4 -c shared_preload_libraries='pg_stat_statements' -c pg_stat_statements.track=all
+    command: postgres -c shared_preload_libraries='pg_stat_statements' -c pg_stat_statements.track=all
     environment:
       - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      openicecat-etl-db-import-net:
+
+  pghero:
+    image: ankane/pghero # use latest official postgres version
+    container_name: openicecat-etl-pgHero
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - DATABASE_URL=postgres://unicorn_user:magical_password@openicecat-etl-db:5432/rainbow_database
     networks:
       openicecat-etl-db-import-net:
