@@ -505,11 +505,6 @@
     </hop>
     <hop>
       <from>Filter for products with irrelevant categories</from>
-      <to>Insert / update m_prod_id</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Filter for products with irrelevant categories</from>
       <to>bulk load product_m_prod_id</to>
       <enabled>Y</enabled>
     </hop>
@@ -589,70 +584,6 @@
     </GUI>
   </step>
   <step>
-    <name>Insert / update m_prod_id</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product_m_prod_id</table>
-      <key>
-        <name>file_product_id</name>
-        <field>product_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>m_prod_id</name>
-        <field>m_prod_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>m_prod_id</name>
-        <rename>m_prod_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>supplier_id</name>
-        <rename>m_prod_id_supplier_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>supplier_name</name>
-        <rename>m_prod_id_supplier_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_id</name>
-        <rename>file_product_id</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Tag relevant categories</name>
     <type>ScriptValueMod</type>
     <description />
@@ -710,31 +641,6 @@ relevant_products = isInArray(file_product_id.getInteger(), list_of_products_to_
     </GUI>
   </step>
   <step>
-    <name>products to ignore</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>bulk load product_m_prod_id</name>
     <type>PGBulkLoader</type>
     <description />
@@ -782,8 +688,33 @@ relevant_products = isInArray(file_product_id.getInteger(), list_of_products_to_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>48</yloc>
+      <xloc>1280</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>products to ignore</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

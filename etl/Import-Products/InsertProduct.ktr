@@ -526,11 +526,6 @@
     </hop>
     <hop>
       <from>Filter for products with irrelevant categories</from>
-      <to>Insert / update product</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Filter for products with irrelevant categories</from>
       <to>bulk load product</to>
       <enabled>Y</enabled>
     </hop>
@@ -610,151 +605,6 @@
     </GUI>
   </step>
   <step>
-    <name>Insert / update product</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>Y</update_bypassed>
-    <lookup>
-      <schema />
-      <table>product</table>
-      <key>
-        <name>product_id</name>
-        <field>product_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>quality</name>
-        <field>quality</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>langid</name>
-        <field>langid</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>langid</name>
-        <rename>langid</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>path</name>
-        <rename>path</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_id</name>
-        <rename>product_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>updated</name>
-        <rename>updated</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>date_added</name>
-        <rename>date_added</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>quality</name>
-        <rename>quality</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>supplier_id</name>
-        <rename>supplier_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>prod_id</name>
-        <rename>prod_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>catid</name>
-        <rename>catid</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>on_market</name>
-        <rename>on_market</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>stock</name>
-        <rename>stock</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>model_name</name>
-        <rename>model_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_view</name>
-        <rename>product_view</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>highpic</name>
-        <rename>highpic</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>highpicsize</name>
-        <rename>highpicsize</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>highpicwidth</name>
-        <rename>highpicwidth</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>highpicheight</name>
-        <rename>highpicheight</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>distributor_info_updated</name>
-        <rename>distributor_info_updated</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>limited</name>
-        <rename>limited</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1008</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Tag relevant categories</name>
     <type>ScriptValueMod</type>
     <description />
@@ -808,31 +658,6 @@ relevant_category = isInArray(catid.getInteger(), list_of_categories_to_ignore);
     <GUI>
       <xloc>400</xloc>
       <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>products to ignore</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>656</xloc>
-      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -961,6 +786,31 @@ relevant_category = isInArray(catid.getInteger(), list_of_categories_to_ignore);
     <GUI>
       <xloc>1136</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>products to ignore</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

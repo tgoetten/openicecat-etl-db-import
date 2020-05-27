@@ -556,8 +556,8 @@ CREATE TABLE product_m_prod_id
   supplier_name text,
   m_prod_id text not NULL,
   constraint product_m_prod_id_product_id FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
-  constraint product_m_prod_id_supplier_id FOREIGN KEY (supplier_id) references supplier (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
-  CONSTRAINT product_m_prod_id_ukey unique (product_id, m_prod_id)
+  constraint product_m_prod_id_supplier_id FOREIGN KEY (supplier_id) references supplier (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action
+--  CONSTRAINT product_m_prod_id_ukey unique (product_id, m_prod_id)
   ) WITH (OIDS = FALSE);
   
 DROP TABLE IF EXISTS product_ean_upc;
@@ -567,8 +567,8 @@ CREATE TABLE product_ean_upc
   product_id INT NOT NULL,
   value text,
   isapproved INT,
-  constraint product_ean_upc_product_id FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
-  CONSTRAINT product_ean_upc_ukey unique (product_id, value)
+  constraint product_ean_upc_product_id FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action
+--  CONSTRAINT product_ean_upc_ukey unique (product_id, value)
   ) WITH (OIDS = FALSE);</sql>
     <set_params>N</set_params>
     <insert_field />
