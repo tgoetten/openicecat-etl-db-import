@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>InsertFeature</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <name>ParseXML</name>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
     <directory>/</directory>
@@ -12,12 +12,12 @@
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -42,37 +42,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -126,11 +126,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -208,10 +208,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -274,10 +274,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -350,10 +350,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -402,9 +402,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -415,7 +415,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -444,88 +444,73 @@
     </hop>
     <hop>
       <from>Take Category from main list</from>
-      <to>Fliter for END_ELEMENT</to>
+      <to>Fliter for END_ELEMENT or Country_Market</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fliter for END_ELEMENT</from>
+      <from>Fliter for END_ELEMENT or Country_Market</from>
       <to>Switch / case</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Switch / case</from>
-      <to>Dummy (do nothing) 6</to>
+      <to>default</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Switch / case</from>
-      <to>Selec product__feature_name</to>
+      <to>Select category_keywords columns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select category_keywords columns</from>
+      <to>Serialize keywords to file</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Switch / case</from>
-      <to>Selec product__feature_description</to>
+      <to>Select category_description columns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select category_description columns</from>
+      <to>Serialize category_description to file</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Switch / case</from>
-      <to>Select product__feature</to>
+      <to>Select category_name columns</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Selec product__feature_name</from>
-      <to>Serialize product__feature_name to file</to>
+      <from>Select category_name columns</from>
+      <to>Serialize category_name to file</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Selec product__feature_description</from>
-      <to>Serialize product__feature_description</to>
+      <from>Select category columns</from>
+      <to>Serialize category to file</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select product__feature</from>
-      <to>Serialize product__feature to file</to>
+      <from>Switch / case</from>
+      <to>Select category columns</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Dummy (do nothing) 6</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fliter for END_ELEMENT</name>
+    <name>Fliter for END_ELEMENT or Country_Market</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <send_true_to>Switch / case</send_true_to>
-    <send_false_to/>
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
@@ -535,7 +520,7 @@
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue/>
+            <rightvalue />
             <value>
               <name>constant</name>
               <type>String</type>
@@ -543,14 +528,14 @@
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask/>
+              <mask />
             </value>
           </condition>
         </conditions>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -558,26 +543,51 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>544</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get session variables</name>
-    <type>GetSessionVariableStep</type>
-    <description/>
+    <name>Select category columns</name>
+    <type>SelectValues</type>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
+      <field>
+        <name>category_catid</name>
+      </field>
+      <field>
+        <name>category_parentcategory_id</name>
+      </field>
+      <field>
+        <name>category_lowpic</name>
+      </field>
+      <field>
+        <name>category_score</name>
+      </field>
+      <field>
+        <name>category_searchable</name>
+      </field>
+      <field>
+        <name>category_thumbpic</name>
+      </field>
+      <field>
+        <name>category_uncatid</name>
+      </field>
+      <field>
+        <name>category_visible</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -585,43 +595,79 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>32</yloc>
+      <xloc>320</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Selec product__feature_description</name>
+    <name>Select category_description columns</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
-        <name>product__feature_id</name>
-        <rename/>
+        <name>category_description_id</name>
       </field>
       <field>
-        <name>product__feature_description_id</name>
-        <rename/>
+        <name>category_description_category_id</name>
       </field>
       <field>
-        <name>product__feature_description_langid</name>
-        <rename/>
+        <name>category_description_value</name>
       </field>
       <field>
-        <name>product__feature_description_description</name>
-        <rename/>
+        <name>category_description_langid</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select category_keywords columns</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>category_keywords_id</name>
+      </field>
+      <field>
+        <name>category_keywords_category_id</name>
+      </field>
+      <field>
+        <name>category_keywords_value</name>
+      </field>
+      <field>
+        <name>category_keywords_langid</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -630,46 +676,38 @@
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>272</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select product__feature</name>
+    <name>Select category_name columns</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
-        <name>product__feature_class</name>
-        <rename/>
+        <name>category_name_id</name>
       </field>
       <field>
-        <name>product__feature_defaultdisplayunit</name>
-        <rename/>
+        <name>category_name_category_id</name>
       </field>
       <field>
-        <name>product__feature_id</name>
-        <rename/>
+        <name>category_name_value</name>
       </field>
       <field>
-        <name>product__feature_type</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product__feature_measure_sign</name>
-        <rename/>
+        <name>category_name_langid</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -677,73 +715,29 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>272</yloc>
+      <xloc>976</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Selec product__feature_name</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>product__feature_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product__feature_name_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product__feature_name_langid</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product__feature_name_name</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Serialize product__feature to file</name>
+    <name>Serialize category to file</name>
     <type>CubeOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature.cube</name>
+      <name>${cube_data_folder}/data-category.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -751,29 +745,89 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>384</yloc>
+      <xloc>320</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Serialize product__feature_description</name>
+    <name>Serialize category_description to file</name>
     <type>CubeOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature_description.cube</name>
+      <name>${cube_data_folder}/data-category_description.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Serialize category_name to file</name>
+    <type>CubeOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <file>
+      <name>${cube_data_folder}/data-category_name.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Serialize keywords to file</name>
+    <type>CubeOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <file>
+      <name>${cube_data_folder}/data-category_keywords.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -782,74 +836,48 @@
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Serialize product__feature_name to file</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${cube_data_folder}/data-product__feature_name.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
-      <yloc>384</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Switch / case</name>
     <type>SwitchCase</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fieldname>xml_path</fieldname>
     <use_contains>N</use_contains>
     <case_value_type>None</case_value_type>
-    <case_value_format/>
-    <case_value_decimal/>
-    <case_value_group/>
-    <default_target_step>Dummy (do nothing) 6</default_target_step>
+    <case_value_format />
+    <case_value_decimal />
+    <case_value_group />
+    <default_target_step>default</default_target_step>
     <cases>
       <case>
-        <value>/ICECAT-interface/Response/FeaturesList/Feature</value>
-        <target_step>Select product__feature</target_step>
+        <value>/ICECAT-interface/Response/CategoriesList/Category/Description</value>
+        <target_step>Select category_description columns</target_step>
       </case>
       <case>
-        <value>/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description</value>
-        <target_step>Selec product__feature_description</target_step>
+        <value>/ICECAT-interface/Response/CategoriesList/Category/Name</value>
+        <target_step>Select category_name columns</target_step>
       </case>
       <case>
-        <value>/ICECAT-interface/Response/FeaturesList/Feature/Names/Name</value>
-        <target_step>Selec product__feature_name</target_step>
+        <value>/ICECAT-interface/Response/CategoriesList/Category</value>
+        <target_step>Select category columns</target_step>
+      </case>
+      <case>
+        <value>/ICECAT-interface/Response/CategoriesList/Category/Keywords</value>
+        <target_step>Select category_keywords columns</target_step>
       </case>
     </cases>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -857,21 +885,21 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>160</yloc>
+      <xloc>544</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Take Category from main list</name>
     <type>ScriptValueMod</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
@@ -880,165 +908,346 @@
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
+var category_catid;
+var category_parentcategory_id;
+var category_lowpic;
+var category_score;
+var category_searchable; 
+var category_thumbpic;
+var category_uncatid;
+var category_visible;
 
-var product__feature_class;
-var product__feature_defaultdisplayunit;
-var product__feature_id;
-var product__feature_type;
+var category_description_id;
+var category_description_category_id;
+var category_description_value;
+var category_description_langid;
 
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("Class") ) {
-product__feature_class = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("DefaultDisplayUnit") ) {
-product__feature_defaultdisplayunit = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
+var category_keywords_id;
+var category_keywords_category_id;
+var category_keywords_value;
+var category_keywords_langid;
+
+var category_name_id;
+var category_name_category_id;
+var category_name_value;
+var category_name_langid;
+
+// &lt;xs:complexType name="CategoriesList">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="Category" type="Category" minOccurs="0" maxOccurs="unbounded"/>
+//     &lt;/xs:sequence>
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="Category">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="CategoryFeatureGroup" type="CategoryFeatureGroup" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="Versions" type="Versions" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="Description" type="Description" minOccurs="0" maxOccurs="unbounded"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Description") &amp;&amp;
 xml_data_name.equals("ID") ) {
-product__feature_id = xml_data_value;
+category_description_id = xml_data_value;
 }
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("Type") ) {
-product__feature_type = xml_data_value;
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Description") &amp;&amp;
+xml_data_name.equals("Value") ) {
+category_description_value = xml_data_value;
 }
-// skipping the processing of measures, just taking the global (english) measure sign for the feature
-var product__feature_measure_sign;
-
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Measure") &amp;&amp;
-xml_data_name.equals("Sign") ) {
-product__feature_measure_sign = xml_data_value;
-}
-
-var product__feature_description_id;
-var product__feature_description_langid;
-var product__feature_description_description;
-
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description") &amp;&amp;
-xml_data_name.equals("ID") ) {
-product__feature_description_id = xml_data_value;
-}
-
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description") &amp;&amp;
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Description") &amp;&amp;
 xml_data_name.equals("langid") ) {
-product__feature_description_langid = xml_data_value;
+category_description_langid = xml_data_value;
 }
-
-if ( xml_data_type_description.equals("CHARACTERS") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description") &amp;&amp;
-xml_data_name.equals("Description") ) {
-product__feature_description_description = xml_data_value;
-}
-
-var product__feature_name_id;
-var product__feature_name_langid;
-var product__feature_name_name;
-
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Names/Name") &amp;&amp;
+//         &lt;xs:element name="Feature" type="Feature" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="Keywords" type="Keywords" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="Name" type="Name" minOccurs="0" maxOccurs="unbounded"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Name") &amp;&amp;
 xml_data_name.equals("ID") ) {
-product__feature_name_id = xml_data_value;
+category_name_id = xml_data_value;
 }
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Names/Name") &amp;&amp;
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Name") &amp;&amp;
+xml_data_name.equals("Value") ) {
+category_name_value = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Name") &amp;&amp;
 xml_data_name.equals("langid") ) {
-product__feature_name_langid = xml_data_value;
+category_name_langid = xml_data_value;
 }
-if ( xml_data_type_description.equals("CHARACTERS") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Names/Name") &amp;&amp;
-xml_data_name.equals("Name") ) {
-product__feature_name_name = xml_data_value;
-}</jsScript_script>
+//         &lt;xs:element name="Names" type="Names" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="ParentCategory" type="ParentCategory" minOccurs="0" maxOccurs="1"/>
+//         &lt;xs:element name="UNCATID" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+//         &lt;xs:element name="VirtualCategories" type="VirtualCategories" minOccurs="0" maxOccurs="1"/>
+//     &lt;/xs:sequence>
+
+//     &lt;xs:attribute name="UNCATID" type="xs:string"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("UNCATID") ) {
+category_uncatid = xml_data_value;
+}
+//     &lt;xs:attribute name="Searchable" type="xs:boolean"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("Searchable") ) {
+category_searchable = xml_data_value;
+}
+//     &lt;xs:attribute name="Visible" type="xs:boolean"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("Visible") ) {
+category_visible = xml_data_value;
+}
+//     &lt;xs:attribute name="Score" type="xs:integer"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("Score") ) {
+category_score = xml_data_value;
+}
+//     &lt;xs:attribute name="ThumbPic" type="xs:anyURI"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("ThumbPic") ) {
+category_thumbpic = xml_data_value;
+}
+//     &lt;xs:attribute name="ID" type="xs:integer"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("ID") ) {
+category_catid = xml_data_value;
+}
+//     &lt;xs:attribute name="LowPic" type="xs:anyURI"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category") &amp;&amp;
+xml_data_name.equals("LowPic") ) {
+category_lowpic = xml_data_value;
+}
+
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="Versions">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="UNSPSC" type="UNSPSC" minOccurs="0" maxOccurs="unbounded"/>
+//     &lt;/xs:sequence>
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="UNSPSC">
+//     &lt;xs:attribute name="code" type="xs:string" use="required"/>
+//     &lt;xs:attribute name="version" type="xs:string" use="required"/>
+//     &lt;xs:attribute name="date_added" type="xs:string" use="required"/>
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="ParentCategory">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="Names" type="Names" minOccurs="0" maxOccurs="unbounded"/>
+//     &lt;/xs:sequence>
+//     &lt;xs:attribute name="ID" type="xs:integer" use="required"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/ParentCategory") &amp;&amp;
+xml_data_name.equals("ID") ) {
+category_parentcategory_id = xml_data_value;
+}
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="Keywords">
+//     &lt;xs:attribute name="ID" type="xs:integer" use="required"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Keywords") &amp;&amp;
+xml_data_name.equals("ID") ) {
+category_keywords_id = xml_data_value;
+}
+//     &lt;xs:attribute name="langid" type="xs:integer" use="required"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Keywords") &amp;&amp;
+xml_data_name.equals("langid") ) {
+category_keywords_langid = xml_data_value;
+}
+//     &lt;xs:attribute name="Value" type="xs:string" use="required"/>
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/CategoriesList/Category/Keywords") &amp;&amp;
+xml_data_name.equals("Value") ) {
+category_keywords_value = xml_data_value;
+}
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="CategoryFeatureGroup">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="FeatureGroup" type="FeatureGroup" minOccurs="0" maxOccurs="unbounded"/>
+//     &lt;/xs:sequence>
+//     &lt;xs:attribute name="No" type="xs:integer"/>
+//     &lt;xs:attribute name="ID" type="xs:integer"/>
+//     &lt;xs:attribute name="FeatureGroup" type="xs:string"/>
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="FeatureGroupsList">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="FeatureGroup" type="FeatureGroup" minOccurs="0" maxOccurs="unbounded"/>
+//     &lt;/xs:sequence>
+// &lt;/xs:complexType>
+
+// &lt;xs:complexType name="FeatureGroup">
+//     &lt;xs:sequence>
+//         &lt;xs:element name="Name" type="Name" minOccurs="0" maxOccurs="unbounded"/>
+//     &lt;/xs:sequence>
+//     &lt;xs:attribute name="ID" type="xs:integer" use="required"/>
+//     &lt;xs:attribute name="sid" type="xs:integer" use="optional"/>
+// &lt;/xs:complexType>
+
+
+category_description_category_id = category_catid;
+category_keywords_category_id = category_catid;
+category_name_category_id = category_catid;</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>product__feature_class</name>
-        <rename>product__feature_class</rename>
+        <name>category_catid</name>
+        <rename>category_catid</rename>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_defaultdisplayunit</name>
-        <rename>product__feature_defaultdisplayunit</rename>
+        <name>category_parentcategory_id</name>
+        <rename>category_parentcategory_id</rename>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_id</name>
-        <rename>product__feature_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_type</name>
-        <rename>product__feature_type</rename>
+        <name>category_lowpic</name>
+        <rename>category_lowpic</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_measure_sign</name>
-        <rename>product__feature_measure_sign</rename>
+        <name>category_score</name>
+        <rename>category_score</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_searchable</name>
+        <rename>category_searchable</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_thumbpic</name>
+        <rename>category_thumbpic</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_description_id</name>
-        <rename>product__feature_description_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_description_langid</name>
-        <rename>product__feature_description_langid</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_description_description</name>
-        <rename>product__feature_description_description</rename>
+        <name>category_uncatid</name>
+        <rename>category_uncatid</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_name_id</name>
-        <rename>product__feature_name_id</rename>
+        <name>category_visible</name>
+        <rename>category_visible</rename>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_name_langid</name>
-        <rename>product__feature_name_langid</rename>
+        <name>category_description_id</name>
+        <rename>category_description_id</rename>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_name_name</name>
-        <rename>product__feature_name_name</rename>
+        <name>category_description_category_id</name>
+        <rename>category_description_category_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_description_value</name>
+        <rename>category_description_value</rename>
         <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_description_langid</name>
+        <rename>category_description_langid</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_keywords_id</name>
+        <rename>category_keywords_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_keywords_category_id</name>
+        <rename>category_keywords_category_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_keywords_value</name>
+        <rename>category_keywords_value</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_keywords_langid</name>
+        <rename>category_keywords_langid</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_name_id</name>
+        <rename>category_name_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_name_category_id</name>
+        <rename>category_name_category_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_name_value</name>
+        <rename>category_name_value</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>category_name_langid</name>
+        <rename>category_name_langid</rename>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1054,17 +1263,17 @@ product__feature_name_name = xml_data_value;
   <step>
     <name>XML Input Stream (StAX)</name>
     <type>XMLInputStream</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <sourceFromInput>N</sourceFromInput>
-    <sourceFieldName/>
-    <filename>${openicecat_download_path}/FeaturesList.xml</filename>
+    <sourceFieldName />
+    <filename>${openicecat_download_path}/CategoriesList.xml</filename>
     <addResultFile>N</addResultFile>
     <nrRowsToSkip>0</nrRowsToSkip>
     <rowLimit>0</rowLimit>
@@ -1098,8 +1307,8 @@ product__feature_name_name = xml_data_value;
     <xmlDataNameField>xml_data_name</xmlDataNameField>
     <includeXmlDataValueField>Y</includeXmlDataValueField>
     <xmlDataValueField>xml_data_value</xmlDataValueField>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1112,10 +1321,35 @@ product__feature_name_name = xml_data_value;
       <draw>Y</draw>
     </GUI>
   </step>
+  <step>
+    <name>default</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes/>
+  <attributes />
 </transformation>

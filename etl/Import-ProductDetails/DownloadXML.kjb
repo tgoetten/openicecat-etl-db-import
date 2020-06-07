@@ -323,7 +323,7 @@
       <attributes />
       <filename>${openicecat_download_path}/${langid}/${filename}</filename>
       <maximum_timeout>0</maximum_timeout>
-      <check_cycle_time>10</check_cycle_time>
+      <check_cycle_time>2</check_cycle_time>
       <success_on_timeout>N</success_on_timeout>
       <file_size_check>Y</file_size_check>
       <add_filename_result>N</add_filename_result>

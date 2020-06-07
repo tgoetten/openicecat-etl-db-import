@@ -4,13 +4,29 @@
   <description />
   <extended_description />
   <job_version />
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2020/04/30 15:51:44.673</created_date>
   <modified_user>-</modified_user>
   <modified_date>2020/04/30 15:51:44.673</modified_date>
   <parameters>
-    </parameters>
+    <parameter>
+      <name>create</name>
+      <default_value>false</default_value>
+      <description>CREATE table(s)</description>
+    </parameter>
+    <parameter>
+      <name>cube</name>
+      <default_value>false</default_value>
+      <description>use cube files</description>
+    </parameter>
+    <parameter>
+      <name>drop</name>
+      <default_value>false</default_value>
+      <description>DROP table(s)</description>
+    </parameter>
+  </parameters>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -341,7 +357,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>320</xloc>
+      <xloc>341</xloc>
       <yloc>256</yloc>
       <attributes_kjc />
     </entry>
@@ -353,7 +369,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1008</xloc>
+      <xloc>1006</xloc>
       <yloc>256</yloc>
       <attributes_kjc />
     </entry>
@@ -390,7 +406,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>432</xloc>
+      <xloc>474</xloc>
       <yloc>256</yloc>
       <attributes_kjc />
     </entry>
@@ -427,7 +443,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
+      <xloc>607</xloc>
       <yloc>256</yloc>
       <attributes_kjc />
     </entry>
@@ -464,7 +480,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
+      <xloc>740</xloc>
       <yloc>256</yloc>
       <attributes_kjc />
     </entry>
@@ -501,7 +517,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>864</xloc>
+      <xloc>873</xloc>
       <yloc>256</yloc>
       <attributes_kjc />
     </entry>

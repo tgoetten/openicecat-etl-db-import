@@ -511,11 +511,6 @@ ${openicecat_download_path}/${langid}/${filename}
   </connection>
   <order>
     <hop>
-      <from>XML Input Stream (StAX) EN</from>
-      <to>sign_sign</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
       <from>Data Grid 2</from>
       <to>ejs</to>
       <enabled>Y</enabled>
@@ -582,13 +577,8 @@ ${openicecat_download_path}/${langid}/${filename}
     </hop>
     <hop>
       <from>Data validator</from>
-      <to>Dummy (do nothing)</to>
+      <to>productdescription_id is NULL</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>XML Input Stream (StAX) DE</from>
-      <to>sign_sign</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Switch / case</from>
@@ -603,6 +593,11 @@ ${openicecat_download_path}/${langid}/${filename}
     <hop>
       <from>sign_sign</from>
       <to>Filter END_ELEMENT</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>XML Input Stream (StAX) EN</from>
+      <to>sign_sign</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -744,31 +739,6 @@ ${openicecat_download_path}/${langid}/${filename}
     </remotesteps>
     <GUI>
       <xloc>816</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>944</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1866,67 +1836,6 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>XML Input Stream (StAX) DE</name>
-    <type>XMLInputStream</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <sourceFromInput>N</sourceFromInput>
-    <sourceFieldName />
-    <filename>${openicecat_download_path}/4/75841717.xml</filename>
-    <addResultFile>N</addResultFile>
-    <nrRowsToSkip>0</nrRowsToSkip>
-    <rowLimit>0</rowLimit>
-    <defaultStringLen>0</defaultStringLen>
-    <encoding>UTF-8</encoding>
-    <enableNamespaces>N</enableNamespaces>
-    <enableTrim>Y</enableTrim>
-    <includeFilenameField>N</includeFilenameField>
-    <filenameField>xml_filename</filenameField>
-    <includeRowNumberField>N</includeRowNumberField>
-    <rowNumberField>xml_row_number</rowNumberField>
-    <includeDataTypeNumericField>N</includeDataTypeNumericField>
-    <dataTypeNumericField>xml_data_type_numeric</dataTypeNumericField>
-    <includeDataTypeDescriptionField>Y</includeDataTypeDescriptionField>
-    <dataTypeDescriptionField>xml_data_type_description</dataTypeDescriptionField>
-    <includeXmlLocationLineField>N</includeXmlLocationLineField>
-    <xmlLocationLineField>xml_location_line</xmlLocationLineField>
-    <includeXmlLocationColumnField>N</includeXmlLocationColumnField>
-    <xmlLocationColumnField>xml_location_column</xmlLocationColumnField>
-    <includeXmlElementIDField>Y</includeXmlElementIDField>
-    <xmlElementIDField>xml_element_id</xmlElementIDField>
-    <includeXmlParentElementIDField>Y</includeXmlParentElementIDField>
-    <xmlParentElementIDField>xml_parent_element_id</xmlParentElementIDField>
-    <includeXmlElementLevelField>Y</includeXmlElementLevelField>
-    <xmlElementLevelField>xml_element_level</xmlElementLevelField>
-    <includeXmlPathField>Y</includeXmlPathField>
-    <xmlPathField>xml_path</xmlPathField>
-    <includeXmlParentPathField>Y</includeXmlParentPathField>
-    <xmlParentPathField>xml_parent_path</xmlParentPathField>
-    <includeXmlDataNameField>Y</includeXmlDataNameField>
-    <xmlDataNameField>xml_data_name</xmlDataNameField>
-    <includeXmlDataValueField>Y</includeXmlDataValueField>
-    <xmlDataValueField>xml_data_value</xmlDataValueField>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>XML Input Stream (StAX) EN</name>
     <type>XMLInputStream</type>
     <description />
@@ -1939,7 +1848,7 @@ LoadScriptFile(jsScriptPath);</jsScript_script>
     </partitioning>
     <sourceFromInput>N</sourceFromInput>
     <sourceFieldName />
-    <filename>${openicecat_download_path}/1/75841717.xml</filename>
+    <filename>${openicecat_download_path}/${langid}/${filename}</filename>
     <addResultFile>N</addResultFile>
     <nrRowsToSkip>0</nrRowsToSkip>
     <rowLimit>0</rowLimit>
@@ -2111,6 +2020,31 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
     <GUI>
       <xloc>816</xloc>
       <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>productdescription_id is NULL</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3034,7 +2968,7 @@ product_langid = category_langid;
   <step_error_handling>
     <error>
       <source_step>Data validator</source_step>
-      <target_step>Dummy (do nothing)</target_step>
+      <target_step>productdescription_id is NULL</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename />
       <descriptions_valuename />

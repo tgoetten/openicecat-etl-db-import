@@ -1,22 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>GetCategories</name>
+  <name>GENERIC database step to DROP and/or CREATE table(s)</name>
   <description />
   <extended_description />
   <job_version />
   <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2015/03/11 17:32:48.706</created_date>
+  <created_date>2020/06/06 22:18:31.450</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2015/03/11 17:32:48.706</modified_date>
+  <modified_date>2020/06/06 22:18:31.450</modified_date>
   <parameters>
     <parameter>
-      <name>cube</name>
+      <name>create</name>
       <default_value>false</default_value>
-      <description>use cube files</description>
+      <description />
+    </parameter>
+    <parameter>
+      <name>drop</name>
+      <default_value>false</default_value>
+      <description />
     </parameter>
   </parameters>
+  <connection>
+    <name>postgres-database</name>
+    <server>${postgres_database_host}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${postgres_database_database}</database>
+    <port>${postgres_database_port}</port>
+    <username>${postgres_database_user}</username>
+    <password>${postgres_database_password}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${postgres_database_port}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -293,118 +349,7 @@
   <shared_objects_file />
   <entries>
     <entry>
-      <name>Download Category file</name>
-      <description />
-      <type>HTTP</type>
-      <attributes />
-      <url>${openicecat_url}/refs/CategoriesList.xml.gz</url>
-      <targetfilename>${openicecat_download_path}/CategoriesList.xml.gz</targetfilename>
-      <file_appended>N</file_appended>
-      <date_time_added>N</date_time_added>
-      <targetfilename_extension />
-      <uploadfilename />
-      <run_every_row>N</run_every_row>
-      <url_fieldname />
-      <upload_fieldname />
-      <dest_fieldname />
-      <username>${openicecat_user}</username>
-      <password>${openicecat_password}</password>
-      <proxy_host />
-      <proxy_port />
-      <non_proxy_hosts />
-      <addfilenameresult>Y</addfilenameresult>
-      <headers>
-      </headers>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>48</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Wait for Category file</name>
-      <description />
-      <type>WAIT_FOR_FILE</type>
-      <attributes />
-      <filename>${openicecat_download_path}/CategoriesList.xml.gz</filename>
-      <maximum_timeout>0</maximum_timeout>
-      <check_cycle_time>10</check_cycle_time>
-      <success_on_timeout>N</success_on_timeout>
-      <file_size_check>Y</file_size_check>
-      <add_filename_result>N</add_filename_result>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>393</xloc>
-      <yloc>48</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>InsertCategories</name>
-      <description />
-      <type>TRANS</type>
-      <attributes />
-      <specification_method>filename</specification_method>
-      <trans_object_id />
-      <filename>${Internal.Job.Filename.Directory}/InsertCategories.ktr</filename>
-      <transname />
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile />
-      <logext />
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name />
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <run_configuration />
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>864</xloc>
-      <yloc>176</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Ungzip Categories file</name>
-      <description />
-      <type>SHELL</type>
-      <attributes />
-      <filename />
-      <work_directory>${openicecat_download_path}</work_directory>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile />
-      <set_append_logfile>N</set_append_logfile>
-      <logext />
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>gzip -d CategoriesList.xml.gz</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>576</xloc>
-      <yloc>48</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>START</name>
+      <name>Start</name>
       <description />
       <type>SPECIAL</type>
       <attributes />
@@ -421,8 +366,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>58</xloc>
-      <yloc>48</yloc>
+      <xloc>96</xloc>
+      <yloc>112</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -433,74 +378,78 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1152</xloc>
-      <yloc>176</yloc>
+      <xloc>1040</xloc>
+      <yloc>112</yloc>
       <attributes_kjc />
     </entry>
     <entry>
-      <name>Checks if Categories file was already downloaded</name>
-      <description />
-      <type>FILES_EXIST</type>
-      <attributes />
-      <filename />
-      <fields>
-        <field>
-          <name>${openicecat_download_path}/CategoriesList.xml</name>
-        </field>
-      </fields>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>256</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>InsertCategoryAdditional</name>
-      <description />
-      <type>TRANS</type>
-      <attributes />
-      <specification_method>filename</specification_method>
-      <trans_object_id />
-      <filename>${Internal.Entry.Current.Directory}/InsertCategoryAdditional.ktr</filename>
-      <transname />
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile />
-      <logext />
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name />
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>1008</xloc>
-      <yloc>176</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>use cube files?</name>
+      <name>DROP table(s) ?</name>
       <description />
       <type>SIMPLE_EVAL</type>
       <attributes />
       <valuetype>variable</valuetype>
       <fieldname />
-      <variablename>${cube}</variablename>
+      <variablename>${drop}</variablename>
+      <fieldtype>boolean</fieldtype>
+      <mask />
+      <comparevalue />
+      <minvalue />
+      <maxvalue />
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>true</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>400</xloc>
+      <yloc>112</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>sql DROP table(s)</name>
+      <description />
+      <type>SQL</type>
+      <attributes />
+      <sql />
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>T</sqlfromfile>
+      <sqlfilename>${Internal.Entry.Current.Directory}/drop.sql</sqlfilename>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>postgres-database</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>512</xloc>
+      <yloc>112</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>sql CREATE table(s) </name>
+      <description />
+      <type>SQL</type>
+      <attributes />
+      <sql />
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>T</sqlfromfile>
+      <sqlfilename>${Internal.Entry.Current.Directory}/create.sql</sqlfilename>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>postgres-database</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>704</xloc>
+      <yloc>272</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>CREATE table(s) after they where DROPED?</name>
+      <description />
+      <type>SIMPLE_EVAL</type>
+      <attributes />
+      <valuetype>variable</valuetype>
+      <fieldname />
+      <variablename>${create}</variablename>
       <fieldtype>boolean</fieldtype>
       <mask />
       <comparevalue />
@@ -514,52 +463,38 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>704</xloc>
-      <yloc>48</yloc>
+      <yloc>112</yloc>
       <attributes_kjc />
     </entry>
     <entry>
-      <name>Parse XML</name>
+      <name>CREATE table(s) ?</name>
       <description />
-      <type>TRANS</type>
+      <type>SIMPLE_EVAL</type>
       <attributes />
-      <specification_method>filename</specification_method>
-      <trans_object_id />
-      <filename>${Internal.Job.Filename.Directory}/ParseXML.ktr</filename>
-      <transname />
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile />
-      <logext />
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name />
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
+      <valuetype>variable</valuetype>
+      <fieldname />
+      <variablename>${create}</variablename>
+      <fieldtype>boolean</fieldtype>
+      <mask />
+      <comparevalue />
+      <minvalue />
+      <maxvalue />
+      <successcondition>equal</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>true</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>864</xloc>
-      <yloc>48</yloc>
+      <xloc>400</xloc>
+      <yloc>272</yloc>
       <attributes_kjc />
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>Download Category file</from>
-      <to>Wait for Category file</to>
+      <from>DROP table(s) ?</from>
+      <to>sql DROP table(s)</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -567,8 +502,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Wait for Category file</from>
-      <to>Ungzip Categories file</to>
+      <from>sql DROP table(s)</from>
+      <to>CREATE table(s) after they where DROPED?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -576,17 +511,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>START</from>
-      <to>Checks if Categories file was already downloaded</to>
+      <from>CREATE table(s) after they where DROPED?</from>
+      <to>sql CREATE table(s) </to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Checks if Categories file was already downloaded</from>
-      <to>Download Category file</to>
+      <from>DROP table(s) ?</from>
+      <to>CREATE table(s) ?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -594,7 +529,25 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>InsertCategoryAdditional</from>
+      <from>CREATE table(s) ?</from>
+      <to>sql CREATE table(s) </to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>CREATE table(s) ?</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>sql CREATE table(s) </from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -603,35 +556,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>InsertCategories</from>
-      <to>InsertCategoryAdditional</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Ungzip Categories file</from>
-      <to>use cube files?</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Checks if Categories file was already downloaded</from>
-      <to>use cube files?</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>use cube files?</from>
-      <to>Parse XML</to>
+      <from>CREATE table(s) after they where DROPED?</from>
+      <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -639,25 +565,40 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Parse XML</from>
-      <to>InsertCategories</to>
+      <from>Start</from>
+      <to>DROP table(s) ?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>use cube files?</from>
-      <to>InsertCategories</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
+    <notepad>
+      <note>Needs to be run from a Job that read the configuration from confiig/config.env
+
+-- drop.sql
+-- create.sql</note>
+      <xloc>848</xloc>
+      <yloc>32</yloc>
+      <width>442</width>
+      <heigth>78</heigth>
+      <fontname>Noto Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <attributes>
     <group>
