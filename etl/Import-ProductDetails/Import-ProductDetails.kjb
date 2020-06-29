@@ -347,7 +347,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>896</xloc>
+      <xloc>976</xloc>
       <yloc>208</yloc>
       <attributes_kjc />
     </entry>
@@ -416,7 +416,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>784</xloc>
+      <xloc>864</xloc>
       <yloc>208</yloc>
       <attributes_kjc />
     </entry>
@@ -453,7 +453,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
+      <xloc>560</xloc>
       <yloc>208</yloc>
       <attributes_kjc />
     </entry>
@@ -490,7 +490,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>672</xloc>
+      <xloc>704</xloc>
       <yloc>208</yloc>
       <attributes_kjc />
     </entry>
@@ -524,15 +524,6 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Create cube-data folder</from>
-      <to>Download XML file</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Download XML file</from>
       <to>Database-Step</to>
       <from_nr>0</from_nr>
@@ -544,6 +535,15 @@
     <hop>
       <from>Database-Step</from>
       <to>Parse XML file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create cube-data folder</from>
+      <to>Download XML file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

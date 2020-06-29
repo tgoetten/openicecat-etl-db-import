@@ -236,9 +236,8 @@ function delete_cube() {
 
 
 function perform_import() {
-    sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
-    #sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=false -param:create=true -param:cube=true
-    #sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=false -param:create=false -param:cube=true
+    #sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
+    sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=true
 }
 
 

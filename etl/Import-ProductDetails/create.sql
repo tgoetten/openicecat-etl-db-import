@@ -64,18 +64,20 @@ CREATE TABLE product__productfeature (
   categoryfeaturegroup_id integer,
   constraint product__productfeature_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
-
+    
 CREATE TABLE product__productrelated (
   ID SERIAL PRIMARY KEY, 
+  __product_id integer, -- taken from individual xml file to referr to the product that those relations apply to!
+  productrelated_id integer,  
+  product_id integer,
   category_id integer,
   preferred integer,
-  product_id integer,
   product_prod_id text,
   product_thumbpic text,
   product_name text,
   product__supplier_id integer,
   product__supplier_name text,
-  constraint product__productrelated_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
+  constraint product__productrelated_product FOREIGN KEY (__product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint product__productrelated_supplier FOREIGN KEY (product__supplier_id) references supplier (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
 
