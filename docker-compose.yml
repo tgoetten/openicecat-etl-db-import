@@ -15,9 +15,11 @@ networks:
 services:
 
   db:
-    image: postgres # use latest official postgres version
+    image: postgres:12 # use latest official postgres version
     container_name: openicecat-etl-db
     ports:
+#      - HOST:CONTAINER
+#      - "5434:5432"
       - "5432:5432"
     restart: unless-stopped
     env_file:
