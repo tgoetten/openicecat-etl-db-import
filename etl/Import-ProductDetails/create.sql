@@ -28,7 +28,7 @@ CREATE TABLE product__summarydescription (
   longsummarydescription_langid integer,
   longsummarydescription_longsummarydescription text,
   product_id integer,
-  constraint product__summarydescription_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
+--  constraint product__summarydescription_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint product__summarydescription_shortsummarydescription_langid FOREIGN KEY (shortsummarydescription_langid) references language (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint product__summarydescription_longsummarydescription_langid FOREIGN KEY (longsummarydescription_langid) references language (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
@@ -62,7 +62,7 @@ CREATE TABLE product__productfeature (
   feature__name_value text,
   product_id integer,
   categoryfeaturegroup_id integer,
-  constraint product__productfeature_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
+--  constraint product__productfeature_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
     
 CREATE TABLE product__productrelated (
@@ -77,7 +77,7 @@ CREATE TABLE product__productrelated (
   product_name text,
   product__supplier_id integer,
   product__supplier_name text,
-  constraint product__productrelated_product FOREIGN KEY (__product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
+--  constraint product__productrelated_product FOREIGN KEY (__product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint product__productrelated_supplier FOREIGN KEY (product__supplier_id) references supplier (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
 
@@ -95,7 +95,7 @@ CREATE TABLE product__productdescription (
   url text,
   warrantyinfo text,
   langid integer,
-  constraint product__productdescription_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
+--  constraint product__productdescription_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
   constraint product__productdescription_langid FOREIGN KEY (langid) references language (ID) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
 
