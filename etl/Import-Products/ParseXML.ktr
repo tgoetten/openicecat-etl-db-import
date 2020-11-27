@@ -2,9 +2,9 @@
 <transformation>
   <info>
     <name>ParseXML</name>
-    <description />
-    <extended_description />
-    <trans_version />
+    <description/>
+    <extended_description/>
+    <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
     <directory>/</directory>
@@ -12,12 +12,12 @@
     </parameters>
     <log>
       <trans-log-table>
-        <connection />
-        <schema />
-        <table />
-        <size_limit_lines />
-        <interval />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <size_limit_lines/>
+        <interval/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -42,37 +42,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>ERRORS</id>
@@ -126,11 +126,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection />
-        <schema />
-        <table />
-        <interval />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <interval/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -208,10 +208,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -274,10 +274,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -350,10 +350,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -402,9 +402,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection />
-      <table />
-      <field />
+      <connection/>
+      <table/>
+      <field/>
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -415,7 +415,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file />
+    <shared_objects_file/>
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -436,32 +436,19 @@
   </info>
   <notepads>
     <notepad>
-      <note>DEBUG</note>
-      <xloc>1248</xloc>
-      <yloc>80</yloc>
-      <width>52</width>
-      <heigth>27</heigth>
-      <fontname>Noto Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>JS: langid is hardcoded to 1</note>
-      <xloc>778</xloc>
-      <yloc>179</yloc>
-      <width>159</width>
-      <heigth>27</heigth>
+      <note>2020-11-04 changed handling of ean codes
+
+Step "ean_upc Sort rows"
+- changed order of sorting (ean_upc_value_isapproved before ean_upc_value)
+
+Step "ean_upc Unique rows"
+- changed order of unique (ean_upc_value_isapproved before ean_upc_value)
+
+NOT YET TESTED!</note>
+      <xloc>1072</xloc>
+      <yloc>256</yloc>
+      <width>438</width>
+      <heigth>162</heigth>
       <fontname>Noto Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -498,11 +485,6 @@
       <from>Products Select columns</from>
       <to>Serialize products to file</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get variables</from>
-      <to>Write to log</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>XML Input Stream (StAX)</from>
@@ -638,13 +620,13 @@
   <step>
     <name>Country_Markets Select columns</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>N</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -655,8 +637,8 @@
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -672,16 +654,16 @@
   <step>
     <name>Default END_ELEMENTS</name>
     <type>Dummy</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -697,13 +679,13 @@
   <step>
     <name>EAN_UPC Select columns</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -717,8 +699,8 @@
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -734,13 +716,13 @@
   <step>
     <name>Extract data from XML file with JavaScript</name>
     <type>ScriptValueMod</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
@@ -1272,8 +1254,8 @@ langid = getVariable("langid", "");
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1289,16 +1271,16 @@ langid = getVariable("langid", "");
   <step>
     <name>Filter Country_Markets</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>Country_Markets Select columns</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1307,7 +1289,7 @@ langid = getVariable("langid", "");
             <negated>N</negated>
             <leftvalue>xml_path</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1315,7 +1297,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1323,7 +1305,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1331,7 +1313,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1339,7 +1321,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>country_market_value</leftvalue>
             <function>&lt;></function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1347,14 +1329,14 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
         </conditions>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1370,16 +1352,16 @@ langid = getVariable("langid", "");
   <step>
     <name>Filter Distributors</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>Serialize distributors to file</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1388,7 +1370,7 @@ langid = getVariable("langid", "");
             <negated>N</negated>
             <leftvalue>xml_path</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1396,7 +1378,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1404,7 +1386,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1412,14 +1394,14 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
         </conditions>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1435,16 +1417,16 @@ langid = getVariable("langid", "");
   <step>
     <name>Filter EAN_UPCS</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>EAN_UPC Select columns</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1453,7 +1435,7 @@ langid = getVariable("langid", "");
             <negated>N</negated>
             <leftvalue>xml_path</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1461,7 +1443,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1469,7 +1451,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1477,7 +1459,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1485,7 +1467,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>ean_upc_value</leftvalue>
             <function>&lt;></function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1493,14 +1475,14 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
         </conditions>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1516,16 +1498,16 @@ langid = getVariable("langid", "");
   <step>
     <name>Filter M_Prod_ID</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>M_Prod_ID Select columns</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1534,7 +1516,7 @@ langid = getVariable("langid", "");
             <negated>N</negated>
             <leftvalue>xml_path</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1542,7 +1524,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1550,7 +1532,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1558,7 +1540,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1566,7 +1548,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>m_prod_id</leftvalue>
             <function>&lt;></function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1574,7 +1556,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1582,14 +1564,14 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>m_prod_id_supplier_id</leftvalue>
             <function>IS NOT NULL</function>
-            <rightvalue />
+            <rightvalue/>
           </condition>
           <condition>
             <negated>N</negated>
             <operator>AND</operator>
             <leftvalue>m_prod_id_supplier_name</leftvalue>
             <function>&lt;></function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1597,14 +1579,14 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
         </conditions>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1620,16 +1602,16 @@ langid = getVariable("langid", "");
   <step>
     <name>Fliter for END_ELEMENT or Country_Market</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>Switch / case</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1639,7 +1621,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1647,7 +1629,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1659,7 +1641,7 @@ langid = getVariable("langid", "");
                 <operator>AND</operator>
                 <leftvalue>xml_path</leftvalue>
                 <function>=</function>
-                <rightvalue />
+                <rightvalue/>
                 <value>
                   <name>constant</name>
                   <type>String</type>
@@ -1667,7 +1649,7 @@ langid = getVariable("langid", "");
                   <length>-1</length>
                   <precision>-1</precision>
                   <isnull>N</isnull>
-                  <mask />
+                  <mask/>
                 </value>
               </condition>
               <condition>
@@ -1675,7 +1657,7 @@ langid = getVariable("langid", "");
                 <operator>AND</operator>
                 <leftvalue>xml_data_type_description</leftvalue>
                 <function>=</function>
-                <rightvalue />
+                <rightvalue/>
                 <value>
                   <name>constant</name>
                   <type>String</type>
@@ -1683,7 +1665,7 @@ langid = getVariable("langid", "");
                   <length>-1</length>
                   <precision>-1</precision>
                   <isnull>N</isnull>
-                  <mask />
+                  <mask/>
                 </value>
               </condition>
               <condition>
@@ -1691,7 +1673,7 @@ langid = getVariable("langid", "");
                 <operator>AND</operator>
                 <leftvalue>country_market_value</leftvalue>
                 <function>&lt;></function>
-                <rightvalue />
+                <rightvalue/>
                 <value>
                   <name>constant</name>
                   <type>String</type>
@@ -1699,7 +1681,7 @@ langid = getVariable("langid", "");
                   <length>-1</length>
                   <precision>-1</precision>
                   <isnull>N</isnull>
-                  <mask />
+                  <mask/>
                 </value>
               </condition>
             </conditions>
@@ -1707,8 +1689,8 @@ langid = getVariable("langid", "");
         </conditions>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1724,16 +1706,16 @@ langid = getVariable("langid", "");
   <step>
     <name>Fliter products</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>Products Select columns</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1742,7 +1724,7 @@ langid = getVariable("langid", "");
             <negated>N</negated>
             <leftvalue>xml_path</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1750,7 +1732,7 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
           <condition>
@@ -1758,7 +1740,7 @@ langid = getVariable("langid", "");
             <operator>AND</operator>
             <leftvalue>xml_data_type_description</leftvalue>
             <function>=</function>
-            <rightvalue />
+            <rightvalue/>
             <value>
               <name>constant</name>
               <type>String</type>
@@ -1766,14 +1748,14 @@ langid = getVariable("langid", "");
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
-              <mask />
+              <mask/>
             </value>
           </condition>
         </conditions>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1787,42 +1769,15 @@ langid = getVariable("langid", "");
     </GUI>
   </step>
   <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1168</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>M_Prod_ID Select columns</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -1842,8 +1797,8 @@ langid = getVariable("langid", "");
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1859,13 +1814,13 @@ langid = getVariable("langid", "");
   <step>
     <name>Products Select columns</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>N</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -1945,8 +1900,8 @@ langid = getVariable("langid", "");
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1962,21 +1917,21 @@ langid = getVariable("langid", "");
   <step>
     <name>Serialize country_markets to file</name>
     <type>CubeOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-${langid}-country_markets.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1992,21 +1947,21 @@ langid = getVariable("langid", "");
   <step>
     <name>Serialize distributors to file</name>
     <type>CubeOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-${langid}-distributors.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2022,21 +1977,21 @@ langid = getVariable("langid", "");
   <step>
     <name>Serialize ean_upc to file</name>
     <type>CubeOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-${langid}-ean_upc.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2052,21 +2007,21 @@ langid = getVariable("langid", "");
   <step>
     <name>Serialize m_prod_id to file</name>
     <type>CubeOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-${langid}-m_prod_id.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2082,21 +2037,21 @@ langid = getVariable("langid", "");
   <step>
     <name>Serialize products to file</name>
     <type>CubeOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <file>
       <name>${cube_data_folder}/data-${langid}-products.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2112,20 +2067,20 @@ langid = getVariable("langid", "");
   <step>
     <name>Switch / case</name>
     <type>SwitchCase</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fieldname>xml_path</fieldname>
     <use_contains>N</use_contains>
     <case_value_type>None</case_value_type>
-    <case_value_format />
-    <case_value_decimal />
-    <case_value_group />
+    <case_value_format/>
+    <case_value_decimal/>
+    <case_value_group/>
     <default_target_step>Default END_ELEMENTS</default_target_step>
     <cases>
       <case>
@@ -2149,8 +2104,8 @@ langid = getVariable("langid", "");
         <target_step>Fliter products</target_step>
       </case>
     </cases>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2164,63 +2119,18 @@ langid = getVariable("langid", "");
     </GUI>
   </step>
   <step>
-    <name>Write to log</name>
-    <type>WriteToLog</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>postgres_database_host = ${postgres_database_host}
-postgres_database_port = ${postgres_database_port}
-postgres_database_user = ${postgres_database_user}
-postgres_database_password = ${postgres_database_password}
-postgres_database_database = ${postgres_database_database}
-
-openicecat_url = ${openicecat_url}
-openicecat_language = ${openicecat_language}
-openicecat_user = ${openicecat_user}
-openicecat_password = ${openicecat_password}
-
-
-initial_step_01_import_products_into_db__table_name = ${initial_step_01_import_products_into_db__table_name}
-initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_step_01_import_products_into_db__icecat_relevant_categories}</logmessage>
-    <fields>
-      </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1360</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>XML Input Stream (StAX)</name>
     <type>XMLInputStream</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <sourceFromInput>N</sourceFromInput>
-    <sourceFieldName />
+    <sourceFieldName/>
     <filename>${openicecat_download_path}/${langid}/${filename}</filename>
     <addResultFile>N</addResultFile>
     <nrRowsToSkip>0</nrRowsToSkip>
@@ -2255,8 +2165,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
     <xmlDataNameField>xml_data_name</xmlDataNameField>
     <includeXmlDataValueField>Y</includeXmlDataValueField>
     <xmlDataValueField>xml_data_value</xmlDataValueField>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2272,21 +2182,21 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>country_markets Group by</name>
     <type>GroupBy</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <all_rows>N</all_rows>
     <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
+    <field_ignore/>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>grp</prefix>
     <add_linenr>N</add_linenr>
-    <linenr_fieldname />
+    <linenr_fieldname/>
     <give_back_row>N</give_back_row>
     <group>
       <field>
@@ -2298,11 +2208,11 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <aggregate>country_market_value_list</aggregate>
         <subject>country_market_value</subject>
         <type>CONCAT_COMMA</type>
-        <valuefield />
+        <valuefield/>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2318,13 +2228,13 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>country_markets Select values</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -2336,8 +2246,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2353,20 +2263,20 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>country_markets Sort rows</name>
     <type>SortRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <sort_size>1000000</sort_size>
-    <free_memory />
+    <free_memory/>
     <compress>N</compress>
-    <compress_variable />
+    <compress_variable/>
     <unique_rows>N</unique_rows>
     <fields>
       <field>
@@ -2386,8 +2296,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2403,18 +2313,18 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>country_markets Unique rows</name>
     <type>Unique</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <count_rows>N</count_rows>
-    <count_field />
+    <count_field/>
     <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
+    <error_description/>
     <fields>
       <field>
         <name>file_product_id</name>
@@ -2425,8 +2335,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <case_insensitive>N</case_insensitive>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2442,21 +2352,21 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>ean_upc Group by</name>
     <type>GroupBy</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <all_rows>N</all_rows>
     <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
+    <field_ignore/>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>grp</prefix>
     <add_linenr>N</add_linenr>
-    <linenr_fieldname />
+    <linenr_fieldname/>
     <give_back_row>N</give_back_row>
     <group>
       <field>
@@ -2471,11 +2381,11 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <aggregate>ean_upc_value_list</aggregate>
         <subject>ean_upc_value</subject>
         <type>CONCAT_COMMA</type>
-        <valuefield />
+        <valuefield/>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2491,13 +2401,13 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>ean_upc Select values</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -2512,8 +2422,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2529,32 +2439,24 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>ean_upc Sort rows</name>
     <type>SortRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <sort_size>1000000</sort_size>
-    <free_memory />
+    <free_memory/>
     <compress>N</compress>
-    <compress_variable />
+    <compress_variable/>
     <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>file_product_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>ean_upc_value</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -2569,9 +2471,17 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <collator_strength>0</collator_strength>
         <presorted>N</presorted>
       </field>
+      <field>
+        <name>ean_upc_value</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2587,34 +2497,34 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>ean_upc Unique rows</name>
     <type>Unique</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <count_rows>N</count_rows>
-    <count_field />
+    <count_field/>
     <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
+    <error_description/>
     <fields>
       <field>
         <name>file_product_id</name>
         <case_insensitive>N</case_insensitive>
       </field>
       <field>
-        <name>ean_upc_value</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
         <name>ean_upc_value_isapproved</name>
         <case_insensitive>N</case_insensitive>
       </field>
+      <field>
+        <name>ean_upc_value</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2630,21 +2540,21 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>m_prod_id Group by</name>
     <type>GroupBy</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <all_rows>N</all_rows>
     <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
+    <field_ignore/>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>grp</prefix>
     <add_linenr>N</add_linenr>
-    <linenr_fieldname />
+    <linenr_fieldname/>
     <give_back_row>N</give_back_row>
     <group>
       <field>
@@ -2662,17 +2572,17 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <aggregate>m_prod_id_list</aggregate>
         <subject>m_prod_id</subject>
         <type>CONCAT_COMMA</type>
-        <valuefield />
+        <valuefield/>
       </field>
       <field>
         <aggregate>m_prod_id_supplier_name</aggregate>
         <subject>m_prod_id_supplier_name</subject>
         <type>FIRST</type>
-        <valuefield />
+        <valuefield/>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2688,13 +2598,13 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>m_prod_id Select values</name>
     <type>SelectValues</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -2715,8 +2625,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2732,20 +2642,20 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>m_prod_id Sort rows</name>
     <type>SortRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <sort_size>1000000</sort_size>
-    <free_memory />
+    <free_memory/>
     <compress>N</compress>
-    <compress_variable />
+    <compress_variable/>
     <unique_rows>N</unique_rows>
     <fields>
       <field>
@@ -2781,8 +2691,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2798,18 +2708,18 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <step>
     <name>m_prod_id Unique rows</name>
     <type>Unique</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <count_rows>N</count_rows>
-    <count_field />
+    <count_field/>
     <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
+    <error_description/>
     <fields>
       <field>
         <name>langid</name>
@@ -2828,8 +2738,8 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
         <case_insensitive>N</case_insensitive>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2847,5 +2757,5 @@ initial_step_01_import_products_into_db__icecat_relevant_categories = ${initial_
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
+  <attributes/>
 </transformation>

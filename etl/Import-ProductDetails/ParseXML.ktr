@@ -436,11 +436,11 @@
   <notepads>
     <notepad>
       <note>13337.xml
-
+/home/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/1/17832151.xml
 ${openicecat_download_path}/${langid}/${filename}</note>
-      <xloc>1206</xloc>
-      <yloc>79</yloc>
-      <width>302</width>
+      <xloc>896</xloc>
+      <yloc>48</yloc>
+      <width>641</width>
       <heigth>61</heigth>
       <fontname>Noto Sans</fontname>
       <fontsize>9</fontsize>
@@ -590,6 +590,21 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <to>sign_sign</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>Select ProductPicture</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select ProductPicture</from>
+      <to>Skip Picture Type "FeatureLogo"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Skip Picture Type "FeatureLogo"</from>
+      <to>Insert / update ProductPicture</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Data validator</name>
@@ -642,8 +657,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>320</yloc>
+      <xloc>1008</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -686,7 +701,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>672</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -805,8 +820,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>368</yloc>
+      <xloc>256</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -920,8 +935,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>480</yloc>
+      <xloc>1008</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1100,8 +1115,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>416</yloc>
+      <xloc>624</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1147,7 +1162,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <value>
         <name>product_id</name>
         <rename>productrelated__product_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>category_id</name>
@@ -1194,8 +1209,167 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>416</yloc>
+      <xloc>816</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update ProductPicture</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>postgres-database</connection>
+    <commit>${commit_size}</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>product__productpicture</table>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>productgallery__productpicture_productpicture_id</name>
+        <field>productpicture_productpicture_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_ismain</name>
+        <rename>productgallery__productpicture_ismain</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowpic</name>
+        <rename>productgallery__productpicture_lowpic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowpicheight</name>
+        <rename>productgallery__productpicture_lowpicheight</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowpicwidth</name>
+        <rename>productgallery__productpicture_lowpicwidth</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowsize</name>
+        <rename>productgallery__productpicture_lowsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_no</name>
+        <rename>productgallery__productpicture_no</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_original</name>
+        <rename>productgallery__productpicture_original</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_originalsize</name>
+        <rename>productgallery__productpicture_originalsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic</name>
+        <rename>productgallery__productpicture_pic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500</name>
+        <rename>productgallery__productpicture_pic500x500</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500height</name>
+        <rename>productgallery__productpicture_pic500x500height</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500size</name>
+        <rename>productgallery__productpicture_pic500x500size</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500width</name>
+        <rename>productgallery__productpicture_pic500x500width</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_picheight</name>
+        <rename>productgallery__productpicture_picheight</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_picwidth</name>
+        <rename>productgallery__productpicture_picwidth</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_productpicture_id</name>
+        <rename>productgallery__productpicture_productpicture_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_size</name>
+        <rename>productgallery__productpicture_size</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_source</name>
+        <rename>productgallery__productpicture_source</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_thumbpic</name>
+        <rename>productgallery__productpicture_thumbpic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_thumbsize</name>
+        <rename>productgallery__productpicture_thumbsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_type</name>
+        <rename>productgallery__productpicture_type</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_updateddate</name>
+        <rename>productgallery__productpicture_updateddate</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1269,8 +1443,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>416</yloc>
+      <xloc>416</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1342,8 +1516,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>256</yloc>
+      <xloc>256</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1403,8 +1577,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>256</yloc>
+      <xloc>1008</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1509,8 +1683,105 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>272</yloc>
+      <xloc>624</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select ProductPicture</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>product_id</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_ismain</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowpic</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowpicheight</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowpicwidth</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowsize</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_no</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_original</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_originalsize</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500height</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500size</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500width</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_picheight</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_picwidth</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_productpicture_id</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_size</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_source</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_thumbpic</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_thumbsize</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_type</name>
+      </field>
+      <field>
+        <name>productgallery__productpicture_updateddate</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1567,8 +1838,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>256</yloc>
+      <xloc>816</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1610,8 +1881,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>256</yloc>
+      <xloc>416</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1654,6 +1925,10 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <value>/ICECAT-interface/Product</value>
         <target_step>Select Product</target_step>
       </case>
+      <case>
+        <value>/ICECAT-interface/Product/ProductGallery/ProductPicture</value>
+        <target_step>Select ProductPicture</target_step>
+      </case>
     </cases>
     <attributes/>
     <cluster_schema/>
@@ -1664,8 +1939,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>144</yloc>
+      <xloc>672</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1725,7 +2000,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
+      <xloc>256</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1793,8 +2068,8 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>400</yloc>
+      <xloc>1008</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1818,8 +2093,8 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>320</yloc>
+      <xloc>1184</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2109,6 +2384,125 @@ productdescription_warrantyinfo = xml_data_value;
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductDescription") &amp;&amp;
 xml_data_name.equals("langid") ) {
 productdescription_langid = xml_data_value;
+}
+
+var productgallery__productpicture_ismain;
+var productgallery__productpicture_lowpic;
+var productgallery__productpicture_lowpicheight;
+var productgallery__productpicture_lowpicwidth;
+var productgallery__productpicture_lowsize;
+var productgallery__productpicture_no;
+var productgallery__productpicture_original;
+var productgallery__productpicture_originalsize;
+var productgallery__productpicture_pic;
+var productgallery__productpicture_pic500x500;
+var productgallery__productpicture_pic500x500height;
+var productgallery__productpicture_pic500x500size;
+var productgallery__productpicture_pic500x500width;
+var productgallery__productpicture_picheight;
+var productgallery__productpicture_picwidth;
+var productgallery__productpicture_productpicture_id;
+var productgallery__productpicture_size;
+var productgallery__productpicture_source;
+var productgallery__productpicture_thumbpic;
+var productgallery__productpicture_thumbsize;
+var productgallery__productpicture_type;
+var productgallery__productpicture_updateddate;
+
+
+// because "IsMain" only is set for one picture, for every other picture this attribute is missing. to prevent to use the value from the previous step we need to reset those columns with "N" every START_ELEMENT
+if (xml_data_type_description.equals("START_ELEMENT") &amp;&amp; xml_element_level == 4 )
+{
+productgallery__productpicture_ismain = "N";
+}
+
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("IsMain") ) {
+productgallery__productpicture_ismain = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("LowPic") ) {
+productgallery__productpicture_lowpic = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("LowPicHeight") ) {
+productgallery__productpicture_lowpicheight = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("LowPicWidth") ) {
+productgallery__productpicture_lowpicwidth = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("LowSize") ) {
+productgallery__productpicture_lowsize = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("No") ) {
+productgallery__productpicture_no = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Original") ) {
+productgallery__productpicture_original = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("OriginalSize") ) {
+productgallery__productpicture_originalsize = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Pic") ) {
+productgallery__productpicture_pic = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Pic500x500") ) {
+productgallery__productpicture_pic500x500 = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Pic500x500Height") ) {
+productgallery__productpicture_pic500x500height = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Pic500x500Size") ) {
+productgallery__productpicture_pic500x500size = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Pic500x500Width") ) {
+productgallery__productpicture_pic500x500width = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("PicHeight") ) {
+productgallery__productpicture_picheight = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("PicWidth") ) {
+productgallery__productpicture_picwidth = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("ProductPicture_ID") ) {
+productgallery__productpicture_productpicture_id = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Size") ) {
+productgallery__productpicture_size = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Source") ) {
+productgallery__productpicture_source = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("ThumbPic") ) {
+productgallery__productpicture_thumbpic = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("ThumbSize") ) {
+productgallery__productpicture_thumbsize = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("Type") ) {
+productgallery__productpicture_type = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/ProductGallery/ProductPicture") &amp;&amp;
+xml_data_name.equals("UpdatedDate") ) {
+productgallery__productpicture_updateddate = xml_data_value;
 }
 
 var productrelated_id;
@@ -2526,6 +2920,182 @@ product_langid = category_langid;
         <replace>N</replace>
       </field>
       <field>
+        <name>productgallery__productpicture_ismain</name>
+        <rename>productgallery__productpicture_ismain</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowpic</name>
+        <rename>productgallery__productpicture_lowpic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowpicheight</name>
+        <rename>productgallery__productpicture_lowpicheight</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowpicwidth</name>
+        <rename>productgallery__productpicture_lowpicwidth</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_lowsize</name>
+        <rename>productgallery__productpicture_lowsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_no</name>
+        <rename>productgallery__productpicture_no</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_original</name>
+        <rename>productgallery__productpicture_original</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_originalsize</name>
+        <rename>productgallery__productpicture_originalsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic</name>
+        <rename>productgallery__productpicture_pic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500</name>
+        <rename>productgallery__productpicture_pic500x500</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500height</name>
+        <rename>productgallery__productpicture_pic500x500height</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500size</name>
+        <rename>productgallery__productpicture_pic500x500size</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_pic500x500width</name>
+        <rename>productgallery__productpicture_pic500x500width</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_picheight</name>
+        <rename>productgallery__productpicture_picheight</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_picwidth</name>
+        <rename>productgallery__productpicture_picwidth</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_productpicture_id</name>
+        <rename>productgallery__productpicture_productpicture_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_size</name>
+        <rename>productgallery__productpicture_size</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_source</name>
+        <rename>productgallery__productpicture_source</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_thumbpic</name>
+        <rename>productgallery__productpicture_thumbpic</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_thumbsize</name>
+        <rename>productgallery__productpicture_thumbsize</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_type</name>
+        <rename>productgallery__productpicture_type</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productgallery__productpicture_updateddate</name>
+        <rename>productgallery__productpicture_updateddate</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
         <name>productdescription_id</name>
         <rename>productdescription_id</rename>
         <type>Integer</type>
@@ -2735,8 +3305,52 @@ product_langid = category_langid;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>464</xloc>
       <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Skip Picture Type "FeatureLogo"</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Insert / update ProductPicture</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>productgallery__productpicture_type</leftvalue>
+        <function>&lt;></function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>FeatureLogo</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
