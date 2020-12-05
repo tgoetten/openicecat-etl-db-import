@@ -738,12 +738,17 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <value>
         <name>product_id</name>
         <rename>product_id</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>langid</name>
         <rename>product_langid</rename>
         <update>N</update>
+      </value>
+      <value>
+        <name>catid</name>
+        <rename>product_catid</rename>
+        <update>Y</update>
       </value>
       <value>
         <name>code</name>
@@ -793,6 +798,16 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <value>
         <name>releasedate</name>
         <rename>product_releasedate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>supplier_id</name>
+        <rename>product_supplier_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>supplier_name</name>
+        <rename>product_supplier_name</rename>
         <update>Y</update>
       </value>
       <value>
@@ -1121,100 +1136,6 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     </GUI>
   </step>
   <step>
-    <name>Insert / update ProductRelated</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__productrelated</table>
-      <key>
-        <name>product_id</name>
-        <field>product_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>productrelated_id</name>
-        <field>productrelated_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>__product_id</name>
-        <rename>product_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>productrelated_id</name>
-        <rename>productrelated_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_id</name>
-        <rename>productrelated__product_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category_id</name>
-        <rename>productrelated_category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>preferred</name>
-        <rename>productrelated_preferred</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_prod_id</name>
-        <rename>productrelated__product_prod_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_thumbpic</name>
-        <rename>productrelated__product_thumbpic</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_name</name>
-        <rename>productrelated__product_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product__supplier_id</name>
-        <rename>productrelated__product__supplier_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product__supplier_name</name>
-        <rename>productrelated__product__supplier_name</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Insert / update ProductPicture</name>
     <type>InsertUpdate</type>
     <description/>
@@ -1374,6 +1295,100 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     </GUI>
   </step>
   <step>
+    <name>Insert / update ProductRelated</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>postgres-database</connection>
+    <commit>${commit_size}</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>product__productrelated</table>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>productrelated_id</name>
+        <field>productrelated_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>__product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productrelated_id</name>
+        <rename>productrelated_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product_id</name>
+        <rename>productrelated__product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>category_id</name>
+        <rename>productrelated_category_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>preferred</name>
+        <rename>productrelated_preferred</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product_prod_id</name>
+        <rename>productrelated__product_prod_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product_thumbpic</name>
+        <rename>productrelated__product_thumbpic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product_name</name>
+        <rename>productrelated__product_name</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product__supplier_id</name>
+        <rename>productrelated__product__supplier_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product__supplier_name</name>
+        <rename>productrelated__product__supplier_name</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Insert / update SummaryDescription</name>
     <type>InsertUpdate</type>
     <description/>
@@ -1462,48 +1477,75 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <fields>
       <field>
         <name>product_id</name>
+        <rename/>
       </field>
       <field>
         <name>product_langid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>product_catid</name>
+        <rename/>
       </field>
       <field>
         <name>product_code</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpic</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpicheight</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpicsize</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpicwidth</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500height</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500size</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500width</name>
+        <rename/>
       </field>
       <field>
         <name>product_releasedate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>product_supplier_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>product_supplier_name</name>
+        <rename/>
       </field>
       <field>
         <name>product_thumbpic</name>
+        <rename/>
       </field>
       <field>
         <name>product_thumbpicsize</name>
+        <rename/>
       </field>
       <field>
         <name>product_title</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1887,6 +1929,50 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     </GUI>
   </step>
   <step>
+    <name>Skip Picture Type "FeatureLogo"</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Insert / update ProductPicture</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>productgallery__productpicture_type</leftvalue>
+        <function>&lt;></function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>FeatureLogo</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Switch / case</name>
     <type>SwitchCase</type>
     <description/>
@@ -2117,8 +2203,6 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
 
-
-
 var product_id;
 var product_code;
 var product_lowpic;
@@ -2190,6 +2274,25 @@ product_thumbpicsize = xml_data_value;
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product") &amp;&amp;
 xml_data_name.equals("Title") ) {
 product_title = xml_data_value;
+}
+
+var product_supplier_id;
+var product_supplier_name;
+
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/Supplier") &amp;&amp;
+xml_data_name.equals("ID") ) {
+product_supplier_id = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/Supplier") &amp;&amp;
+xml_data_name.equals("Name") ) {
+product_supplier_name = xml_data_value;
+}
+
+var product_catid
+
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/Category") &amp;&amp;
+xml_data_name.equals("ID") ) {
+product_catid = xml_data_value;
 }
 
 var category_langid;
@@ -2580,18 +2683,6 @@ xml_data_name.equals("LongSummaryDescription") ) {
 summarydescription_longsummarydescription_longsummarydescription = xml_data_value;
 }
 
-var supplier_id;
-var supplier_name;
-
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/Supplier") &amp;&amp;
-xml_data_name.equals("ID") ) {
-supplier_id = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/Supplier") &amp;&amp;
-xml_data_name.equals("Name") ) {
-supplier_name = xml_data_value;
-}
-
 productfeature_langid = category_langid;
 product_langid = category_langid;
 
@@ -2715,6 +2806,30 @@ product_langid = category_langid;
         <name>product_langid</name>
         <rename>product_langid</rename>
         <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>product_supplier_id</name>
+        <rename>product_supplier_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>product_catid</name>
+        <rename>product_catid</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>product_supplier_name</name>
+        <rename>product_supplier_name</rename>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
@@ -3279,22 +3394,6 @@ product_langid = category_langid;
         <precision>-1</precision>
         <replace>N</replace>
       </field>
-      <field>
-        <name>supplier_id</name>
-        <rename>supplier_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>supplier_name</name>
-        <rename>supplier_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3307,50 +3406,6 @@ product_langid = category_langid;
     <GUI>
       <xloc>464</xloc>
       <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Skip Picture Type "FeatureLogo"</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Insert / update ProductPicture</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>productgallery__productpicture_type</leftvalue>
-        <function>&lt;></function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>FeatureLogo</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

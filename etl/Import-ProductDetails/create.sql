@@ -5,6 +5,7 @@ CREATE TABLE product__productdetails
   product_id integer not null,
   -- columns derived from product detail files
   code integer,
+  catid integer not null,
   lowpic text,
   lowpicheight text,
   lowpicsize text,
@@ -14,6 +15,8 @@ CREATE TABLE product__productdetails
   pic500x500size integer,
   pic500x500width integer,
   releasedate text,
+  supplier_id integer not null,
+  supplier_name text,
   thumbpic text,
   thumbpicsize integer,
   title text,
@@ -61,7 +64,7 @@ CREATE TABLE product__productfeature (
   feature__name_langid integer,
   feature__name_value text,
   product_id integer,
-  categoryfeaturegroup_id integer,
+  categoryfeaturegroup_id integer
 --  constraint product__productfeature_product FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 ) WITH (OIDS = FALSE);
 
