@@ -120,7 +120,7 @@ CREATE TABLE product__productpicture (
   productpicture_pic500x500width integer,
   productpicture_picheight integer,
   productpicture_picwidth integer,
-  productpicture_productpicture_id integer,
+  productpicture_productpicture_id bigint,
   productpicture_size integer,
   productpicture_source text,
   productpicture_thumbpic text,
