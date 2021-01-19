@@ -439,8 +439,8 @@
 /home/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/1/17832151.xml
 /home/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/4/640373.xml 
 ${openicecat_download_path}/${langid}/${filename}</note>
-      <xloc>896</xloc>
-      <yloc>48</yloc>
+      <xloc>848</xloc>
+      <yloc>32</yloc>
       <width>641</width>
       <heigth>78</heigth>
       <fontname>Noto Sans</fontname>
@@ -780,6 +780,11 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>lowpicwidth</name>
         <rename>product_lowpicwidth</rename>
         <update>Y</update>
+      </value>
+      <value>
+        <name>name</name>
+        <rename>product_name</rename>
+        <update>N</update>
       </value>
       <value>
         <name>pic500x500</name>
@@ -1483,57 +1488,79 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <fields>
       <field>
         <name>product_id</name>
+        <rename/>
       </field>
       <field>
         <name>product_langid</name>
+        <rename/>
       </field>
       <field>
         <name>product_catid</name>
+        <rename/>
       </field>
       <field>
         <name>product_code</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpic</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpicheight</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpicsize</name>
+        <rename/>
       </field>
       <field>
         <name>product_lowpicwidth</name>
+        <rename/>
+      </field>
+      <field>
+        <name>product_name</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500height</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500size</name>
+        <rename/>
       </field>
       <field>
         <name>product_pic500x500width</name>
+        <rename/>
       </field>
       <field>
         <name>product_releasedate</name>
+        <rename/>
       </field>
       <field>
         <name>product_supplier_id</name>
+        <rename/>
       </field>
       <field>
         <name>product_supplier_name</name>
+        <rename/>
       </field>
       <field>
         <name>product_thumbpic</name>
+        <rename/>
       </field>
       <field>
         <name>product_thumbpicsize</name>
+        <rename/>
       </field>
       <field>
         <name>product_title</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2031,7 +2058,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     </partitioning>
     <sourceFromInput>N</sourceFromInput>
     <sourceFieldName/>
-    <filename>${openicecat_download_path}/${langid}/${filename}</filename>
+    <filename>/home/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/4/127374.xml</filename>
     <addResultFile>N</addResultFile>
     <nrRowsToSkip>0</nrRowsToSkip>
     <rowLimit>0</rowLimit>
@@ -2230,6 +2257,10 @@ product_lowpicsize = xml_data_value;
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product") &amp;&amp;
 xml_data_name.equals("LowPicWidth") ) {
 product_lowpicwidth = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product") &amp;&amp;
+xml_data_name.equals("Name") ) {
+product_name = xml_data_value;
 }
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product") &amp;&amp;
 xml_data_name.equals("Pic500x500") ) {
@@ -2722,6 +2753,14 @@ product_langid = category_langid;
         <name>product_lowpicwidth</name>
         <rename>product_lowpicwidth</rename>
         <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>product_name</name>
+        <rename>product_name</rename>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>

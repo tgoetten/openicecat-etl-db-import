@@ -10,6 +10,7 @@ CREATE TABLE product__productdetails
   lowpicheight text,
   lowpicsize text,
   lowpicwidth integer,
+  name text,
   pic500x500 text,
   pic500x500height integer,
   pic500x500size integer,
