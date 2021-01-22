@@ -458,6 +458,28 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>2021-01-22
+- added CategoryFeatureGroup as step but without database savind as it seams not to be helpfull (mostly empty);</note>
+      <xloc>1613</xloc>
+      <yloc>236</yloc>
+      <width>637</width>
+      <heigth>44</heigth>
+      <fontname>Noto Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>postgres-database</name>
@@ -534,17 +556,17 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <hop>
       <from>Select SummaryDescription</from>
       <to>Insert / update SummaryDescription</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Select ProductRelated</from>
       <to>Insert / update ProductRelated</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>escape long- &amp; shortdesc</from>
       <to>Insert / update ProductDescription</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Switch / case</from>
@@ -554,7 +576,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <hop>
       <from>Select Product</from>
       <to>Insert / update Product</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Select ProductDescription</from>
@@ -579,7 +601,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <hop>
       <from>Select ProductFeature</from>
       <to>Insert / update ProductFeature</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>sign_sign</from>
@@ -609,6 +631,16 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <hop>
       <from>Select ProductPicture</from>
       <to>Insert / update ProductPicture</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>CategoryFeatureGroup</from>
+      <to>Insert / update CategoryFeatureGroup</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Switch / case</from>
+      <to>CategoryFeatureGroup</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -846,7 +878,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
+      <xloc>80</xloc>
       <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1554,7 +1586,7 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
+      <xloc>80</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2011,6 +2043,10 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <value>/ICECAT-interface/Product/ProductGallery/ProductPicture</value>
         <target_step>Select ProductPicture</target_step>
       </case>
+      <case>
+        <value>/ICECAT-interface/Product/CategoryFeatureGroup</value>
+        <target_step>CategoryFeatureGroup</target_step>
+      </case>
     </cases>
     <attributes/>
     <cluster_schema/>
@@ -2218,7 +2254,6 @@ if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/
 xml_data_name.equals("ID") ) {
 product_id = xml_data_value;
 }
-
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product") &amp;&amp;
 xml_data_name.equals("Code") ) {
 product_code = xml_data_value;
@@ -2286,6 +2321,38 @@ product_supplier_id = xml_data_value;
 if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/Supplier") &amp;&amp;
 xml_data_name.equals("Name") ) {
 product_supplier_name = xml_data_value;
+}
+
+var productcategoryfeaturegroup_id;
+var productcategoryfeaturegroup_no;
+var productcategoryfeaturegroup__featuregroup_id;
+var productcategoryfeaturegroup__featuregroup__name_id;
+var productcategoryfeaturegroup__featuregroup__name_langid;
+var productcategoryfeaturegroup__featuregroup__name_value;
+
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/CategoryFeatureGroup") &amp;&amp;
+xml_data_name.equals("ID") ) {
+productcategoryfeaturegroup_id = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/CategoryFeatureGroup") &amp;&amp;
+xml_data_name.equals("No") ) {
+productcategoryfeaturegroup_no = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/CategoryFeatureGroup/FeatureGroup") &amp;&amp;
+xml_data_name.equals("ID") ) {
+productcategoryfeaturegroup__featuregroup_id = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/CategoryFeatureGroup/FeatureGroup/Name") &amp;&amp;
+xml_data_name.equals("ID") ) {
+productcategoryfeaturegroup__featuregroup__name_id = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/CategoryFeatureGroup/FeatureGroup/Name") &amp;&amp;
+xml_data_name.equals("langid") ) {
+productcategoryfeaturegroup__featuregroup__name_langid = xml_data_value;
+}
+if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Product/CategoryFeatureGroup/FeatureGroup/Name") &amp;&amp;
+xml_data_name.equals("Value") ) {
+productcategoryfeaturegroup__featuregroup__name_value = xml_data_value;
 }
 
 var product_catid
@@ -2837,6 +2904,54 @@ product_langid = category_langid;
       <field>
         <name>product_supplier_name</name>
         <rename>product_supplier_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup_id</name>
+        <rename>productcategoryfeaturegroup_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup_no</name>
+        <rename>productcategoryfeaturegroup_no</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup_id</name>
+        <rename>productcategoryfeaturegroup__featuregroup_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup__name_id</name>
+        <rename>productcategoryfeaturegroup__featuregroup__name_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup__name_langid</name>
+        <rename>productcategoryfeaturegroup__featuregroup__name_langid</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup__name_value</name>
+        <rename>productcategoryfeaturegroup__featuregroup__name_value</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3414,6 +3529,159 @@ product_langid = category_langid;
     <GUI>
       <xloc>464</xloc>
       <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update CategoryFeatureGroup</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>postgres-database</connection>
+    <commit>${commit_size}</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>product__productcategoryfeaturegroup</table>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>productcategoryfeaturegroup_id</name>
+        <field>productcategoryfeaturegroup_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>productcategoryfeaturegroup__featuregroup_id</name>
+        <field>productcategoryfeaturegroup__featuregroup_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>productcategoryfeaturegroup__featuregroup__name_id</name>
+        <field>productcategoryfeaturegroup__featuregroup__name_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>productcategoryfeaturegroup__featuregroup__name_langid</name>
+        <field>productcategoryfeaturegroup__featuregroup__name_langid</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productcategoryfeaturegroup_id</name>
+        <rename>productcategoryfeaturegroup_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productcategoryfeaturegroup_no</name>
+        <rename>productcategoryfeaturegroup_no</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productcategoryfeaturegroup__featuregroup_id</name>
+        <rename>productcategoryfeaturegroup__featuregroup_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productcategoryfeaturegroup__featuregroup__name_id</name>
+        <rename>productcategoryfeaturegroup__featuregroup__name_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productcategoryfeaturegroup__featuregroup__name_langid</name>
+        <rename>productcategoryfeaturegroup__featuregroup__name_langid</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productcategoryfeaturegroup__featuregroup__name_value</name>
+        <rename>productcategoryfeaturegroup__featuregroup__name_value</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CategoryFeatureGroup</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>product_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup_no</name>
+        <rename/>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup__name_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup__name_langid</name>
+        <rename/>
+      </field>
+      <field>
+        <name>productcategoryfeaturegroup__featuregroup__name_value</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
