@@ -3,3 +3,4 @@
 *.cube
 *.xml
 etl/config/config.env
+database.env

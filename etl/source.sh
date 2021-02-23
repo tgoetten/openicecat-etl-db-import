@@ -236,8 +236,11 @@ function delete_cube() {
 
 
 function perform_import() {
-    #sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
-    sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=true
+# If you would like the script to DROP and CREATE the necessary tables AND parse the data instead of using cube files, uncomment the next line
+
+    export PENTAHO_DI_JAVA_OPTIONS="-Xmx16g -XX:MaxPermSize=512m" && sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
+# otherwise, if you wish to DROP and CREATE AND use cube files, uncomment he next line
+#    sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=true
 }
 
 
