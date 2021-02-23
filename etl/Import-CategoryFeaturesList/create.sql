@@ -1,7 +1,7 @@
 -- https://codebeautify.org/sqlformatter
 CREATE TABLE category__categoryfeaturegroup (
   ID SERIAL PRIMARY KEY, 
-  No integer, 
+  No bigint, 
   category_id integer
 ) WITH (OIDS = FALSE);
 
@@ -27,7 +27,7 @@ CREATE TABLE category__feature (
   class integer,
   limitdirection integer,
   mandatory integer,
-  no integer,
+  no bigint,
   searchable integer,		
   type character varying,
   use_dropdown_input character varying,	

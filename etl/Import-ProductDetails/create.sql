@@ -129,3 +129,14 @@ CREATE TABLE product__productpicture (
   productpicture_type text,
   productpicture_updateddate text
 ) WITH (OIDS = FALSE);
+
+CREATE TABLE product__productcategoryfeaturegroup (
+  product_id integer,
+  ID SERIAL PRIMARY KEY,
+  productcategoryfeaturegroup_id integer,
+  productcategoryfeaturegroup_no bigint,
+  productcategoryfeaturegroup__featuregroup_id integer,
+  productcategoryfeaturegroup__featuregroup__name_id integer,
+  productcategoryfeaturegroup__featuregroup__name_langid integer,
+  productcategoryfeaturegroup__featuregroup__name_value text
+) WITH (OIDS = FALSE);

@@ -352,7 +352,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1136</xloc>
+      <xloc>1232</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -383,7 +383,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
+      <xloc>480</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -421,7 +421,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>848</xloc>
+      <xloc>944</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -458,7 +458,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
+      <xloc>640</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -495,7 +495,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>752</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -519,7 +519,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
+      <xloc>640</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -532,7 +532,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>848</xloc>
+      <xloc>944</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -547,7 +547,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>976</xloc>
+      <xloc>1072</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -562,7 +562,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>752</xloc>
+      <xloc>848</xloc>
       <yloc>208</yloc>
       <attributes_kjc/>
     </entry>
@@ -581,15 +581,6 @@
       <from>Parse XML file</from>
       <to>Success</to>
       <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Load configuration file config.env</from>
-      <to>Create cube-data folder</to>
-      <from_nr>2</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
@@ -665,12 +656,21 @@
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>Write to log 2</from>
       <to>File exists</to>
       <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Load configuration file config.env</from>
+      <to>Create cube-data folder</to>
+      <from_nr>2</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
