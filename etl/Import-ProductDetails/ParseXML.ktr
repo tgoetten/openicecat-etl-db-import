@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>ParseXML</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -41,37 +41,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -459,12 +459,17 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>2021-01-22
-- added CategoryFeatureGroup as step but without database savind as it seams not to be helpfull (mostly empty);</note>
-      <xloc>1613</xloc>
-      <yloc>236</yloc>
+      <note>2021-07-18
+- added "langid" to productrelated (productrelated__product_langid)
+- renamed "__product_id" to "parent__product_id" in Step "ProductRelated"
+
+2021-01-22
+- added CategoryFeatureGroup as step but without database savind as it seams not to be helpfull (mostly empty);
+</note>
+      <xloc>1600</xloc>
+      <yloc>224</yloc>
       <width>637</width>
-      <heigth>44</heigth>
+      <heigth>128</heigth>
       <fontname>Noto Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -490,9 +495,9 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <port>${postgres_database_port}</port>
     <username>${postgres_database_user}</username>
     <password>${postgres_database_password}</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -647,13 +652,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>CategoryFeatureGroup</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -679,8 +684,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -696,13 +701,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Data validator</name>
     <type>Validator</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <validate_all>N</validate_all>
     <concat_errors>N</concat_errors>
@@ -710,33 +715,33 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <validator_field>
       <name>productdescription_id</name>
       <validation_name>productdescription_id not NULL</validation_name>
-      <max_length/>
-      <min_length/>
+      <max_length />
+      <min_length />
       <null_allowed>N</null_allowed>
       <only_null_allowed>N</only_null_allowed>
       <only_numeric_allowed>N</only_numeric_allowed>
       <data_type>None</data_type>
       <data_type_verified>N</data_type_verified>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <max_value/>
-      <min_value/>
-      <start_string/>
-      <end_string/>
-      <start_string_not_allowed/>
-      <end_string_not_allowed/>
-      <regular_expression/>
-      <regular_expression_not_allowed/>
-      <error_code/>
-      <error_description/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <max_value />
+      <min_value />
+      <start_string />
+      <end_string />
+      <start_string_not_allowed />
+      <end_string_not_allowed />
+      <regular_expression />
+      <regular_expression_not_allowed />
+      <error_code />
+      <error_description />
       <is_sourcing_values>N</is_sourcing_values>
-      <sourcing_step/>
-      <sourcing_field/>
-      <allowed_value/>
+      <sourcing_step />
+      <sourcing_field />
+      <allowed_value />
     </validator_field>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -752,22 +757,22 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Filter END_ELEMENT</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <send_true_to/>
-    <send_false_to/>
+    <send_true_to />
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>xml_data_type_description</leftvalue>
         <function>=</function>
-        <rightvalue/>
+        <rightvalue />
         <value>
           <name>constant</name>
           <type>String</type>
@@ -775,12 +780,12 @@ ${openicecat_download_path}/${langid}/${filename}</note>
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
-          <mask/>
+          <mask />
         </value>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -796,13 +801,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update CategoryFeatureGroup</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -814,31 +819,31 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>product_id</name>
         <field>product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productcategoryfeaturegroup_id</name>
         <field>productcategoryfeaturegroup_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productcategoryfeaturegroup__featuregroup_id</name>
         <field>productcategoryfeaturegroup__featuregroup_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productcategoryfeaturegroup__featuregroup__name_id</name>
         <field>productcategoryfeaturegroup__featuregroup__name_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productcategoryfeaturegroup__featuregroup__name_langid</name>
         <field>productcategoryfeaturegroup__featuregroup__name_langid</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <value>
         <name>product_id</name>
@@ -876,8 +881,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -893,13 +898,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update Product</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -911,13 +916,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>product_id</name>
         <field>product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>product_langid</name>
         <field>langid</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <value>
         <name>product_id</name>
@@ -1015,8 +1020,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1032,13 +1037,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update ProductDescription</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -1050,19 +1055,19 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>product_id</name>
         <field>product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productdescription_id</name>
         <field>id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productdescription_langid</name>
         <field>langid</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <value>
         <name>product_id</name>
@@ -1130,8 +1135,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1147,13 +1152,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update ProductFeature</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -1165,19 +1170,19 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>product_id</name>
         <field>product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productfeature_id</name>
         <field>productfeature_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productfeature_langid</name>
         <field>langid</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <value>
         <name>product_id</name>
@@ -1310,8 +1315,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1327,13 +1332,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update ProductPicture</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -1345,13 +1350,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>product_id</name>
         <field>product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productgallery__productpicture_productpicture_id</name>
         <field>productpicture_productpicture_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <value>
         <name>product_id</name>
@@ -1469,8 +1474,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1486,13 +1491,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update ProductRelated</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -1502,18 +1507,24 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       <table>product__productrelated</table>
       <key>
         <name>product_id</name>
-        <field>product_id</field>
+        <field>parent__product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>productrelated_id</name>
         <field>productrelated_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
+      </key>
+      <key>
+        <name>productrelated__product_langid</name>
+        <field>product_langid</field>
+        <condition>=</condition>
+        <name2 />
       </key>
       <value>
-        <name>__product_id</name>
+        <name>parent__product_id</name>
         <rename>product_id</rename>
         <update>Y</update>
       </value>
@@ -1553,6 +1564,11 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
       <value>
+        <name>product_langid</name>
+        <rename>productrelated__product_langid</rename>
+        <update>N</update>
+      </value>
+      <value>
         <name>product__supplier_id</name>
         <rename>productrelated__product__supplier_id</rename>
         <update>Y</update>
@@ -1563,8 +1579,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1580,13 +1596,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Insert / update SummaryDescription</name>
     <type>InsertUpdate</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>postgres-database</connection>
     <commit>${commit_size}</commit>
@@ -1598,19 +1614,19 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <name>product_id</name>
         <field>product_id</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>summarydescription_shortsummarydescription_langid</name>
         <field>shortsummarydescription_langid</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <key>
         <name>summarydescription_longsummarydescription_langid</name>
         <field>longsummarydescription_langid</field>
         <condition>=</condition>
-        <name2/>
+        <name2 />
       </key>
       <value>
         <name>product_id</name>
@@ -1638,8 +1654,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <update>Y</update>
       </value>
     </lookup>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1655,13 +1671,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Select Product</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -1723,8 +1739,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1740,13 +1756,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Select ProductDescription</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -1784,8 +1800,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1801,13 +1817,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Select ProductFeature</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -1890,8 +1906,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1907,13 +1923,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Select ProductPicture</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -1987,8 +2003,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2004,49 +2020,63 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Select ProductRelated</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>product_id</name>
+        <rename />
       </field>
       <field>
         <name>productrelated_id</name>
+        <rename />
       </field>
       <field>
         <name>productrelated_category_id</name>
+        <rename />
       </field>
       <field>
         <name>productrelated_preferred</name>
+        <rename />
       </field>
       <field>
         <name>productrelated__product_id</name>
+        <rename />
       </field>
       <field>
         <name>productrelated__product_prod_id</name>
+        <rename />
       </field>
       <field>
         <name>productrelated__product_thumbpic</name>
+        <rename />
       </field>
       <field>
         <name>productrelated__product_name</name>
+        <rename />
+      </field>
+      <field>
+        <name>productrelated__product_langid</name>
+        <rename />
       </field>
       <field>
         <name>productrelated__product__supplier_id</name>
+        <rename />
       </field>
       <field>
         <name>productrelated__product__supplier_name</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2062,13 +2092,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Select SummaryDescription</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -2088,8 +2118,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2105,22 +2135,22 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Skip Picture Type "FeatureLogo"</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <send_true_to>Insert / update ProductPicture</send_true_to>
-    <send_false_to/>
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>productgallery__productpicture_type</leftvalue>
         <function>&lt;></function>
-        <rightvalue/>
+        <rightvalue />
         <value>
           <name>constant</name>
           <type>String</type>
@@ -2128,12 +2158,12 @@ ${openicecat_download_path}/${langid}/${filename}</note>
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
-          <mask/>
+          <mask />
         </value>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2149,21 +2179,21 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>Switch / case</name>
     <type>SwitchCase</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fieldname>xml_path</fieldname>
     <use_contains>N</use_contains>
     <case_value_type>None</case_value_type>
-    <case_value_format/>
-    <case_value_decimal/>
-    <case_value_group/>
-    <default_target_step/>
+    <case_value_format />
+    <case_value_decimal />
+    <case_value_group />
+    <default_target_step />
     <cases>
       <case>
         <value>/ICECAT-interface/Product/ProductRelated</value>
@@ -2194,8 +2224,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <target_step>CategoryFeatureGroup</target_step>
       </case>
     </cases>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2211,16 +2241,16 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>XML Input Stream (StAX) EN</name>
     <type>XMLInputStream</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <sourceFromInput>N</sourceFromInput>
-    <sourceFieldName/>
+    <sourceFieldName />
     <filename>${openicecat_download_path}/${langid}/${filename}</filename>
     <addResultFile>N</addResultFile>
     <nrRowsToSkip>0</nrRowsToSkip>
@@ -2255,8 +2285,8 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <xmlDataNameField>xml_data_name</xmlDataNameField>
     <includeXmlDataValueField>Y</includeXmlDataValueField>
     <xmlDataValueField>xml_data_value</xmlDataValueField>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2272,13 +2302,13 @@ ${openicecat_download_path}/${langid}/${filename}</note>
   <step>
     <name>escape long- &amp; shortdesc</name>
     <type>ScriptValueMod</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
@@ -2323,8 +2353,8 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
         <replace>N</replace>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2340,16 +2370,16 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
   <step>
     <name>productdescription_id is NULL</name>
     <type>Dummy</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2365,13 +2395,13 @@ shortdesc_escaped = shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
   <step>
     <name>sign_sign</name>
     <type>ScriptValueMod</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
@@ -2898,7 +2928,7 @@ summarydescription_longsummarydescription_longsummarydescription = xml_data_valu
 
 productfeature_langid = category_langid;
 product_langid = category_langid;
-
+productrelated__product_langid = category_langid;
 </jsScript_script>
       </jsScript>
     </jsScripts>
@@ -3616,6 +3646,14 @@ product_langid = category_langid;
         <replace>N</replace>
       </field>
       <field>
+        <name>productrelated__product_langid</name>
+        <rename>productrelated__product_langid</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
         <name>productrelated__product__supplier_id</name>
         <rename>productrelated__product__supplier_id</rename>
         <type>Integer</type>
@@ -3664,8 +3702,8 @@ product_langid = category_langid;
         <replace>N</replace>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3683,17 +3721,17 @@ product_langid = category_langid;
       <source_step>Data validator</source_step>
       <target_step>productdescription_id is NULL</target_step>
       <is_enabled>Y</is_enabled>
-      <nr_valuename/>
-      <descriptions_valuename/>
-      <fields_valuename/>
-      <codes_valuename/>
-      <max_errors/>
-      <max_pct_errors/>
-      <min_pct_rows/>
+      <nr_valuename />
+      <descriptions_valuename />
+      <fields_valuename />
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
     </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes/>
+  <attributes />
 </transformation>

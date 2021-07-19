@@ -33,14 +33,14 @@ services:
     networks:
       openicecat-etl-db-import-net:
 
-  pghero:
-    image: ankane/pghero # use latest official postgres version
-    container_name: openicecat-etl-pgHero
-    ports:
-      - "8080:8080"
-    restart: unless-stopped
-    environment:
-      - PGDATA=/var/lib/postgresql/data/pgdata
-      - DATABASE_URL=postgres://unicorn_user:magical_password@openicecat-etl-db:5432/rainbow_database
-    networks:
-      openicecat-etl-db-import-net:
+#  pghero:
+#    image: ankane/pghero # use latest official postgres version
+#    container_name: openicecat-etl-pgHero
+#    ports:
+#      - "8080:8080"
+#    restart: unless-stopped
+#    environment:
+#      - PGDATA=/var/lib/postgresql/data/pgdata
+#      - DATABASE_URL=postgres://unicorn_user:magical_password@openicecat-etl-db:5432/rainbow_database
+#    networks:
+#      openicecat-etl-db-import-net:
