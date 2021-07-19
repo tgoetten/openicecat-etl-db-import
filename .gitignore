@@ -2,5 +2,7 @@
 *.sql.gz
 *.cube
 *.xml
+*.jpg
 etl/config/config.env
 database.env
+files_to_exclude.txt
