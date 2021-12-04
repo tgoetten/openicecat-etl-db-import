@@ -5,6 +5,7 @@
 *.jpg
 *.jpeg
 *.png
+*.csv
 etl/config/config.env
 database.env
 files_to_exclude.txt
