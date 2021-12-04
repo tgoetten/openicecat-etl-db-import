@@ -223,7 +223,9 @@ function cron_init() {
 function delete_xml() {
     if [[ -n ${deletexml-} ]]; then
 	echo "Deleting all *.xml files"
-        find . -type f -name "*.xml" -exec rm {} \; 
+        # find . -type f -name "*.xml" -exec rm {} \; 
+        find . -type f -not -path "./Import-ProductDetails/downloaded-data/*" -name "*.xml" -exec echo rm '{}' \;  
+
     fi
 }
 

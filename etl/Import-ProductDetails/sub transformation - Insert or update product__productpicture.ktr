@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>InsertCategoryFeatureAdditional</name>
+    <name>sub transformation - Insert or update product__productpicture</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,9 +428,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2015/03/06 18:46:58.709</created_date>
+    <created_date>2021/09/13 22:27:22.020</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2015/03/06 18:46:58.709</modified_date>
+    <modified_date>2021/09/13 22:27:22.020</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -489,134 +489,49 @@
   </connection>
   <order>
     <hop>
-      <from>De-serialize product_feature from file</from>
-      <to>Insert / update product__feature</to>
+      <from>data-product__productpicture.cube</from>
+      <to>Add key used for joining #2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>De-serialize product__feature_description from file</from>
-      <to>Wait for product__feature</to>
+      <from>Add key used for joining #1</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>De-serialize product__feature_name from file</from>
-      <to>Wait for product__feature_description</to>
+      <from>Add key used for joining #2</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Wait for product__feature</from>
-      <to>Filter for invalid langids</to>
+      <from>data-product__productdetails.cube</from>
+      <to>Remove not needed columns from product__productdetails</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter for invalid langids</from>
-      <to>Insert / update product__feature_description</to>
+      <from>Remove not needed columns from product__productdetails</from>
+      <to>Add key used for joining #1</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Wait for product__feature_description</from>
-      <to>Filter for invalid langids 2</to>
+      <from>Multiway merge join</from>
+      <to>Remove join_keys</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter for invalid langids 2</from>
-      <to>Insert / update featuregroup_name</to>
+      <from>Remove join_keys</from>
+      <to>data-product__productpicture.csv</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove join_keys</from>
+      <to>Insert / update ProductPicture</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>De-serialize product_feature from file</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${pentaho__cube_data_folder}/data-product__feature.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>De-serialize product__feature_description from file</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${pentaho__cube_data_folder}/data-product__feature_description.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>De-serialize product__feature_name from file</name>
-    <type>CubeInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${pentaho__cube_data_folder}/data-product__feature_name.cube</name>
-    </file>
-    <limit>0</limit>
-    <addfilenameresult>N</addfilenameresult>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get session variables</name>
-    <type>GetSessionVariableStep</type>
+    <name>Add key used for joining #1</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -626,6 +541,18 @@
       <schema_name/>
     </partitioning>
     <fields>
+      <field>
+        <name>join_key</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1980</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -636,305 +563,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update product__feature</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${pentaho__commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__feature</table>
-      <key>
-        <name>product__feature_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>class</name>
-        <rename>product__feature_class</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>defaultdisplayunit</name>
-        <rename>product__feature_defaultdisplayunit</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>product__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>type</name>
-        <rename>product__feature_type</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>measure_sign</name>
-        <rename>product__feature_measure_sign</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update product__feature_description</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${pentaho__commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__feature_description</table>
-      <key>
-        <name>product__feature_description_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>product__feature_id</name>
-        <rename>product__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>product__feature_description_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>langid</name>
-        <rename>product__feature_description_langid</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>description</name>
-        <rename>product__feature_description_description</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update featuregroup_name</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>postgres-database</connection>
-    <commit>${pentaho__commit_size}</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>product__feature_name</table>
-      <key>
-        <name>product__feature_name_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>product__feature_name_langid</name>
-        <field>langid</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>product__feature_id</name>
-        <rename>product__feature_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id</name>
-        <rename>product__feature_name_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>langid</name>
-        <rename>product__feature_name_langid</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>name</name>
-        <rename>product__feature_name_name</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Wait for product__feature</name>
-    <type>BlockUntilStepsFinish</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <steps>
-      <step>
-        <name>Insert / update product__feature</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Wait for product__feature_description</name>
-    <type>BlockUntilStepsFinish</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <steps>
-      <step>
-        <name>Insert / update product__feature_description</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter for invalid langids</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Insert / update product__feature_description</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>product__feature_description_langid</leftvalue>
-        <function>&gt;</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>0</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>704</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter for invalid langids 2</name>
-    <type>FilterRows</type>
+    <name>Add key used for joining #2</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -943,25 +579,20 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Insert / update featuregroup_name</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>product__feature_name_langid</leftvalue>
-        <function>&gt;</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>0</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
+    <fields>
+      <field>
+        <name>join_key</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1980</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -971,7 +602,714 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
+      <xloc>416</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update ProductPicture</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>postgres-database</connection>
+    <commit>${pentaho__commit_size}</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>product__productpicture</table>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>product__productpicture_productpicture_id</name>
+        <field>productpicture_productpicture_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_ismain</name>
+        <rename>product__productpicture_ismain</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowpic</name>
+        <rename>product__productpicture_lowpic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowpicheight</name>
+        <rename>product__productpicture_lowpicheight</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowpicwidth</name>
+        <rename>product__productpicture_lowpicwidth</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_lowsize</name>
+        <rename>product__productpicture_lowsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_no</name>
+        <rename>product__productpicture_no</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_original</name>
+        <rename>product__productpicture_original</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_originalsize</name>
+        <rename>product__productpicture_originalsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic</name>
+        <rename>product__productpicture_pic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500</name>
+        <rename>product__productpicture_pic500x500</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500height</name>
+        <rename>product__productpicture_pic500x500height</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500size</name>
+        <rename>product__productpicture_pic500x500size</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_pic500x500width</name>
+        <rename>product__productpicture_pic500x500width</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_picheight</name>
+        <rename>product__productpicture_picheight</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_picwidth</name>
+        <rename>product__productpicture_picwidth</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_productpicture_id</name>
+        <rename>product__productpicture_productpicture_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_size</name>
+        <rename>product__productpicture_size</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_source</name>
+        <rename>product__productpicture_source</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_thumbpic</name>
+        <rename>product__productpicture_thumbpic</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_thumbsize</name>
+        <rename>product__productpicture_thumbsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_type</name>
+        <rename>product__productpicture_type</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>productpicture_updateddate</name>
+        <rename>product__productpicture_updateddate</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1440</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiway merge join</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>FULL OUTER</join_type>
+    <step0>Add key used for joining #1</step0>
+    <step1>Add key used for joining #2</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>join_key</key>
+      <key>join_key</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove join_keys</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>join_key</name>
+      </remove>
+      <remove>
+        <name>join_key_1</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove not needed columns from product__productdetails</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>product_code</name>
+      </remove>
+      <remove>
+        <name>product_highpic</name>
+      </remove>
+      <remove>
+        <name>product_highpicheight</name>
+      </remove>
+      <remove>
+        <name>product_highpicsize</name>
+      </remove>
+      <remove>
+        <name>product_highpicwidth</name>
+      </remove>
+      <remove>
+        <name>product_lowpic</name>
+      </remove>
+      <remove>
+        <name>product_lowpicheight</name>
+      </remove>
+      <remove>
+        <name>product_lowpicsize</name>
+      </remove>
+      <remove>
+        <name>product_lowpicwidth</name>
+      </remove>
+      <remove>
+        <name>product_name</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500height</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500size</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500width</name>
+      </remove>
+      <remove>
+        <name>product_prod_id</name>
+      </remove>
+      <remove>
+        <name>product_quality</name>
+      </remove>
+      <remove>
+        <name>product_releasedate</name>
+      </remove>
+      <remove>
+        <name>product_thumbpic</name>
+      </remove>
+      <remove>
+        <name>product_thumbpicsize</name>
+      </remove>
+      <remove>
+        <name>product_title</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>data-product__productdetails.cube</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${pentaho__cube_data_folder}/data-product__productdetails.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>data-product__productpicture.csv</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>;</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${Internal.Entry.Current.Directory}/data-product__productpicture</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>Y</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>product_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_ismain</name>
+        <type>Boolean</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_lowpic</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_lowpicheight</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_lowpicwidth</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_lowsize</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_no</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_original</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_originalsize</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_pic</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_pic500x500</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_pic500x500height</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_pic500x500size</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_pic500x500width</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_picheight</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_picwidth</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_productpicture_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_size</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_source</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_thumbpic</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_thumbsize</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productpicture_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productpicture_updateddate</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1440</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>data-product__productpicture.cube</name>
+    <type>CubeInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <file>
+      <name>${pentaho__cube_data_folder}/data-product__productpicture.cube</name>
+    </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
       <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>

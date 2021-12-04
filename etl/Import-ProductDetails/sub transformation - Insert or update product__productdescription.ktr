@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>InsertRelationsList</name>
+    <name>sub transformation - Insert or update product__productdescription</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,168 +428,115 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2015/03/06 18:46:58.709</created_date>
+    <created_date>2021/09/13 22:27:22.020</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2015/03/06 18:46:58.709</modified_date>
+    <modified_date>2021/09/13 22:27:22.020</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>!!! NOT DONE !!!
-- JS part missing
-- database part missing
-- ...</note>
-      <xloc>923</xloc>
-      <yloc>195</yloc>
-      <width>141</width>
-      <heigth>78</heigth>
-      <fontname>Noto Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
+  <connection>
+    <name>postgres-database</name>
+    <server>${postgres_database_host}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${postgres_database_database}</database>
+    <port>${postgres_database_port}</port>
+    <username>${postgres_database_user}</username>
+    <password>${postgres_database_password}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${postgres_database_port}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>XML Input Stream (StAX)</from>
-      <to>Take Category from main list</to>
+      <from>data-product__productdescription.cube</from>
+      <to>Add key used for joining #2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Take Category from main list</from>
-      <to>Fliter for END_ELEMENT</to>
+      <from>Add key used for joining #1</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fliter for END_ELEMENT</from>
-      <to>Switch / case</to>
+      <from>Add key used for joining #2</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Switch / case</from>
-      <to>Dummy (do nothing) 6</to>
+      <from>data-product__productdetails.cube</from>
+      <to>Remove not needed columns from product__productdetails</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Switch / case</from>
-      <to>Selec product__feature_name</to>
+      <from>Remove not needed columns from product__productdetails</from>
+      <to>Add key used for joining #1</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Switch / case</from>
-      <to>Selec product__feature_description</to>
+      <from>Multiway merge join</from>
+      <to>escape long- &amp; shortdesc</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Switch / case</from>
-      <to>Select product__feature</to>
+      <from>escape long- &amp; shortdesc</from>
+      <to>Remove join_keys</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Selec product__feature_name</from>
-      <to>Serialize product__feature_name to file</to>
-      <enabled>N</enabled>
+      <from>Remove join_keys</from>
+      <to>data-product__productdescription.csv</to>
+      <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Selec product__feature_description</from>
-      <to>Serialize product__feature_description</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Select product__feature</from>
-      <to>Serialize product__feature to file</to>
-      <enabled>N</enabled>
+      <from>Remove join_keys</from>
+      <to>Insert / update ProductDescription</to>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Dummy (do nothing) 6</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fliter for END_ELEMENT</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Switch / case</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>xml_data_type_description</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>END_ELEMENT</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>512</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get session variables</name>
-    <type>GetSessionVariableStep</type>
+    <name>Add key used for joining #1</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -599,6 +546,18 @@
       <schema_name/>
     </partitioning>
     <fields>
+      <field>
+        <name>join_key</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1980</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -609,13 +568,234 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>32</yloc>
+      <xloc>704</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Selec product__feature_description</name>
+    <name>Add key used for joining #2</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>join_key</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1980</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update ProductDescription</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>postgres-database</connection>
+    <commit>${pentaho__commit_size}</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>product__productdescription</table>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>product__productdescription_id</name>
+        <field>id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>product__productdescription_langid</name>
+        <field>langid</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>id</name>
+        <rename>product__productdescription_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>longdesc</name>
+        <rename>product__productdescription_longdesc</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>longdesc_escaped</name>
+        <rename>product__productdescription_longdesc_escaped</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>manualpdfsize</name>
+        <rename>product__productdescription_manualpdfsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>manualpdfurl</name>
+        <rename>product__productdescription_manualpdfurl</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>pdfsize</name>
+        <rename>product__productdescription_pdfsize</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>pdfurl</name>
+        <rename>product__productdescription_pdfurl</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>shortdesc</name>
+        <rename>product__productdescription_shortdesc</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>shortdesc_escaped</name>
+        <rename>product__productdescription_shortdesc_escaped</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>url</name>
+        <rename>product__productdescription_url</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>warrantyinfo</name>
+        <rename>product__productdescription_warrantyinfo</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>langid</name>
+        <rename>product__productdescription_langid</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiway merge join</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>FULL OUTER</join_type>
+    <step0>Add key used for joining #1</step0>
+    <step1>Add key used for joining #2</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>join_key</key>
+      <key>join_key</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove join_keys</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>join_key</name>
+      </remove>
+      <remove>
+        <name>join_key_1</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove not needed columns from product__productdetails</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -626,19 +806,67 @@
       <schema_name/>
     </partitioning>
     <fields>
-      <field>
-        <name>product__feature_id</name>
-      </field>
-      <field>
-        <name>product__feature_description_id</name>
-      </field>
-      <field>
-        <name>product__feature_description_langid</name>
-      </field>
-      <field>
-        <name>product__feature_description_description</name>
-      </field>
       <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>product_code</name>
+      </remove>
+      <remove>
+        <name>product_highpic</name>
+      </remove>
+      <remove>
+        <name>product_highpicheight</name>
+      </remove>
+      <remove>
+        <name>product_highpicsize</name>
+      </remove>
+      <remove>
+        <name>product_highpicwidth</name>
+      </remove>
+      <remove>
+        <name>product_lowpic</name>
+      </remove>
+      <remove>
+        <name>product_lowpicheight</name>
+      </remove>
+      <remove>
+        <name>product_lowpicsize</name>
+      </remove>
+      <remove>
+        <name>product_lowpicwidth</name>
+      </remove>
+      <remove>
+        <name>product_name</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500height</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500size</name>
+      </remove>
+      <remove>
+        <name>product_pic500x500width</name>
+      </remove>
+      <remove>
+        <name>product_prod_id</name>
+      </remove>
+      <remove>
+        <name>product_quality</name>
+      </remove>
+      <remove>
+        <name>product_releasedate</name>
+      </remove>
+      <remove>
+        <name>product_thumbpic</name>
+      </remove>
+      <remove>
+        <name>product_thumbpicsize</name>
+      </remove>
+      <remove>
+        <name>product_title</name>
+      </remove>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -649,14 +877,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>272</yloc>
+      <xloc>432</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Selec product__feature_name</name>
-    <type>SelectValues</type>
+    <name>data-product__productdescription.csv</name>
+    <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -665,20 +893,193 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <separator>;</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${Internal.Entry.Current.Directory}/data-product__productdescription</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>Y</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
     <fields>
       <field>
-        <name>product__feature_id</name>
+        <name>product_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
       </field>
       <field>
-        <name>product__feature_name_id</name>
+        <name>product__productdescription_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
       </field>
       <field>
-        <name>product__feature_name_langid</name>
+        <name>product__productdescription_longdesc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
-        <name>product__feature_name_name</name>
+        <name>product__productdescription_manualpdfsize</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
       </field>
-      <select_unspecified>N</select_unspecified>
+      <field>
+        <name>product__productdescription_manualpdfurl</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productdescription_pdfsize</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productdescription_pdfurl</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productdescription_shortdesc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productdescription_url</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productdescription_warrantyinfo</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productdescription_langid</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>product__productdescription_longdesc_escaped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>product__productdescription_shortdesc_escaped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -689,57 +1090,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>272</yloc>
+      <xloc>1440</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select product__feature</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>product__feature_class</name>
-      </field>
-      <field>
-        <name>product__feature_defaultdisplayunit</name>
-      </field>
-      <field>
-        <name>product__feature_id</name>
-      </field>
-      <field>
-        <name>product__feature_type</name>
-      </field>
-      <field>
-        <name>product__feature_measure_sign</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Serialize product__feature to file</name>
-    <type>CubeOutput</type>
+    <name>data-product__productdescription.cube</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -749,10 +1107,10 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${pentaho__cube_data_folder}/data-product__feature.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <name>${pentaho__cube_data_folder}/data-product__productdescription.cube</name>
     </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -762,14 +1120,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>384</yloc>
+      <xloc>192</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Serialize product__feature_description</name>
-    <type>CubeOutput</type>
+    <name>data-product__productdetails.cube</name>
+    <type>CubeInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -779,10 +1137,10 @@
       <schema_name/>
     </partitioning>
     <file>
-      <name>${pentaho__cube_data_folder}/data-product__feature_description.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <name>${pentaho__cube_data_folder}/data-product__productdetails.cube</name>
     </file>
+    <limit>0</limit>
+    <addfilenameresult>N</addfilenameresult>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -792,89 +1150,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>384</yloc>
+      <xloc>144</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Serialize product__feature_name to file</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file>
-      <name>${pentaho__cube_data_folder}/data-product__feature_name.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Switch / case</name>
-    <type>SwitchCase</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fieldname>xml_path</fieldname>
-    <use_contains>N</use_contains>
-    <case_value_type>None</case_value_type>
-    <case_value_format/>
-    <case_value_decimal/>
-    <case_value_group/>
-    <default_target_step>Dummy (do nothing) 6</default_target_step>
-    <cases>
-      <case>
-        <value>/ICECAT-interface/Response/FeaturesList/Feature</value>
-        <target_step>Select product__feature</target_step>
-      </case>
-      <case>
-        <value>/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description</value>
-        <target_step>Selec product__feature_description</target_step>
-      </case>
-      <case>
-        <value>/ICECAT-interface/Response/FeaturesList/Feature/Names/Name</value>
-        <target_step>Selec product__feature_name</target_step>
-      </case>
-    </cases>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>512</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Take Category from main list</name>
+    <name>escape long- &amp; shortdesc</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -891,157 +1173,45 @@
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
+var product__productdescription_longdesc_escaped = null;
+var product__productdescription_shortdesc_escaped = null;
 
-var product__feature_class;
-var product__feature_defaultdisplayunit;
-var product__feature_id;
-var product__feature_type;
 
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("Class") ) {
-product__feature_class = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("DefaultDisplayUnit") ) {
-product__feature_defaultdisplayunit = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("ID") ) {
-product__feature_id = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature") &amp;&amp;
-xml_data_name.equals("Type") ) {
-product__feature_type = xml_data_value;
-}
-// skipping the processing of measures, just taking the global (english) measure sign for the feature
-var product__feature_measure_sign;
+if (product__productdescription_longdesc) {
+	// make sure that the \n newline characters survives the following steps of html escaping
+	product__productdescription_longdesc_escaped = product__productdescription_longdesc.replace(/\n/g, '\\\\n');
 
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Measure") &amp;&amp;
-xml_data_name.equals("Sign") ) {
-product__feature_measure_sign = xml_data_value;
+	// remove all html entities "&lt;..> .. &lt;/..>"
+	product__productdescription_longdesc_escaped = product__productdescription_longdesc_escaped.replace(/&lt;[^>]+>/g, '');
+
+	// remove any remaining references (brackets "[..]"
+	product__productdescription_longdesc_escaped = product__productdescription_longdesc_escaped.replace(/\[[^\]]+\]/g, '');
 }
 
-var product__feature_description_id;
-var product__feature_description_langid;
-var product__feature_description_description;
+if (product__productdescription_shortdesc) {
+	// make sure that the \n newline characters survives the following steps of html escaping
+	product__productdescription_shortdesc_escaped = product__productdescription_shortdesc.replace(/\n/g, '\\\\n');
 
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description") &amp;&amp;
-xml_data_name.equals("ID") ) {
-product__feature_description_id = xml_data_value;
-}
+	// remove all html entities "&lt;..> .. &lt;/..>"
+	product__productdescription_shortdesc_escaped = product__productdescription_shortdesc_escaped.replace(/&lt;[^>]+>/g, '');
 
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description") &amp;&amp;
-xml_data_name.equals("langid") ) {
-product__feature_description_langid = xml_data_value;
-}
-
-if ( xml_data_type_description.equals("CHARACTERS") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Descriptions/Description") &amp;&amp;
-xml_data_name.equals("Description") ) {
-product__feature_description_description = xml_data_value;
-}
-
-var product__feature_name_id;
-var product__feature_name_langid;
-var product__feature_name_name;
-
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Names/Name") &amp;&amp;
-xml_data_name.equals("ID") ) {
-product__feature_name_id = xml_data_value;
-}
-if ( xml_data_type_description.equals("ATTRIBUTE") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Names/Name") &amp;&amp;
-xml_data_name.equals("langid") ) {
-product__feature_name_langid = xml_data_value;
-}
-if ( xml_data_type_description.equals("CHARACTERS") &amp;&amp; xml_path.equals("/ICECAT-interface/Response/FeaturesList/Feature/Names/Name") &amp;&amp;
-xml_data_name.equals("Name") ) {
-product__feature_name_name = xml_data_value;
+	// remove any remaining references (brackets "[..]"
+	product__productdescription_shortdesc_escaped = product__productdescription_shortdesc_escaped.replace(/\[[^\]]+\]/g, '');
 }</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>product__feature_class</name>
-        <rename>product__feature_class</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_defaultdisplayunit</name>
-        <rename>product__feature_defaultdisplayunit</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_id</name>
-        <rename>product__feature_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_type</name>
-        <rename>product__feature_type</rename>
+        <name>product__productdescription_longdesc_escaped</name>
+        <rename>product__productdescription_longdesc_escaped</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>product__feature_measure_sign</name>
-        <rename>product__feature_measure_sign</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_description_id</name>
-        <rename>product__feature_description_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_description_langid</name>
-        <rename>product__feature_description_langid</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_description_description</name>
-        <rename>product__feature_description_description</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_name_id</name>
-        <rename>product__feature_name_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_name_langid</name>
-        <rename>product__feature_name_langid</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>product__feature_name_name</name>
-        <rename>product__feature_name_name</rename>
+        <name>product__productdescription_shortdesc_escaped</name>
+        <rename>product__productdescription_shortdesc_escaped</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1057,69 +1227,8 @@ product__feature_name_name = xml_data_value;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>316</xloc>
-      <yloc>29</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>XML Input Stream (StAX)</name>
-    <type>XMLInputStream</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <sourceFromInput>N</sourceFromInput>
-    <sourceFieldName/>
-    <filename>${openicecat_download_path}/RelationsList.xml</filename>
-    <addResultFile>N</addResultFile>
-    <nrRowsToSkip>0</nrRowsToSkip>
-    <rowLimit>1024</rowLimit>
-    <defaultStringLen>1024</defaultStringLen>
-    <encoding>UTF-8</encoding>
-    <enableNamespaces>N</enableNamespaces>
-    <enableTrim>Y</enableTrim>
-    <includeFilenameField>N</includeFilenameField>
-    <filenameField>xml_filename</filenameField>
-    <includeRowNumberField>N</includeRowNumberField>
-    <rowNumberField>xml_row_number</rowNumberField>
-    <includeDataTypeNumericField>N</includeDataTypeNumericField>
-    <dataTypeNumericField>xml_data_type_numeric</dataTypeNumericField>
-    <includeDataTypeDescriptionField>Y</includeDataTypeDescriptionField>
-    <dataTypeDescriptionField>xml_data_type_description</dataTypeDescriptionField>
-    <includeXmlLocationLineField>N</includeXmlLocationLineField>
-    <xmlLocationLineField>xml_location_line</xmlLocationLineField>
-    <includeXmlLocationColumnField>N</includeXmlLocationColumnField>
-    <xmlLocationColumnField>xml_location_column</xmlLocationColumnField>
-    <includeXmlElementIDField>Y</includeXmlElementIDField>
-    <xmlElementIDField>xml_element_id</xmlElementIDField>
-    <includeXmlParentElementIDField>Y</includeXmlParentElementIDField>
-    <xmlParentElementIDField>xml_parent_element_id</xmlParentElementIDField>
-    <includeXmlElementLevelField>Y</includeXmlElementLevelField>
-    <xmlElementLevelField>xml_element_level</xmlElementLevelField>
-    <includeXmlPathField>Y</includeXmlPathField>
-    <xmlPathField>xml_path</xmlPathField>
-    <includeXmlParentPathField>Y</includeXmlParentPathField>
-    <xmlParentPathField>xml_parent_path</xmlParentPathField>
-    <includeXmlDataNameField>Y</includeXmlDataNameField>
-    <xmlDataNameField>xml_data_name</xmlDataNameField>
-    <includeXmlDataValueField>Y</includeXmlDataValueField>
-    <xmlDataValueField>xml_data_value</xmlDataValueField>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>102</xloc>
-      <yloc>29</yloc>
+      <xloc>1024</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

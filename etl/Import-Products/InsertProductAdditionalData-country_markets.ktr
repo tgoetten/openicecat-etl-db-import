@@ -436,8 +436,8 @@
   </info>
   <notepads>
     <notepad>
-      <note>${cube_data_folder}/data-${langid}-country_markets.cube
-${cube_data_folder}/data-1-country_markets.cube</note>
+      <note>${pentaho__cube_data_folder}/data-${langid}-country_markets.cube
+${pentaho__cube_data_folder}/data-1-country_markets.cube</note>
       <xloc>432</xloc>
       <yloc>208</yloc>
       <width>333</width>
@@ -543,7 +543,7 @@ ${cube_data_folder}/data-1-country_markets.cube</note>
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-country_markets.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-country_markets.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>

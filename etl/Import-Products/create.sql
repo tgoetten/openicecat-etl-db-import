@@ -43,7 +43,7 @@ CREATE TABLE product_m_prod_id
   supplier_name text,
   m_prod_id text not NULL,
   -- constraint product_m_prod_id_product_id FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
-  constraint product_m_prod_id_supplier_id FOREIGN KEY (supplier_id) references supplier (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
+  -- constraint product_m_prod_id_supplier_id FOREIGN KEY (supplier_id) references supplier (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action,
   CONSTRAINT product_m_prod_id_ukey unique (product_id, m_prod_id, supplier_id)
   ) WITH (OIDS = FALSE);
 
@@ -52,7 +52,7 @@ CREATE TABLE product_ean_upc
   ID SERIAL PRIMARY KEY,
   product_id INT NOT NULL,
   value text,
-  isapproved INT,
+  isapproved INT
 --  constraint product_ean_upc_product_id FOREIGN KEY (product_id) references product (product_id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO action
-  CONSTRAINT product_ean_upc_ukey unique (product_id, value)
+--  CONSTRAINT product_ean_upc_ukey unique (product_id, value)
   ) WITH (OIDS = FALSE);

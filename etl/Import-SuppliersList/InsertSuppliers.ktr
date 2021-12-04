@@ -767,7 +767,7 @@
     <connection>postgres-database</connection>
     <schema>public</schema>
     <table>supplier</table>
-    <commit>${commit_size}</commit>
+    <commit>${pentaho__commit_size}</commit>
     <truncate>N</truncate>
     <ignore_errors>Y</ignore_errors>
     <use_batch>Y</use_batch>

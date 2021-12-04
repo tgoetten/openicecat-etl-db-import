@@ -1206,7 +1206,7 @@ category__feature__name_langid = xml_data_value;
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__CategoryFeatureGroup.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__CategoryFeatureGroup.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -1236,7 +1236,7 @@ category__feature__name_langid = xml_data_value;
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -1266,7 +1266,7 @@ category__feature__name_langid = xml_data_value;
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -1296,7 +1296,7 @@ category__feature__name_langid = xml_data_value;
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__Feature.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__Feature.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -1326,7 +1326,7 @@ category__feature__name_langid = xml_data_value;
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__Feature__Name.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__Feature__Name.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>

@@ -1926,7 +1926,7 @@ langid = getVariable("langid", "");
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-country_markets.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-country_markets.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -1956,7 +1956,7 @@ langid = getVariable("langid", "");
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-distributors.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-distributors.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -1986,7 +1986,7 @@ langid = getVariable("langid", "");
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-ean_upc.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-ean_upc.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -2016,7 +2016,7 @@ langid = getVariable("langid", "");
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-m_prod_id.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-m_prod_id.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -2046,7 +2046,7 @@ langid = getVariable("langid", "");
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-products.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-products.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>

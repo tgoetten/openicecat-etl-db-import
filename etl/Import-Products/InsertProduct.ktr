@@ -436,8 +436,8 @@
   </info>
   <notepads>
     <notepad>
-      <note>${cube_data_folder}/data-${langid}-products.cube
-${cube_data_folder}/data-1-products.cube</note>
+      <note>${pentaho__cube_data_folder}/data-${langid}-products.cube
+${pentaho__cube_data_folder}/data-1-products.cube</note>
       <xloc>908</xloc>
       <yloc>112</yloc>
       <width>289</width>
@@ -538,7 +538,7 @@ ${cube_data_folder}/data-1-products.cube</note>
       <schema_name/>
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-${langid}-products.cube</name>
+      <name>${pentaho__cube_data_folder}/data-${langid}-products.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>

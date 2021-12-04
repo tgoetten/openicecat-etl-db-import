@@ -725,7 +725,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature.cube</name>
+      <name>${pentaho__cube_data_folder}/data-product__feature.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -755,7 +755,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature_description.cube</name>
+      <name>${pentaho__cube_data_folder}/data-product__feature_description.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>
@@ -785,7 +785,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature_name.cube</name>
+      <name>${pentaho__cube_data_folder}/data-product__feature_name.cube</name>
       <add_to_result_filenames>N</add_to_result_filenames>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
     </file>

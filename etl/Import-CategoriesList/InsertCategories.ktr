@@ -571,7 +571,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-category.cube</name>
+      <name>${pentaho__cube_data_folder}/data-category.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>

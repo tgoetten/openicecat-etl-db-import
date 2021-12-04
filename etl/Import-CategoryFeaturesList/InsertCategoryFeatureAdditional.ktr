@@ -546,7 +546,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__CategoryFeatureGroup.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__CategoryFeatureGroup.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -576,7 +576,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -606,7 +606,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__CategoryFeatureGroup__FeatureGroup_Name.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -636,7 +636,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__Feature.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__Feature.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -666,7 +666,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-Category__Feature__Name.cube</name>
+      <name>${pentaho__cube_data_folder}/data-Category__Feature__Name.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>

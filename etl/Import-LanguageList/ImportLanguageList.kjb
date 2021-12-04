@@ -445,7 +445,7 @@
       <description/>
       <type>CREATE_FOLDER</type>
       <attributes/>
-      <foldername>${cube_data_folder}</foldername>
+      <foldername>${pentaho__cube_data_folder}</foldername>
       <fail_of_folder_exists>N</fail_of_folder_exists>
       <parallel>N</parallel>
       <draw>Y</draw>

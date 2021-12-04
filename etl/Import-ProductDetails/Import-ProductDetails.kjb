@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
   <name>Import-ProductDetails</name>
-  <description />
-  <extended_description />
-  <job_version />
+  <description/>
+  <extended_description/>
+  <job_version/>
   <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
@@ -12,24 +12,14 @@
   <modified_date>2020/05/02 14:16:07.489</modified_date>
   <parameters>
     <parameter>
-      <name>create</name>
-      <default_value>false</default_value>
-      <description>CREATE table(s)</description>
-    </parameter>
-    <parameter>
-      <name>drop</name>
-      <default_value>false</default_value>
-      <description>DROP table(s)</description>
-    </parameter>
-    <parameter>
-      <name>extract</name>
-      <default_value>false</default_value>
-      <description>needs extraction</description>
-    </parameter>
-    <parameter>
       <name>filename</name>
       <default_value>75841717.xml</default_value>
       <description>filename</description>
+    </parameter>
+    <parameter>
+      <name>import-product-xml-restart-file</name>
+      <default_value>${Internal.Job.Filename.Directory}/import-history</default_value>
+      <description>full path and filename to save import history</description>
     </parameter>
     <parameter>
       <name>langid</name>
@@ -37,25 +27,20 @@
       <description>langid</description>
     </parameter>
     <parameter>
-      <name>skip_download</name>
-      <default_value>true</default_value>
-      <description>skip download</description>
-    </parameter>
-    <parameter>
-      <name>url</name>
-      <default_value>http://data.icecat.biz/export/freexml.int/DE/75841717.xml</default_value>
-      <description>full url to product details XML</description>
+      <name>product_id</name>
+      <default_value>75841717</default_value>
+      <description>product_id</description>
     </parameter>
   </parameters>
   <slaveservers>
     </slaveservers>
   <job-log-table>
-    <connection />
-    <schema />
-    <table />
-    <size_limit_lines />
-    <interval />
-    <timeout_days />
+    <connection/>
+    <schema/>
+    <table/>
+    <size_limit_lines/>
+    <interval/>
+    <timeout_days/>
     <field>
       <id>ID_JOB</id>
       <enabled>Y</enabled>
@@ -163,10 +148,10 @@
     </field>
   </job-log-table>
   <jobentry-log-table>
-    <connection />
-    <schema />
-    <table />
-    <timeout_days />
+    <connection/>
+    <schema/>
+    <table/>
+    <timeout_days/>
     <field>
       <id>ID_BATCH</id>
       <enabled>Y</enabled>
@@ -254,10 +239,10 @@
     </field>
   </jobentry-log-table>
   <channel-log-table>
-    <connection />
-    <schema />
-    <table />
-    <timeout_days />
+    <connection/>
+    <schema/>
+    <table/>
+    <timeout_days/>
     <field>
       <id>ID_BATCH</id>
       <enabled>Y</enabled>
@@ -320,13 +305,13 @@
     </field>
   </channel-log-table>
   <pass_batchid>N</pass_batchid>
-  <shared_objects_file />
+  <shared_objects_file/>
   <entries>
     <entry>
       <name>Start</name>
-      <description />
+      <description/>
       <type>SPECIAL</type>
-      <attributes />
+      <attributes/>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -342,25 +327,25 @@
       <nr>0</nr>
       <xloc>48</xloc>
       <yloc>208</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Success</name>
-      <description />
+      <description/>
       <type>SUCCESS</type>
-      <attributes />
+      <attributes/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1232</xloc>
+      <xloc>1280</xloc>
       <yloc>208</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Load configuration file config.env</name>
-      <description />
+      <description/>
       <type>SET_VARIABLES</type>
-      <attributes />
+      <attributes/>
       <replacevars>Y</replacevars>
       <filename>${Internal.Entry.Current.Directory}/config/config.env</filename>
       <file_variable_type>JVM</file_variable_type>
@@ -371,200 +356,169 @@
       <nr>2</nr>
       <xloc>208</xloc>
       <yloc>208</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Create cube-data folder</name>
-      <description />
-      <type>CREATE_FOLDER</type>
-      <attributes />
-      <foldername>${cube_data_folder}</foldername>
-      <fail_of_folder_exists>N</fail_of_folder_exists>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>480</xloc>
-      <yloc>208</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Parse XML file</name>
-      <description />
+      <description/>
       <type>TRANS</type>
-      <attributes />
+      <attributes/>
       <specification_method>filename</specification_method>
-      <trans_object_id />
+      <trans_object_id/>
       <filename>${Internal.Entry.Current.Directory}/ParseXML.ktr</filename>
-      <transname />
+      <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
-      <logfile />
-      <logext />
+      <logfile/>
+      <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
       <loglevel>Basic</loglevel>
       <cluster>N</cluster>
-      <slave_server_name />
+      <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>944</xloc>
-      <yloc>112</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Download XML file</name>
-      <description />
-      <type>JOB</type>
-      <attributes />
-      <specification_method>filename</specification_method>
-      <job_object_id />
-      <filename>${Internal.Entry.Current.Directory}/DownloadXML.kjb</filename>
-      <jobname />
-      <directory />
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile />
-      <logext />
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name />
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>640</xloc>
-      <yloc>96</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Database-Step</name>
-      <description />
-      <type>JOB</type>
-      <attributes />
-      <specification_method>filename</specification_method>
-      <job_object_id />
-      <filename>${Internal.Entry.Current.Directory}/Database-Step.kjb</filename>
-      <jobname />
-      <directory />
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile />
-      <logext />
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name />
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>752</xloc>
-      <yloc>208</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>skip download?</name>
-      <description />
-      <type>SIMPLE_EVAL</type>
-      <attributes />
-      <valuetype>variable</valuetype>
-      <fieldname />
-      <variablename>${skip_download}</variablename>
-      <fieldtype>boolean</fieldtype>
-      <mask />
-      <comparevalue />
-      <minvalue />
-      <maxvalue />
-      <successcondition>equal</successcondition>
-      <successnumbercondition>equal</successnumbercondition>
-      <successbooleancondition>true</successbooleancondition>
-      <successwhenvarset>N</successwhenvarset>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>640</xloc>
-      <yloc>208</yloc>
-      <attributes_kjc />
+      <xloc>1008</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>File exists</name>
-      <description />
+      <description/>
       <type>FILE_EXISTS</type>
-      <attributes />
+      <attributes/>
       <filename>${openicecat_download_path}/${langid}/${filename}</filename>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>944</xloc>
+      <xloc>784</xloc>
       <yloc>208</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
-      <name>Write to log</name>
-      <description />
-      <type>WRITE_TO_LOG</type>
-      <attributes />
-      <logmessage>File ${openicecat_download_path}/${langid}/${filename} does not exist, skipping ParseXML Step</logmessage>
-      <loglevel>Minimal</loglevel>
-      <logsubject />
+      <name>Create pentaho__pentaho__cube_data_folder</name>
+      <description/>
+      <type>CREATE_FOLDER</type>
+      <attributes/>
+      <foldername>${pentaho__pentaho__cube_data_folder}</foldername>
+      <fail_of_folder_exists>N</fail_of_folder_exists>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1072</xloc>
+      <xloc>448</xloc>
       <yloc>208</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
-      <name>Write to log 2</name>
-      <description />
-      <type>WRITE_TO_LOG</type>
-      <attributes />
-      <logmessage>Start processing of ${openicecat_download_path}/${langid}/${filename} ...</logmessage>
-      <loglevel>Minimal</loglevel>
-      <logsubject />
+      <name>Delete .CUBE files</name>
+      <description/>
+      <type>DELETE_FILES</type>
+      <attributes/>
+      <arg_from_previous>N</arg_from_previous>
+      <include_subfolders>Y</include_subfolders>
+      <fields>
+        <field>
+          <name>${Internal.Entry.Current.Directory}/</name>
+          <filemask>.*\.cube$</filemask>
+        </field>
+      </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>848</xloc>
+      <xloc>640</xloc>
       <yloc>208</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Remember current file</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/Remember current file.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>784</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>sub job - Create CSV files and Insert into DB.kjb</name>
+      <description/>
+      <type>JOB</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <job_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/sub job - Create CSV files and Insert into DB.kjb</filename>
+      <jobname/>
+      <directory/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
     </entry>
   </entries>
   <hops>
@@ -578,17 +532,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Parse XML file</from>
+      <from>File exists</from>
       <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>skip download?</from>
-      <to>Download XML file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -596,8 +541,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Create cube-data folder</from>
-      <to>skip download?</to>
+      <from>Load configuration file config.env</from>
+      <to>Create pentaho__pentaho__cube_data_folder</to>
+      <from_nr>2</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create pentaho__pentaho__cube_data_folder</from>
+      <to>Delete .CUBE files</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -605,61 +559,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>skip download?</from>
-      <to>Database-Step</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>File exists</from>
-      <to>Parse XML file</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>File exists</from>
-      <to>Write to log</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Write to log</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Download XML file</from>
-      <to>Database-Step</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Database-Step</from>
-      <to>Write to log 2</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Write to log 2</from>
+      <from>Delete .CUBE files</from>
       <to>File exists</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -668,9 +568,36 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load configuration file config.env</from>
-      <to>Create cube-data folder</to>
-      <from_nr>2</from_nr>
+      <from>File exists</from>
+      <to>Remember current file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Remember current file</from>
+      <to>Parse XML file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Parse XML file</from>
+      <to>sub job - Create CSV files and Insert into DB.kjb</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>sub job - Create CSV files and Insert into DB.kjb</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
@@ -685,10 +612,31 @@
 - Insert XML data into Database
 
 + filename as parameter</note>
-      <xloc>1216</xloc>
-      <yloc>16</yloc>
+      <xloc>1904</xloc>
+      <yloc>288</yloc>
       <width>218</width>
       <heigth>112</heigth>
+      <fontname>Noto Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Write to logile, which file &amp; path you are about to parse &amp; import</note>
+      <xloc>336</xloc>
+      <yloc>80</yloc>
+      <width>366</width>
+      <heigth>27</heigth>
       <fontname>Noto Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -715,10 +663,6 @@
     </group>
     <group>
       <name>{"_":"Embedded MetaStore Elements","namespace":"pentaho","type":"Default Run Configuration"}</name>
-      <attribute>
-        <key>Pentaho local</key>
-        <value>{"children":[{"children":[],"id":"server","value":null},{"children":[],"id":"clustered","value":"N"},{"children":[],"id":"name","value":"Pentaho local"},{"children":[],"id":"description","value":null},{"children":[],"id":"pentaho","value":"N"},{"children":[],"id":"readOnly","value":"Y"},{"children":[],"id":"sendResources","value":"N"},{"children":[],"id":"logRemoteExecutionLocally","value":"N"},{"children":[],"id":"remote","value":"N"},{"children":[],"id":"local","value":"Y"},{"children":[],"id":"showTransformations","value":"N"}],"id":"Pentaho local","value":null,"name":"Pentaho local","owner":null,"ownerPermissionsList":[]}</value>
-      </attribute>
     </group>
   </attributes>
 </job>

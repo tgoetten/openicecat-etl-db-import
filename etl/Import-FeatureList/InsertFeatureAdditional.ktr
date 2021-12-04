@@ -536,7 +536,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature_description.cube</name>
+      <name>${pentaho__cube_data_folder}/data-product__feature_description.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -566,7 +566,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature_name.cube</name>
+      <name>${pentaho__cube_data_folder}/data-product__feature_name.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
@@ -596,7 +596,7 @@
       <schema_name />
     </partitioning>
     <file>
-      <name>${cube_data_folder}/data-product__feature.cube</name>
+      <name>${pentaho__cube_data_folder}/data-product__feature.cube</name>
     </file>
     <limit>0</limit>
     <addfilenameresult>N</addfilenameresult>
