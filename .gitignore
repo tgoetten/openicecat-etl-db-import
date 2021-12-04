@@ -10,3 +10,5 @@
 etl/config/config.env
 database.env
 files_to_exclude.txt
+.DS_Store
+downloaded-data/
