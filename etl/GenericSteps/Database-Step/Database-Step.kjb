@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
   <name>GENERIC database step to DROP and/or CREATE table(s)</name>
-  <description />
-  <extended_description />
-  <job_version />
+  <description/>
+  <extended_description/>
+  <job_version/>
   <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
@@ -14,12 +14,12 @@
     <parameter>
       <name>create</name>
       <default_value>false</default_value>
-      <description />
+      <description/>
     </parameter>
     <parameter>
       <name>drop</name>
       <default_value>false</default_value>
-      <description />
+      <description/>
     </parameter>
   </parameters>
   <connection>
@@ -31,9 +31,9 @@
     <port>${postgres_database_port}</port>
     <username>${postgres_database_user}</username>
     <password>${postgres_database_password}</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -76,12 +76,12 @@
   <slaveservers>
     </slaveservers>
   <job-log-table>
-    <connection />
-    <schema />
-    <table />
-    <size_limit_lines />
-    <interval />
-    <timeout_days />
+    <connection/>
+    <schema/>
+    <table/>
+    <size_limit_lines/>
+    <interval/>
+    <timeout_days/>
     <field>
       <id>ID_JOB</id>
       <enabled>Y</enabled>
@@ -189,10 +189,10 @@
     </field>
   </job-log-table>
   <jobentry-log-table>
-    <connection />
-    <schema />
-    <table />
-    <timeout_days />
+    <connection/>
+    <schema/>
+    <table/>
+    <timeout_days/>
     <field>
       <id>ID_BATCH</id>
       <enabled>Y</enabled>
@@ -280,10 +280,10 @@
     </field>
   </jobentry-log-table>
   <channel-log-table>
-    <connection />
-    <schema />
-    <table />
-    <timeout_days />
+    <connection/>
+    <schema/>
+    <table/>
+    <timeout_days/>
     <field>
       <id>ID_BATCH</id>
       <enabled>Y</enabled>
@@ -346,13 +346,13 @@
     </field>
   </channel-log-table>
   <pass_batchid>N</pass_batchid>
-  <shared_objects_file />
+  <shared_objects_file/>
   <entries>
     <entry>
       <name>Start</name>
-      <description />
+      <description/>
       <type>SPECIAL</type>
-      <attributes />
+      <attributes/>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -368,33 +368,33 @@
       <nr>0</nr>
       <xloc>96</xloc>
       <yloc>112</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Success</name>
-      <description />
+      <description/>
       <type>SUCCESS</type>
-      <attributes />
+      <attributes/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>1040</xloc>
       <yloc>112</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>DROP table(s) ?</name>
-      <description />
+      <description/>
       <type>SIMPLE_EVAL</type>
-      <attributes />
+      <attributes/>
       <valuetype>variable</valuetype>
-      <fieldname />
+      <fieldname/>
       <variablename>${drop}</variablename>
       <fieldtype>boolean</fieldtype>
-      <mask />
-      <comparevalue />
-      <minvalue />
-      <maxvalue />
+      <mask/>
+      <comparevalue/>
+      <minvalue/>
+      <maxvalue/>
       <successcondition>equal</successcondition>
       <successnumbercondition>equal</successnumbercondition>
       <successbooleancondition>true</successbooleancondition>
@@ -404,14 +404,14 @@
       <nr>0</nr>
       <xloc>400</xloc>
       <yloc>112</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>sql DROP table(s)</name>
-      <description />
+      <description/>
       <type>SQL</type>
-      <attributes />
-      <sql />
+      <attributes/>
+      <sql/>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>T</sqlfromfile>
       <sqlfilename>${Internal.Entry.Current.Directory}/drop.sql</sqlfilename>
@@ -422,14 +422,14 @@
       <nr>0</nr>
       <xloc>512</xloc>
       <yloc>112</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>sql CREATE table(s) </name>
-      <description />
+      <description/>
       <type>SQL</type>
-      <attributes />
-      <sql />
+      <attributes/>
+      <sql/>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>T</sqlfromfile>
       <sqlfilename>${Internal.Entry.Current.Directory}/create.sql</sqlfilename>
@@ -440,21 +440,21 @@
       <nr>0</nr>
       <xloc>704</xloc>
       <yloc>272</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>CREATE table(s) after they where DROPED?</name>
-      <description />
+      <description/>
       <type>SIMPLE_EVAL</type>
-      <attributes />
+      <attributes/>
       <valuetype>variable</valuetype>
-      <fieldname />
+      <fieldname/>
       <variablename>${create}</variablename>
       <fieldtype>boolean</fieldtype>
-      <mask />
-      <comparevalue />
-      <minvalue />
-      <maxvalue />
+      <mask/>
+      <comparevalue/>
+      <minvalue/>
+      <maxvalue/>
       <successcondition>equal</successcondition>
       <successnumbercondition>equal</successnumbercondition>
       <successbooleancondition>true</successbooleancondition>
@@ -464,21 +464,21 @@
       <nr>0</nr>
       <xloc>704</xloc>
       <yloc>112</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>CREATE table(s) ?</name>
-      <description />
+      <description/>
       <type>SIMPLE_EVAL</type>
-      <attributes />
+      <attributes/>
       <valuetype>variable</valuetype>
-      <fieldname />
+      <fieldname/>
       <variablename>${create}</variablename>
       <fieldtype>boolean</fieldtype>
-      <mask />
-      <comparevalue />
-      <minvalue />
-      <maxvalue />
+      <mask/>
+      <comparevalue/>
+      <minvalue/>
+      <maxvalue/>
       <successcondition>equal</successcondition>
       <successnumbercondition>equal</successnumbercondition>
       <successbooleancondition>true</successbooleancondition>
@@ -488,7 +488,7 @@
       <nr>0</nr>
       <xloc>400</xloc>
       <yloc>272</yloc>
-      <attributes_kjc />
+      <attributes_kjc/>
     </entry>
   </entries>
   <hops>

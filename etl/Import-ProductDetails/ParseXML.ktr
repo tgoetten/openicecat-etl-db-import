@@ -481,11 +481,13 @@ Test with multiple /ICECAT-interface/Product/ProductFeature/LocalValue/Measure/S
       <note>13337.xml
 /home/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/1/17832151.xml
 /home/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/4/640373.xml 
-${openicecat_download_path}/${langid}/${filename}</note>
-      <xloc>7056</xloc>
+${openicecat_download_path}/${langid}/${filename}
+
+/Users/thomas/Workspace/openicecat-etl-db-import/etl/Import-ProductDetails/downloaded-data/4/1425469.xml</note>
+      <xloc>7024</xloc>
       <yloc>64</yloc>
-      <width>641</width>
-      <heigth>78</heigth>
+      <width>505</width>
+      <heigth>76</heigth>
       <fontname>Noto Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -1846,55 +1848,6 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     </GUI>
   </step>
   <step>
-    <name>Remove Columns /Product/ProductPicture</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>xml_filename</name>
-      </remove>
-      <remove>
-        <name>xml_data_type_description</name>
-      </remove>
-      <remove>
-        <name>xml_element_id</name>
-      </remove>
-      <remove>
-        <name>xml_parent_element_id</name>
-      </remove>
-      <remove>
-        <name>xml_element_level</name>
-      </remove>
-      <remove>
-        <name>xml_path</name>
-      </remove>
-      <remove>
-        <name>xml_parent_path</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>6992</xloc>
-      <yloc>1552</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Re-Order Columns Product/CategoryFeatureGroup</name>
     <type>SelectValues</type>
     <description/>
@@ -2134,6 +2087,11 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     <fields>
       <field>
         <name>product__eancode_ean</name>
+        <rename/>
+      </field>
+      <field>
+        <name>product__eancode_format</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2205,6 +2163,55 @@ ${openicecat_download_path}/${langid}/${filename}</note>
     </remotesteps>
     <GUI>
       <xloc>3248</xloc>
+      <yloc>1552</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove Columns /Product/ProductPicture</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>xml_filename</name>
+      </remove>
+      <remove>
+        <name>xml_data_type_description</name>
+      </remove>
+      <remove>
+        <name>xml_element_id</name>
+      </remove>
+      <remove>
+        <name>xml_parent_element_id</name>
+      </remove>
+      <remove>
+        <name>xml_element_level</name>
+      </remove>
+      <remove>
+        <name>xml_path</name>
+      </remove>
+      <remove>
+        <name>xml_parent_path</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>6992</xloc>
       <yloc>1552</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3305,6 +3312,20 @@ ${openicecat_download_path}/${langid}/${filename}</note>
         <field_name>xml_data_value</field_name>
         <key_value>EAN</key_value>
         <target_name>product__eancode_ean</target_name>
+        <target_type>String</target_type>
+        <target_format/>
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol/>
+        <target_grouping_symbol/>
+        <target_currency_symbol/>
+        <target_null_string/>
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>xml_data_value</field_name>
+        <key_value>Format</key_value>
+        <target_name>product__eancode_format</target_name>
         <target_type>String</target_type>
         <target_format/>
         <target_length>-1</target_length>

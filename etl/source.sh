@@ -223,8 +223,8 @@ function cron_init() {
 function delete_xml() {
     if [[ -n ${deletexml-} ]]; then
 	echo "Deleting all *.xml files"
-        # find . -type f -name "*.xml" -exec rm {} \; 
-        find . -type f -not -path "./Import-ProductDetails/downloaded-data/*" -name "*.xml" -exec echo rm '{}' \;  
+        # find . -type f -name "*.xml" -exec rm {} \;
+        find . -type f -not -path "./Import-ProductDetails/downloaded-data/*" -name "*.xml" -exec echo rm '{}' \;
 
     fi
 }
@@ -232,7 +232,7 @@ function delete_xml() {
 function delete_cube() {
     if [[ -n ${deletecube-} ]]; then
 	echo "Deleting all *.cube files"
-        find . -type f -name "*.cube" -exec rm {} \; 
+        find . -type f -name "*.cube" -exec rm {} \;
     fi
 }
 
@@ -240,7 +240,8 @@ function delete_cube() {
 function perform_import() {
 # If you would like the script to DROP and CREATE the necessary tables AND parse the data instead of using cube files, uncomment the next line
 
-    export PENTAHO_DI_JAVA_OPTIONS="-Xmx16g -XX:MaxPermSize=512m" && sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
+# export PENTAHO_DI_JAVA_OPTIONS="-Xmx16g -XX:MaxPermSize=512m" && sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
+    sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=false
 # otherwise, if you wish to DROP and CREATE AND use cube files, uncomment he next line
 #    sh /opt/data-integration/kitchen.sh -file=ImportAll.kjb ImportAll.kjb -logfile=ImportAll.txt -level=Basic -param:drop=true -param:create=true -param:cube=true
 }
